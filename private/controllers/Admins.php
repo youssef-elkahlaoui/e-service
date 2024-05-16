@@ -16,6 +16,7 @@ class Admins extends Controller
     }
 
 
+<<<<<<< HEAD
 
 
 	
@@ -24,3 +25,7 @@ class Admins extends Controller
 
 	
 }
+=======
+	
+}
+>>>>>>> main
