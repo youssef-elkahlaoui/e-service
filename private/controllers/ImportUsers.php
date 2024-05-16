@@ -26,6 +26,7 @@ class ImportUsers extends Controller {
                                 while (($row = fgetcsv($fichier)) !== false) {
                                     
                                     $row[0] = $next_id++;
+                                    $row[4] = password_hash($row[4], PASSWORD_DEFAULT);
                                     $db->query("INSERT INTO students (id, firstname, lastname, email, Filiere, idClasse, password, CNE, CIN) VALUES (?, ?, ?, ?, NOW(), 1, ?, ?, ?)", $row);
                                 }
                                 fclose($fichier);
