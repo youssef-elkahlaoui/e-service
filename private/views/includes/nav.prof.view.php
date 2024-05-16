@@ -1,26 +1,7 @@
-<?php 
-    $row = $data['rows'][0];
-    print_r($row);
-    foreach ($row as $key => $value) {
-        ${$key}= $value; 
-            
-    }
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-service</title>
-    <!-- MDB icon -->
-    <link rel="icon" href="/final/public/mdb/img/logo-ensah.png" type="image/x-icon" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <!-- Google Fonts Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
-    <!-- MDB -->
-    <link rel="stylesheet" href="/final/public/mdb/css/mdb.min.css" />
+    
     <style>
         .navbar-nav .nav-item .dropdown-toggle {
             color: #555; /* Change this to your preferred font color */
@@ -87,7 +68,7 @@
                         <div class="dropdown">
                             <a
                                 data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                                class="dropdown-toggle d-flex align-items-center "
                                 href="#"
                                 id="0"
                                 role="button"
@@ -113,7 +94,7 @@
                         <div class="dropdown">
                             <a
                                 data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                                class="dropdown-toggle d-flex align-items-center "
                                 href="#"
                                 id="1"
                                 role="button"
@@ -136,7 +117,7 @@
                         <div class="dropdown">
                             <a
                                 data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                                class="dropdown-toggle d-flex align-items-center "
                                 href="#"
                                 id="3"
                                 role="button"
@@ -157,7 +138,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= ROOT ?>/students/devoir">Rendre les devoirs</a>
+                        <a class="nav-link" href="Notification">Send Notification</a>
                     </li>
                 </li>
                     
@@ -175,7 +156,7 @@
                       aria-expanded="false"
                     >
                       <img
-                        src="../public/<?= $image;?>"
+                        src="../public/<?= Auth::getImage();?>"
                         class="rounded-circle"
                         height="40"
                         alt="Black and White Portrait of a Man"
@@ -186,7 +167,7 @@
                       class="dropdown-menu dropdown-menu-end"
                       aria-labelledby="navbarDropdownMenuAvatar"
                     >
-                        <li><?php echo $firstname .' '. $lastname;?></li>
+                        <li><?php echo Auth::getFirstname();?></li>
                       <li>
                         <a class="dropdown-item" href="profile">Profile</a>
                       </li>
@@ -208,84 +189,8 @@
     <!-- Custom scripts -->
 
 
-    <section style="background-color: #eee; ">
-    <div class="container py-5" >
-        <div class="row">
-            <div class="col">
-                <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
-                <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accuile</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Profile</li>
-                </ol>
-                </nav>
-            </div>
-        </div>
 
-        <div class="row">
-        <div class="col-lg-4">
-            <div class="card mb-4">
-                <div class="card-body text-center">
-                    <img src="../public/mdb/img/profile.png" alt="avatar"
-                    class="rounded-circle img-fluid" style="width: 150px;">
-                    <h5 class="my-3">Nom</h5>
-                    <p class="text-muted mb-1"></p>
-                    <p class="text-muted mb-4">CNE</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-8">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="row">
-                    <div class="col-sm-3">
-                        <p class="mb-0">Nom et Prenom</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <p class="text-muted mb-0"><?= $firstname."  ".$lastname ?></p>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                    <div class="col-sm-3">
-                        <p class="mb-0">Email</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <p class="text-muted mb-0"><?= $email?></p>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                    <div class="col-sm-3">
-                        <p class="mb-0">Phone</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <p class="text-muted mb-0">(097) 234-5678</p>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                    <div class="col-sm-3">
-                        <p class="mb-0">Mobile</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <p class="text-muted mb-0">(098) 765-4321</p>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                    <div class="col-sm-3">
-                        <p class="mb-0">Address</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-        
-    </div>
-    </section>
+    <h3>Hi! <?php echo Auth::getFirstname(); ?></h3>
+
 </body>
 </html>
