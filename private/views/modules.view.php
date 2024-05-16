@@ -1,5 +1,5 @@
 <?php 
-    require("includes/header.view.php")
+    include "includes/header.view.php";
 ?>
 <body>
     <?php
