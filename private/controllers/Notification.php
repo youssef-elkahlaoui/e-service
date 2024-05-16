@@ -15,7 +15,7 @@ class Notification extends Controller {
             // Initialize PHPMailer
             $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
             try {
-                $students = $db->query("SELECT * FROM send");
+                $students = $db->query("SELECT * FROM students");
 
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
