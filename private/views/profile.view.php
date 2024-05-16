@@ -3,7 +3,6 @@
     print_r($row);
     foreach ($row as $key => $value) {
         ${$key}= $value; 
-            
     }
 
 ?>

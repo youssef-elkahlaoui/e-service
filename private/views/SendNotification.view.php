@@ -1,3 +1,8 @@
+<?php 
+    include "includes/header.view.php";
+
+    include "includes/nav.admin.view.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,40 +12,45 @@
 
     <title>Send Notification</title>
 </head>
+<style>
+    .container{
+        padding-top: 50px;
+    }
+        
+</style>
 <body>
-    <form action="notification/sendNot" method="post">
-    <div class="container" style="padding:100px">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="notification">Notification:</label>
-                    <textarea class="form-control" name="notification" placeholder="Write your notification" id="notification" rows="3" required></textarea>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form action="notification/sendNot" method="post">
+                            <div class="form-group">
+                                <label for="notification">Notification:</label>
+                                <textarea class="form-control" name="notification" id="notification" rows="3" placeholder="Write your notification" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="selectOption">Select Option:</label>
+                                <select class="form-control" id="selectOption" name="selectedoption" required>
+                                    <option value="" disabled selected hidden>Choose an option</option>
+                                    <option value="CP1">CP1</option>
+                                    <option value="CP2">CP2</option>
+                                    <option value="TDIA1">TDIA1</option>
+                                    <option value="GI1">GI1</option>
+                                    <option value="ID1">ID1</option>
+                                    <option value="GM1">GM1</option>
+                                    <option value="ALL">ALL</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-outline-primary " name="notif">SEND</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="selectOption">Select Option:</label>
-                        <select class="form-control" id="selectOption" placeholder="Choose an option" name="selectedoption">
-                            <option value="" disabled selected hidden>Choose an option</option>
-                            <option value="CP1">CP1</option>
-                            <option value="CP2">CP2</option>
-                            <option value="TDIA1">TDIA1</option>
-                            <option value="GI1">GI1</option>
-                            <option value="ID1">ID1</option>
-                            <option value="GM1">GM1</option>
-                            <option value="ALL">ALL</option>
-                        </select>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 text-center">
-                <button type="submit" class="btn btn-outline-primary" name="notif">SEND</button>
             </div>
         </div>
     </div>
-    </form>
 </body>
+
+
 </html>

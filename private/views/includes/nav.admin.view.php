@@ -26,6 +26,7 @@
         .dropdown-item:hover {
             background-color: #f8f9fa; /* Background color of dropdown items when hovered */
         }
+       
     </style>
 </head>
 <body>
@@ -50,7 +51,7 @@
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="<?= ROOT?>/students">
+                <a class="navbar-brand mt-2 mt-lg-0" href="<?= ROOT?>/admins">
                     <img
                       src="/final/public/mdb/img/logo-ensah.png"
                       height="30"
@@ -62,7 +63,7 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/students">Accuille</a>
+                    <a class="nav-link" href="<?= ROOT ?>/admins">Accueil</a>
                 </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -140,7 +141,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="Notification">Send Notification</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ImportUsers">Importer Etudiants</a>
+                    </li>
                 </li>
+
                     
                 </ul>
                 <!-- Left links -->
@@ -188,9 +193,6 @@
     <script type="text/javascript" src="../public/mdb/js/mdb.umd.min.js"></script>
     <!-- Custom scripts -->
 
-
-
-    <h3>Hi! <?php echo Auth::getFirstname(); ?></h3>
 
 </body>
 </html>

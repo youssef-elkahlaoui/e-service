@@ -41,10 +41,10 @@ class Notification extends Controller {
                 echo 'Error: '. $ex->getMessage();
             }
             try{
-                $db->query("INSERT INTO notifications (Filiere,Message,DateTime) VALUES (?,?,NOW())",array($choice,$notification));
+                $db->query("INSERT INTO notifications (Filiere, Message, DateNotification) VALUES (?, ?, NOW())", array($choice, $notification));
                 echo "Notification has been inserted succesfully in Database";
             }catch(Exception $e){
-                echo "Error inserting Notiifcation in Database". $e->getMessage();
+                echo "Error inserting Notification in Database , ". $e->getMessage();
             }
         }
     }
