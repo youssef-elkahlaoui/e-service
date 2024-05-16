@@ -17,4 +17,8 @@ class Admins extends Controller
 function add(){
 	
 }
+
+function ad(){
+	
+}
 }
