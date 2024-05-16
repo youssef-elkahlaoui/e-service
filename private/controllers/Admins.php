@@ -15,4 +15,14 @@ class Admins extends Controller
 		$this->view('home.admin',['rows'=>$data]);
     }
 
+
+
+
+
+
+
+
+
+	
+
 }
