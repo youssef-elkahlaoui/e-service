@@ -1,12 +1,3 @@
-<?php 
-    $row = $data['rows'][0];
-    print_r($row);
-    foreach ($row as $key => $value) {
-        ${$key}= $value; 
-            
-    }
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
