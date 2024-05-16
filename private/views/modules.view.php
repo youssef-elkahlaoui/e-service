@@ -1,10 +1,8 @@
 <?php 
+    include "includes/nav.view.php";
     include "includes/header.view.php";
 ?>
 <body>
-    <?php
-        require("includes/nav.etu.view.php")
-    ?>
     
     <section style="background-color: #eee; ">
         <div class="container py-5" >
