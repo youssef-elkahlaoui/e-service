@@ -14,9 +14,11 @@ class Admins extends Controller
 
 		$this->view('home.admin',['rows'=>$data]);
     }
-
-
-
-
+function add(){
 	
+}
+
+function ad(){
+	
+}
 }
