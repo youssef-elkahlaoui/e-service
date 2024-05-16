@@ -10,7 +10,7 @@ class Notification extends Controller {
         if(isset($_POST['notif'])){
             $notification = $_POST['notification'];
             $choice = $_POST['selectedoption'];
-            $db = new Database();   
+            $db = new Database();
 
             // Initialize PHPMailer
             $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
@@ -31,7 +31,7 @@ class Notification extends Controller {
                 foreach($students as $student) {
                     if($choice === "ALL" || $student->Filiere == $choice) {
                         $mail->clearAddresses(); 
-                        $mail->addAddress($student->Email, $student->Prénom); 
+                        $mail->addAddress($student->email, $student->lastname);
                         $mail->Body = $notification;
                         $mail->send();
                     }
@@ -41,7 +41,7 @@ class Notification extends Controller {
                 echo 'Error: '. $ex->getMessage();
             }
             try{
-                $db->query("INSERT INTO notification (Filiere,Message,DateTime) VALUES (?,?,NOW())",array($choice,$notification));
+                $db->query("INSERT INTO notifications (Filiere,Message,DateTime) VALUES (?,?,NOW())",array($choice,$notification));
                 echo "Notification has been inserted succesfully in Database";
             }catch(Exception $e){
                 echo "Error inserting Notiifcation in Database". $e->getMessage();
