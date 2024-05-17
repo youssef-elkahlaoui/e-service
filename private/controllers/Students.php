@@ -110,10 +110,10 @@ class Students extends Controller
 		{
 			$this->redirect('login');
 		}
-		$user = new Student();
+		$module = new Module();
 
-		$data = $user->findAll();
-        $this->view("modules");
+		$data = $module->where('IdClasse',Auth::getIdclasse());
+        $this->view("modules", ['data'=>$data]);
     }
 
     function profile($id = null){

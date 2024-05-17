@@ -1,6 +1,6 @@
 <?php 
 
-class Students extends Controller
+class Teachers extends Controller
 {
     function index()
 	{
@@ -9,7 +9,7 @@ class Students extends Controller
 		{
 			$this->redirect('login');
 		}
-		$user = new User();
+		$user = new Teacher();
 
 		$data = $user->findAll();
 

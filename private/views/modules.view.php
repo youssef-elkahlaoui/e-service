@@ -24,18 +24,19 @@
                 <tr>
                     <th>Modules</th>
                     <th>Professeur</th>
-                    <th>Documant</th>
+                    <th>Description</th>
+                    <th>Documantation</th>
                 </tr>
-                <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td><a href="documentation">Voir</a></td>
-                </tr>
-                <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td><a href="documentation">Voir</a></td>
-                </tr>
+                <?php 
+                    foreach ($data as $key => $value) {
+                        echo '<tr>';
+                        echo '<td>' . htmlspecialchars($value->IdCours) . '</td>';
+                        echo '<td>' . htmlspecialchars($value->Titre) . '</td>';
+                        echo '<td>' . htmlspecialchars($value->Description) . '</td>';
+                        echo '<td><a href="documentation.php?id=' . urlencode($value->IdCours) . '">Voir</a></td>';
+                        echo '</tr>';
+                    }
+                ?>
             </table>
 
                 
