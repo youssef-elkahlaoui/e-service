@@ -21,10 +21,6 @@ class Model extends Database
 			'value'=>$value
 		]);
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ayoub
 		return $data;
 	}
 

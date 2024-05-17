@@ -7,14 +7,6 @@ class Teachers extends Controller
 	{
         		// code...
 		if(!Auth::teacherLoggedIn())
-<<<<<<< HEAD
-        {
-            $this->redirect('login');
-        }
-		$user = new Teacher();
-		// $data = $user->query("select * from techers where email = :email",['email'=>$email]);
-        $data = $use->findAll();
-=======
 		{
 			$this->redirect('login');
 		}
@@ -22,7 +14,6 @@ class Teachers extends Controller
 
 		$data = $user->findAll();
 
->>>>>>> ayoub
 		$this->view('home.prof',['rows'=>$data]);
     }
 	
