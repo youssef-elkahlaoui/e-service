@@ -8,5 +8,6 @@
     <h3>Hi! <?=  Auth::getFirstname(); ?></h3>
     <h2>allo</h2>
 
+
 </body>
 </html>
