@@ -9,7 +9,7 @@ class Students extends Controller
 		{
 			$this->redirect('login');
 		}
-		$user = new User();
+		$user = new Student();
 
 		$data = $user->findAll();
 
