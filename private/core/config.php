@@ -1,7 +1,7 @@
 <?php
 
-define('ROOT', 'http://localhost/school/public');
-define('ASSETS', 'http://localhost/school/public/assets');
+define('ROOT', 'http://localhost/e-service/public');
+define('ASSETS', 'http://localhost/e-service/public/assets');
 
 define('DBNAME', 'school_db2');
 define('DBHOST', 'localhost');
