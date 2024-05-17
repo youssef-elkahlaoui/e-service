@@ -166,12 +166,12 @@
                 <!-- Right elements -->
                 <div class="dropdown">
                     <a
-                    data-mdb-dropdown-init
-                    class="dropdown-toggle d-flex align-items-center hidden-arrow"
-                    href="#"
-                    id="navbarDropdownMenuAvatar"
-                    role="button"
-                    aria-expanded="false"
+                      data-mdb-dropdown-init
+                      class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                      href="#"
+                      id="navbarDropdownMenuAvatar"
+                      role="button"
+                      aria-expanded="false"
                     >
                       <img
                         src="../public/<?= $image;?>"

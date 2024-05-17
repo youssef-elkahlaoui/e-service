@@ -63,11 +63,7 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-<<<<<<< HEAD
                     <a class="nav-link" href="<?= ROOT ?>/admins">Accueil</a>
-=======
-                    <a class="nav-link" href="<?= ROOT ?>/admins">Accuille</a>
->>>>>>> youssef
                 </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -84,13 +80,13 @@
                                 aria-labelledby="0"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/modules">Modules</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/modules">Modules</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/absence">Mes absence</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/absence">Mes absence</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/note">Affichage des notes</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/note">Affichage des notes</a>
                                 </li>
                             </ul>
                         </div>
@@ -110,44 +106,16 @@
                                 aria-labelledby="1"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/classe">Ma classe</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/classe">Ma classe</a>
                                 </li>
                                 <li>
-<<<<<<< HEAD
                                     <a class="dropdown-item" href="<?= ROOT ?>/students/listeProf">Les professeurs</a>
-=======
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/listeProf">Mes professeurs</a>
->>>>>>> youssef
                                 </li>
                         </div>
                         
                     </li>
                     <li class="nav-item">
-<<<<<<< HEAD
                         <a class="nav-link" href="Demandes">Demandes</a>
-=======
-                        <div class="dropdown">
-                            <a
-                                data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center "
-                                href="#"
-                                id="3"
-                                role="button"
-                                aria-expanded="false"
-                            >Demandes</a>
-                            <ul
-                                class="dropdown-menu dropdown-menu-end"
-                                aria-labelledby="3"
-                            >
-                                <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/demande">Nouveau Demande</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/etatDemande">Mes Demandes</a>
-                                </li>
-                        </div>
-                        
->>>>>>> youssef
                     </li>
 
                     <li class="nav-item">
@@ -206,11 +174,5 @@
     <!-- Custom scripts -->
 
 
-<<<<<<< HEAD
-=======
-
-    <h3>Hi!</h3>
-
->>>>>>> youssef
 </body>
 </html>
