@@ -189,8 +189,5 @@
     <!-- Custom scripts -->
 
 
-
-    <h3>Hi! <?php echo Auth::getFirstname(); ?></h3>
-
 </body>
 </html>

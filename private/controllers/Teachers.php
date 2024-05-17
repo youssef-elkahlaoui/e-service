@@ -2,6 +2,7 @@
 
 class Teachers extends Controller
 {
+
     function index()
 	{
         		// code...
