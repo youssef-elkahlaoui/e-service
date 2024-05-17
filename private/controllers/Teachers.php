@@ -1,18 +1,18 @@
 <?php 
 
-class Students extends Controller
+class Teachers extends Controller
 {
+
     function index()
 	{
         		// code...
 		if(!Auth::teacherLoggedIn())
-		{
-			$this->redirect('login');
-		}
-		$user = new User();
-
-		$data = $user->findAll();
-
+        {
+            $this->redirect('login');
+        }
+		$user = new Teacher();
+		// $data = $user->query("select * from techers where email = :email",['email'=>$email]);
+        $data = $use->findAll();
 		$this->view('home.prof',['rows'=>$data]);
     }
 	
