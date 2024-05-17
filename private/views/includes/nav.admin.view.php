@@ -109,33 +109,13 @@
                                     <a class="dropdown-item" href="<?= ROOT ?>/students/classe">Ma classe</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/students/listeProf">Mes professeurs</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/listeProf">Les professeurs</a>
                                 </li>
                         </div>
                         
                     </li>
                     <li class="nav-item">
-                        <div class="dropdown">
-                            <a
-                                data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center "
-                                href="#"
-                                id="3"
-                                role="button"
-                                aria-expanded="false"
-                            >Demandes</a>
-                            <ul
-                                class="dropdown-menu dropdown-menu-end"
-                                aria-labelledby="3"
-                            >
-                                <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/students/demande">Nouveau Demande</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/students/etatDemande">Mes Demandes</a>
-                                </li>
-                        </div>
-                        
+                        <a class="nav-link" href="Demandes">Demandes</a>
                     </li>
 
                     <li class="nav-item">

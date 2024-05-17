@@ -47,7 +47,7 @@ class ImportUsers extends Controller {
                                 );                                
                             }
                             fclose($fichier);
-                            echo 'Importation des données avec succées';
+                            echo 'Importation des données avec';
                         } catch (PDOException $e) {
                             echo "Erreur d'insertion dans la base de données: " . $e->getMessage();
                         }
