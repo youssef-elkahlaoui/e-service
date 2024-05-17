@@ -14,7 +14,8 @@ class Student extends Model
         'password',
         'image',
         'CNE',
-        'CIN'
+        'CIN',
+        'telephone'
     ];
 
     protected $beforeInsert = [
