@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-service</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="/final/public/mdb/img/logo-ensah.png" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="/final/public/mdb/css/mdb.min.css" />
     <style>
         .navbar-nav .nav-item .dropdown-toggle {
             color: #555; /* Change this to your preferred font color */
@@ -26,7 +36,6 @@
         .dropdown-item:hover {
             background-color: #f8f9fa; /* Background color of dropdown items when hovered */
         }
-       
     </style>
 </head>
 <body>
@@ -51,7 +60,7 @@
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="<?= ROOT?>/admins">
+                <a class="navbar-brand mt-2 mt-lg-0" href="<?= ROOT?>/students">
                     <img
                       src="/final/public/mdb/img/logo-ensah.png"
                       height="30"
@@ -63,17 +72,13 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-<<<<<<< HEAD
-                    <a class="nav-link" href="<?= ROOT ?>/admins">Accueil</a>
-=======
-                    <a class="nav-link" href="<?= ROOT ?>/admins">Accuille</a>
->>>>>>> youssef
+                    <a class="nav-link" href="<?= ROOT ?>/students">Accuille</a>
                 </li>
                     <li class="nav-item">
                         <div class="dropdown">
                             <a
                                 data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center "
+                                class="dropdown-toggle d-flex align-items-center hidden-arrow"
                                 href="#"
                                 id="0"
                                 role="button"
@@ -84,13 +89,13 @@
                                 aria-labelledby="0"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/modules">Modules</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/modules">Modules</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/absence">Mes absence</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/absence">Mes absence</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/note">Affichage des notes</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/note">Affichage des notes</a>
                                 </li>
                             </ul>
                         </div>
@@ -99,7 +104,7 @@
                         <div class="dropdown">
                             <a
                                 data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center "
+                                class="dropdown-toggle d-flex align-items-center hidden-arrow"
                                 href="#"
                                 id="1"
                                 role="button"
@@ -110,26 +115,19 @@
                                 aria-labelledby="1"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/classe">Ma classe</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/classe">Ma classe</a>
                                 </li>
                                 <li>
-<<<<<<< HEAD
-                                    <a class="dropdown-item" href="<?= ROOT ?>/students/listeProf">Les professeurs</a>
-=======
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/listeProf">Mes professeurs</a>
->>>>>>> youssef
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/listeProf">Mes professeurs</a>
                                 </li>
                         </div>
                         
                     </li>
                     <li class="nav-item">
-<<<<<<< HEAD
-                        <a class="nav-link" href="Demandes">Demandes</a>
-=======
                         <div class="dropdown">
                             <a
                                 data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center "
+                                class="dropdown-toggle d-flex align-items-center hidden-arrow"
                                 href="#"
                                 id="3"
                                 role="button"
@@ -140,24 +138,19 @@
                                 aria-labelledby="3"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/demande">Nouveau Demande</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/demande">Nouveau Demande</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/etatDemande">Mes Demandes</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/etatDemande">Mes Demandes</a>
                                 </li>
                         </div>
                         
->>>>>>> youssef
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="Notification">Send Notification</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ImportUsers">Importer Etudiants</a>
+                        <a class="nav-link" href="<?= ROOT ?>/students/devoir">Rendre les devoirs</a>
                     </li>
                 </li>
-
                     
                 </ul>
                 <!-- Left links -->
@@ -165,15 +158,15 @@
                 <!-- Right elements -->
                 <div class="dropdown">
                     <a
-                      data-mdb-dropdown-init
-                      class="dropdown-toggle d-flex align-items-center hidden-arrow"
-                      href="#"
-                      id="navbarDropdownMenuAvatar"
-                      role="button"
-                      aria-expanded="false"
+                    data-mdb-dropdown-init
+                    class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                    href="#"
+                    id="navbarDropdownMenuAvatar"
+                    role="button"
+                    aria-expanded="false"
                     >
                       <img
-                        src="../public/<?= Auth::getImage();?>"
+                        src="../public/<?= $image;?>"
                         class="rounded-circle"
                         height="40"
                         alt="Black and White Portrait of a Man"
@@ -184,7 +177,7 @@
                       class="dropdown-menu dropdown-menu-end"
                       aria-labelledby="navbarDropdownMenuAvatar"
                     >
-                        <li><?php echo Auth::getFirstname();?></li>
+                        <li><?php echo $firstname .' '. $lastname;?></li>
                       <li>
                         <a class="dropdown-item" href="profile">Profile</a>
                       </li>
@@ -206,11 +199,84 @@
     <!-- Custom scripts -->
 
 
-<<<<<<< HEAD
-=======
+    <section style="background-color: #eee; ">
+    <div class="container py-5" >
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accuile</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                </ol>
+                </nav>
+            </div>
+        </div>
 
-    <h3>Hi!</h3>
-
->>>>>>> youssef
+        <div class="row">
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body text-center">
+                    <img src="../public/mdb/img/profile.png" alt="avatar"
+                    class="rounded-circle img-fluid" style="width: 150px;">
+                    <h5 class="my-3">Nom</h5>
+                    <p class="text-muted mb-1"></p>
+                    <p class="text-muted mb-4">CNE</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Nom et Prenom</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0"><?= $firstname."  ".$lastname ?></p>
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Email</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0"><?= $email?></p>
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Phone</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">(097) 234-5678</p>
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Mobile</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">(098) 765-4321</p>
+                    </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">Address</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    </section>
 </body>
 </html>

@@ -26,7 +26,6 @@
         .dropdown-item:hover {
             background-color: #f8f9fa; /* Background color of dropdown items when hovered */
         }
-       
     </style>
 </head>
 <body>
@@ -51,7 +50,7 @@
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="<?= ROOT?>/admins">
+                <a class="navbar-brand mt-2 mt-lg-0" href="<?= ROOT?>/students">
                     <img
                       src="/final/public/mdb/img/logo-ensah.png"
                       height="30"
@@ -63,11 +62,7 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-<<<<<<< HEAD
-                    <a class="nav-link" href="<?= ROOT ?>/admins">Accueil</a>
-=======
-                    <a class="nav-link" href="<?= ROOT ?>/admins">Accuille</a>
->>>>>>> youssef
+                    <a class="nav-link" href="<?= ROOT ?>/students">Accuille</a>
                 </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -84,13 +79,13 @@
                                 aria-labelledby="0"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/modules">Modules</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/modules">Modules</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/absence">Mes absence</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/absence">Mes absence</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/note">Affichage des notes</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/note">Affichage des notes</a>
                                 </li>
                             </ul>
                         </div>
@@ -110,22 +105,15 @@
                                 aria-labelledby="1"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/classe">Ma classe</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/classe">Ma classe</a>
                                 </li>
                                 <li>
-<<<<<<< HEAD
-                                    <a class="dropdown-item" href="<?= ROOT ?>/students/listeProf">Les professeurs</a>
-=======
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/listeProf">Mes professeurs</a>
->>>>>>> youssef
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/listeProf">Mes professeurs</a>
                                 </li>
                         </div>
                         
                     </li>
                     <li class="nav-item">
-<<<<<<< HEAD
-                        <a class="nav-link" href="Demandes">Demandes</a>
-=======
                         <div class="dropdown">
                             <a
                                 data-mdb-dropdown-init
@@ -140,24 +128,19 @@
                                 aria-labelledby="3"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/demande">Nouveau Demande</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/demande">Nouveau Demande</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/etatDemande">Mes Demandes</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/students/etatDemande">Mes Demandes</a>
                                 </li>
                         </div>
                         
->>>>>>> youssef
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="Notification">Send Notification</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ImportUsers">Importer Etudiants</a>
-                    </li>
                 </li>
-
                     
                 </ul>
                 <!-- Left links -->
@@ -206,11 +189,5 @@
     <!-- Custom scripts -->
 
 
-<<<<<<< HEAD
-=======
-
-    <h3>Hi!</h3>
-
->>>>>>> youssef
 </body>
 </html>

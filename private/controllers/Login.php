@@ -21,11 +21,11 @@ class Login extends Controller
 					$row = $row[0];
 					if(password_verify($_POST['password'], $row->password))
 					{
-					Auth::authenticateStudent($row);
+						Auth::authenticateStudent($row);
 						if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'on') {
 							setcookie('remembered', 'true', time() + (86400 * 30), '/'); 
 						}
-						$this->redirect('/students');
+						$this->redirect('/student');
 					}
 				}
 			}
@@ -36,11 +36,12 @@ class Login extends Controller
 					$row = $row[0];
 					if(password_verify($_POST['password'], $row->password))
 					{
-					Auth::authenticateTeacher($row);
+						echo 'hello word';
+						Auth::authenticateTeacher($row);
 						if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'on') {
 							setcookie('remembered', 'true', time() + (86400 * 30), '/'); 
 						}
-						$this->redirect('/teacher');
+						$this->redirect('/teachers');
 					}
 				}
 			}

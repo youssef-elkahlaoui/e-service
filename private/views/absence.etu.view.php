@@ -1,12 +1,7 @@
 <?php 
-    include '/includes/header.view.php';
+    include "includes/nav.view.php";
+    include "includes/header.view.php";
 ?>
-<body>
-    <?php
-    include '/includes/nav.etu.view.php';
-    echo __DIR__;
-    ?>
-
 
     <section style="background-color: #eee; ">
         <div class="container py-5" >
