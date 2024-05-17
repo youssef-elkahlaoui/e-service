@@ -5,7 +5,7 @@
     include "includes/header.view.php";
 ?>
 
-    <h3>Hi! <?php echo "hello prof"; ?></h3>
+    <h3>Hi! <?php echo Auth::getFirstname()?></h3>
 
 </body>
 </html>
