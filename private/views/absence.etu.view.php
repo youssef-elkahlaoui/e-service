@@ -17,22 +17,28 @@
             </div>
             <div class="p-5 text-center bg-body-tertiary">
                 <h1 class="mb-3">Vos absences</h1>
-                <h5 class="mb-3">Nombre totales est:</h5>
+                <h5 class="mb-3">Nombre totales est:<?=count($data)?></h5>
             </div>
             
             <table class="table table-hover">
                 <tr>
                     <th>Modules</th>
                     <th>Date</th>
+                    <th>Justifiée</th>
                 </tr>
-                <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                </tr>
-                <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                </tr>
+                <?php 
+                    
+                    foreach ($data as $row) {
+                        echo "<tr>";
+                        echo "<td>{$row->ModuleName}</td>";
+                        echo "<td>{$row->DateAbsence}</td>";
+                        // Si la justification est 0, afficher "non", sinon afficher "oui"
+                        $justification = $row->Justifiée == 0 ? "non" : "oui";
+                        echo "<td>$justification</td>";
+                        echo "</tr>";
+                    }
+                    
+                ?>
             </table>
                 
         </div>
