@@ -3,6 +3,13 @@
 <head>
     
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+        .navbar-nav .nav-item .nav-link,
+        .navbar-nav .nav-item .dropdown-toggle,
+        .dropdown-item {
+            font-family: 'Poppins', sans-serif;;
+            font-size: 25px; /* Change this to your preferred font size */
+        }
         .navbar-nav .nav-item .dropdown-toggle {
             color: #555; /* Change this to your preferred font color */
             padding: 8px 12px;
@@ -15,6 +22,7 @@
             background-color: #0062cc; /* Background color when hovered or focused */
         }
 
+
         .dropdown-menu {
             border-radius: 4px; /* Rounded corners for dropdown */
         }
@@ -26,6 +34,7 @@
         .dropdown-item:hover {
             background-color: #f8f9fa; /* Background color of dropdown items when hovered */
         }
+       
     </style>
 </head>
 <body>
@@ -44,16 +53,16 @@
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <i class="fas fa-bars"></i>
+            <i class="fas fa-bars"></i>
             </button>
 
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="<?= ROOT?>/students">
+                <a class="navbar-brand mt-2 mt-lg-0" href="<?= ROOT?>/teachers">
                     <img
-                      src="/final/public/mdb/img/logo-ensah.png"
-                      height="30"
+                      src="<?= ROOT?>/mdb/img/e.png"
+                      height="60"
                       alt="ENSAH Logo"
                       loading="lazy"
                     />
@@ -62,7 +71,7 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/students">Accuille</a>
+                    <a class="nav-link" href="<?= ROOT ?>/teachers">Dashboard</a>
                 </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -73,22 +82,27 @@
                                 id="0"
                                 role="button"
                                 aria-expanded="false"
-                            >Mes etudes</a>
+                            >Mes Clases</a>
                             <ul
                                 class="dropdown-menu dropdown-menu-end"
                                 aria-labelledby="0"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/students/modules">Modules</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/techers/modules">Mes eleves</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/students/absence">Mes absence</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/students/note">Affichage des notes</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/teachers/absence">Les absence</a>
                                 </li>
                             </ul>
                         </div>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Demandes">Demandes</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Notification">Envoie de Notification</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -99,16 +113,16 @@
                                 id="1"
                                 role="button"
                                 aria-expanded="false"
-                            >Scolaritee</a>
+                            >Contacts</a>
                             <ul
                                 class="dropdown-menu dropdown-menu-end"
                                 aria-labelledby="1"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/students/classe">Ma classe</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/teachers/classe">Admins</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/students/listeProf">Mes professeurs</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/teachers/listeProf">Professeurs</a>
                                 </li>
                         </div>
                         
@@ -119,28 +133,24 @@
                                 data-mdb-dropdown-init
                                 class="dropdown-toggle d-flex align-items-center "
                                 href="#"
-                                id="3"
+                                id="1"
                                 role="button"
                                 aria-expanded="false"
-                            >Demandes</a>
+                            >Exports</a>
                             <ul
                                 class="dropdown-menu dropdown-menu-end"
-                                aria-labelledby="3"
+                                aria-labelledby="1"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/students/demande">Nouveau Demande</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/teachers/classe">Coures & Fichier</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/students/etatDemande">Mes Demandes</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/teachers/listeProf">Notes</a>
                                 </li>
                         </div>
                         
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="Notification">Send Notification</a>
-                    </li>
                 </li>
+
                     
                 </ul>
                 <!-- Left links -->

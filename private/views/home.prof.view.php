@@ -1,7 +1,7 @@
 
 
 <?php 
-    include "includes/nav.view.php";
+    include "includes/nav.prof.view.php";
     include "includes/header.view.php";
 ?>
 
