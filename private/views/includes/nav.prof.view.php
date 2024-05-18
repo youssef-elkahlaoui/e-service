@@ -164,7 +164,7 @@
                                 aria-labelledby="1"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/teachers/classe">Admins</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/teachers/listeAdmin">Admins</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="<?= ROOT ?>/teachers/listeProf">Professeurs</a>

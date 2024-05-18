@@ -1,7 +1,6 @@
 <?php require("includes/header.view.php"); ?>
-
+<?php require("includes/nav.prof.view.php"); ?>
 <body>
-    <?php require("includes/nav.prof.view.php"); ?>
 
     <section style="background-color: #eee;">
         <div class="container py-5">
