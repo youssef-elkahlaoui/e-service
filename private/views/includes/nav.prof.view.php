@@ -61,7 +61,7 @@
                 <!-- Navbar brand -->
                 <a class="navbar-brand mt-2 mt-lg-0" href="<?= ROOT?>/teachers">
                     <img
-                      src="<?= ROOT?>/mdb/img/e.png"
+                      src="<?= ROOT?>/mdb/img/logo.png"
                       height="60"
                       alt="ENSAH Logo"
                       loading="lazy"
@@ -98,9 +98,28 @@
                     </li>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Demandes">Demandes</a>
-                    </li>
-
+                        <div class="dropdown">
+                            <a
+                                data-mdb-dropdown-init
+                                class="dropdown-toggle d-flex align-items-center "
+                                href="#"
+                                id="1"
+                                role="button"
+                                aria-expanded="false"
+                            >Demendes</a>
+                            <ul
+                                class="dropdown-menu dropdown-menu-end"
+                                aria-labelledby="1"
+                            >
+                                <li>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/teachers/classe">Envoie de Demande</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/teachers/listeProf">Etat des Demandes</a>
+                                </li>
+                        </div>
+                        
+                </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Notification">Envoie de Notification</a>
                     </li>

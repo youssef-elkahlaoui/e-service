@@ -52,7 +52,7 @@
         <div class="row border rounded-5 p-3 bg-white shadow box-area">
             <div class="col-md-5 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #103cbe;">
                 <div class="featured-image mb-3">
-                    <img src="<?=ROOT?>/assets/e.png" class="img-fluid" style="width: 150px;">
+                    <img src="<?= ROOT?>/mdb/img/logo.png" class="img-fluid" style="width: 150px;">
                 </div>
                 <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">e-Service</p>
                 <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">The École Nationale des Sciences Appliquées d'Al Hoceima is a Moroccan public engineering school located in Al Hoceima, Al Hoceïma Province.</small>

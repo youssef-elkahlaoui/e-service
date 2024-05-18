@@ -16,16 +16,16 @@ class Teachers extends Controller
 
 		$this->view('home.prof',['rows'=>$data]);
     }
-	
+    
     function absence(){
         $this->view('absence.prof');
     }
 
-	function classe(){
-        $this->view('classe.etu');
+	function meseleves(){
+        $this->view('meseleves.prof');
     }
 
-	function demande(){
+	function demandes(){
         $this->view('demande.prof');
     }
 
