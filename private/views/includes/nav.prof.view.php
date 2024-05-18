@@ -42,6 +42,15 @@
             background-color: #f8f9fa;
             color: #555;
         }
+        .icon{
+
+            transform: translateX(-100%);
+        }
+        @media (max-width:980px){
+            .icon{
+            transform: translateX(10%);
+            }
+        }
     </style>
     <link rel="stylesheet" href="../styles/stylenav.css">
 </head>
@@ -167,7 +176,7 @@
                 </li>
             </ul>
 
-            <div class="dropdown">
+            <div  class="dropdown">
                 <a
                     class="nav-link dropdown-toggle d-flex align-items-center hidden-arrow"
                     href="#"
@@ -183,7 +192,7 @@
                         loading="lazy"
                     />
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                <ul class="dropdown-menu dropdown-menu-start icon" aria-labelledby="navbarDropdownMenuAvatar">
                     <li class="dropdown-item"><?php echo Auth::getFirstname() . "  " . Auth::getLastname(); ?></li>
                     <li>
                         <a class="dropdown-item" href="<?= ROOT ?>/profile">
