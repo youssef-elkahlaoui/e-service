@@ -1,50 +1,57 @@
-<?php include('header.view.php');
-?> 
+<?php include('header.view.php'); ?>
 <head>
     <style>
         .navbar-nav .nav-item .nav-link,
-        .navbar-nav .nav-item .dropdown-toggle,
-        .dropdown-item {
-            font-family: 'Poppins', sans-serif;;
-            font-size: 25px; /* Change this to your preferred font size */
-        }
-        .dropdown-item{
-            font-size: 20px;
-        }
-        .navbar-nav .nav-item .dropdown-toggle {
-            color: #555; /* Change this to your preferred font color */
-            padding: 8px 12px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        
-        .navbar-nav .nav-item .dropdown-toggle:hover,
-        .navbar-nav .nav-item .dropdown-toggle:focus {
-            color: #fff; /* Color when hovered or focused */
-            background-color: #0062cc; /* Background color when hovered or focused */
-        }
+.navbar-nav .nav-item .dropdown-toggle,
+.dropdown-item {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px; 
+    border-radius: 10px; 
+}
+.dropdown-item {
+    font-size: 20px;
+}
+.navbar-nav .nav-item .dropdown-toggle,
+.navbar-nav .nav-item .nav-link,
+.dropdown-item {
+    color: #555;
+    padding: 8px 12px;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 10px;
+}
 
+.navbar-nav .nav-item .dropdown-toggle:hover,
+.navbar-nav .nav-item .dropdown-toggle:focus,
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus,
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #fff; 
+    background-color: #0062cc; 
+}
 
-        .dropdown-menu {
-            border-radius: 4px; /* Rounded corners for dropdown */
-        }
+.dropdown-menu {
+    border-radius: 4px; 
+}
 
-        .dropdown-item {
-            color: #333; /* Dropdown item font color */
-        }
+.dropdown-item {
+    color: #333;
+}
 
-        .dropdown-item:hover {
-            background-color: #f8f9fa; /* Background color of dropdown items when hovered */
-        }
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
     </style>
+    <link rel="stylesheet" href="../styles/stylenav.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
-        <!-- Container wrapper -->
-        <div class="container-fluid">
-            <!-- Toggle button -->
-            <button
+
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+
+    <div class="container-fluid">
+
+        <button
               data-mdb-collapse-init
               class="navbar-toggler"
               type="button"
@@ -56,9 +63,7 @@
             <i class="fas fa-bars"></i>
             </button>
 
-            <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Navbar brand -->
                 <a class="navbar-brand mt-2 mt-lg-0" href="<?= ROOT?>/teachers">
                     <img
                       src="<?= ROOT?>/mdb/img/logo.png"
@@ -68,21 +73,26 @@
                     />
                 </a>
                 
-                <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/teachers">Dashboard</a>
+                    <a class="nav-link" href="<?= ROOT ?>/teachers">
+                    <i class="fa-solid fa-house mt-1"></i>
+                    &nbsp;
+                    Accueil</a>
                 </li>
                     <li class="nav-item">
                         <div class="dropdown">
                             <a
                                 data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center "
+                                class="dropdown-toggle d-flex align-items-center"
                                 href="#"
                                 id="0"
                                 role="button"
-                                aria-expanded="false"
-                            >Mes Clases</a>
+                                aria-expanded="false">                         
+                            <i class="fa-solid fa-school mb-1"></i>
+                            &nbsp;
+                            Mes Clases
+                            </a>
                             <ul
                                 class="dropdown-menu dropdown-menu-end"
                                 aria-labelledby="0"
@@ -96,17 +106,19 @@
                             </ul>
                         </div>
                     </li>
-                    </li>
                     <li class="nav-item">
                         <div class="dropdown">
                             <a
                                 data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center "
+                                class="dropdown-toggle d-flex align-items-center"
                                 href="#"
                                 id="1"
                                 role="button"
                                 aria-expanded="false"
-                            >Demendes</a>
+                            >
+                            <i class="fa-solid fa-bell-concierge mb-1"></i>
+                            &nbsp;
+                            Demendes</a>
                             <ul
                                 class="dropdown-menu dropdown-menu-end"
                                 aria-labelledby="1"
@@ -121,18 +133,32 @@
                         
                 </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Notification">Envoie de Notification</a>
+                        <a class="nav-link" href="Notification">
+                        <i class="fa-solid fa-bell mb-1"></i>
+                            &nbsp;
+                            Envoie de Notification
+                        </a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Notification">
+                        <i class="fa-solid fa-box-archive mb-1"></i>
+                            &nbsp;
+                            Archivage</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
                             <a
                                 data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center "
+                                class="dropdown-toggle d-flex align-items-center"
                                 href="#"
                                 id="1"
                                 role="button"
                                 aria-expanded="false"
-                            >Contacts</a>
+                            >
+                            <i class="fa-solid fa-users mt-1"></i>
+                            &nbsp;
+                            Contacts</a>
                             <ul
                                 class="dropdown-menu dropdown-menu-end"
                                 aria-labelledby="1"
@@ -150,18 +176,24 @@
                         <div class="dropdown">
                             <a
                                 data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center "
+                                class="dropdown-toggle d-flex align-items-center"
                                 href="#"
                                 id="1"
                                 role="button"
                                 aria-expanded="false"
-                            >Exports</a>
+                            >
+                            <i class="fa-solid fa-file-arrow-up mt-1"></i>
+                            &nbsp;
+                            Exports</a>
                             <ul
                                 class="dropdown-menu dropdown-menu-end"
                                 aria-labelledby="1"
                             >
                                 <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/teachers/classe">Coures & Fichier</a>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/teachers/classe">Cours & Fichier</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="<?= ROOT ?>/teachers/classe">TDs & TPs</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="<?= ROOT ?>/teachers/listeProf">Notes</a>
@@ -172,9 +204,7 @@
 
                     
                 </ul>
-                <!-- Left links -->
 
-                <!-- Right elements -->
                 <div class="dropdown">
                     <a
                       data-mdb-dropdown-init
@@ -212,16 +242,10 @@
 
                 </div>
             </div>
-            <!-- Collapsible wrapper -->
         </div>
-        <!-- Container wrapper -->
     </nav>
-    <!-- Navbar -->
-    <!-- End your project here-->
 
-    <!-- MDB -->
     <script type="text/javascript" src="../public/mdb/js/mdb.umd.min.js"></script>
-    <!-- Custom scripts -->
 
 
 </body>
