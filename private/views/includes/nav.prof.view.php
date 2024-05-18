@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include('header.view.php');
+?> 
 <head>
-    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
         .navbar-nav .nav-item .nav-link,
         .navbar-nav .nav-item .dropdown-toggle,
         .dropdown-item {
             font-family: 'Poppins', sans-serif;;
             font-size: 25px; /* Change this to your preferred font size */
+        }
+        .dropdown-item{
+            font-size: 20px;
         }
         .navbar-nav .nav-item .dropdown-toggle {
             color: #555; /* Change this to your preferred font color */
@@ -34,7 +35,6 @@
         .dropdown-item:hover {
             background-color: #f8f9fa; /* Background color of dropdown items when hovered */
         }
-       
     </style>
 </head>
 <body>
@@ -166,7 +166,7 @@
                       aria-expanded="false"
                     >
                       <img
-                        src="../public/<?= Auth::getImage();?>"
+                        src="<?= ROOT.Auth::getimage();?>"
                         class="rounded-circle"
                         height="40"
                         alt="Black and White Portrait of a Man"
@@ -177,13 +177,19 @@
                       class="dropdown-menu dropdown-menu-end"
                       aria-labelledby="navbarDropdownMenuAvatar"
                     >
-                        <li><?php echo Auth::getFirstname();?></li>
-                      <li>
-                        <a class="dropdown-item" href="profile">Profile</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="<?= ROOT ?>/logout">logout</a>
-                      </li>
+                    <li class="dropdown-item"><?php echo Auth::getFirstname()."  ".Auth::getLastname();?></li>
+                    <li>
+                        <a class="dropdown-item" href="profile">
+                        Profile
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="<?= ROOT ?>/logout">
+                        logout
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        </a>
+                    </li>
 
                 </div>
             </div>
