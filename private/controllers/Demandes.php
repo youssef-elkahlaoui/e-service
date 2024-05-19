@@ -5,9 +5,9 @@ class Demandes extends Controller {
         // Create a new instance of the Database class
         $db = new Database();
         
-        // Fetch all data from the demands table
+        
         try {
-            $demandes = $db->query("SELECT * FROM demands");
+            $demandes = $db->query("SELECT * FROM demands WHERE status = 'En attente'");
             if ($demandes === false) {
                 $demandes = [];
             }
@@ -24,6 +24,6 @@ class Demandes extends Controller {
         $demandes = $this->demande();
         
         // Pass the fetched data to the view
-        $this->view('demandes', ['demandes' => $demandes]);
+        $this->view('demandes.admin', ['demandes' => $demandes]);
     }
 }

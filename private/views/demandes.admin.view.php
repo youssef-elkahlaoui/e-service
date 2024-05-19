@@ -46,9 +46,9 @@
                             <td><?php echo htmlspecialchars($demande->demand_date); ?></td>
                             <td><?php echo htmlspecialchars($demande->status); ?></td>
                             <td>
-                                <form action="modify_demand.php" method="post">
-                                    <input type="hidden" name="Approuver" value="<?php echo htmlspecialchars($demande->id); ?>">
-                                    <button type="submit" class="btn btn-outline-success btn-sm">Approuver</button>
+                                <form action="modifyDemand/modify" method="post">
+                                    <input type="hidden" name="approuver" value="<?php echo htmlspecialchars($demande->id); ?>">
+                                    <button type="submit" class="btn btn-outline-success btn-sm"> Approuver </button>
                                 </form>
                             </td>
                         </tr>
@@ -60,7 +60,5 @@
         <?php endif; ?>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
