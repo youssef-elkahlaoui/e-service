@@ -1,3 +1,4 @@
+<<<<<<< HEAD:private/views/profile.view.php
 <?php 
     $row = $data['rows'][0];
     print_r($row);
@@ -288,3 +289,5 @@
     </section>
 </body>
 </html>
+=======
+>>>>>>> origin/youssef:private/views/profile.admin.view.php

@@ -153,7 +153,7 @@
                       aria-expanded="false"
                     >
                       <img
-                        src="<?= ROOT . Auth::getImage();?>"
+                        src="<?= ROOT.Auth::getImage();?>"
                         class="rounded-circle"
                         height="40"
                         alt="Black and White Portrait of a Man"

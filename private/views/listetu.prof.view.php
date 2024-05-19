@@ -1,5 +1,5 @@
-<?php require("includes/header.view.php"); ?>
-<?php require("includes/nav.prof.view.php"); ?>
+<?php include "includes/header.view.php"; ?>
+<?php include "includes/nav.prof.view.php"; ?>
 <body>
 
     <section style="background-color: #eee;">

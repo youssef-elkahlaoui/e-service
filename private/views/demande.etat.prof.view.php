@@ -1,5 +1,8 @@
-<?php require("includes/header.view.php"); ?>
-<?php require("includes/nav.prof.view.php"); ?>
+<?php 
+    include("../includes/header.view.php");
+    include("../includes/nav.prof.view.php");
+
+?>
 <body>
 
     <section style="background-color: #eee;">
@@ -9,34 +12,30 @@
                     <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Mes professeurs</li>
+                            <li class="breadcrumb-item active" aria-current="page">Mes Demandes</li>
                         </ol>
                     </nav>
                 </div>
             </div>
-
             <div class="p-5 text-center bg-body-tertiary">
-                <h1 class="mb-3">Vos professeurs</h1>
+                <h1 class="mb-3">Mes Demandes</h1>
             </div>
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Professeurs</th>
-                        <th>Modules</th>
-                        <th>Email</th>
+                        <th>Sujet de la Demande</th>
+                        <th>Etat</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Alfreds Futterkiste</td>
                         <td>Maria Anders</td>
-                        <td>Maria Anders</td>
 
                     </tr>
                     <tr>
                         <td>Centro comercial Moctezuma</td>
                         <td>Francisco Chang</td>
-                        <td>Maria Anders</td>
                     </tr>
                 </tbody>
             </table>

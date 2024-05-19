@@ -66,4 +66,5 @@ class Login extends Controller
 			'errors'=>$errors,
 		]);
 	}
+	
 }
