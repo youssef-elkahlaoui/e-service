@@ -84,6 +84,7 @@ class Model extends Database
 		return $this->query($query,$data);
 	}
 
+
 	public function delete($id)
 	{
 
