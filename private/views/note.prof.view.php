@@ -1,87 +1,40 @@
 <?php 
-    require("includes/header.view.php");
-    require("includes/nav.prof.view.php");
+    include "includes/nav.prof.view.php";
+    include "includes/header.view.php";
 ?>
-<body>
 
-    <section style="background-color: #eee; ">
-    <div class="container py-5" >
+<section style="background-color: #eee;">
+    <div class="container py-5">
         <div class="row">
             <div class="col">
                 <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
-                <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accuile</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Notes</li>
-                </ol>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Importation des Cours et Fichiers</li>
+                    </ol>
                 </nav>
             </div>
         </div>
-
+        <div class="p-5 text-center bg-body-tertiary">
+            <h1 class="mb-3">Importation des Cours et Fichiers</h1>
+        </div>
         <div class="row">
-        <div class="col-lg-4">
-            <div class="card mb-4">
-                <div class="card-body text-center">
-                    <img src="../public/mdb/img/profile.png" alt="avatar"
-                    class="rounded-circle img-fluid" style="width: 150px;">
-                    <h5 class="my-3">Nom</h5>
-                    <p class="text-muted mb-1">Niveau</p>
-                    <p class="text-muted mb-4">CNE</p>
-                </div>
+            <div class="col-lg-8 mx-auto">
+                <form action="import_handler.php" method="POST" enctype="multipart/form-data">
+                    <div class="form-group mb-3">
+                        <label for="courseName">Nom du cours</label>
+                        <input type="text" class="form-control" id="courseName" name="courseName" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="courseFile">Fichier du cours</label>
+                        <input type="file" class="form-control" id="courseFile" name="courseFile" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Importer</button>
+                </form>
             </div>
         </div>
-        <div class="col-lg-8">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="row">
-                    <div class="col-sm-3">
-                        <h6 class="mb-0">Modules</h6>
-                    </div>
-                    <div class="col-sm-9">
-                        <h6 class="text-muted mb-0">Notes</h6>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                    <div class="col-sm-3">
-                        <p class="mb-0">Email</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <p class="text-muted mb-0">example@example.com</p>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                    <div class="col-sm-3">
-                        <p class="mb-0">Phone</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <p class="text-muted mb-0">(097) 234-5678</p>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                    <div class="col-sm-3">
-                        <p class="mb-0">Mobile</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <p class="text-muted mb-0">(098) 765-4321</p>
-                    </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                    <div class="col-sm-3">
-                        <p class="mb-0">Address</p>
-                    </div>
-                    <div class="col-sm-9">
-                        <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-        
     </div>
-    </section>
+</section>
+
 </body>
 </html>
