@@ -330,5 +330,4 @@ $last4WeeklyCounts = $loginController->getChartData();
             });
         });
     </script>
-
 <script src="https://unpkg.com/bs-brain@2.0.4/components/charts/chart-1/assets/controller/chart-1.js"></script>
