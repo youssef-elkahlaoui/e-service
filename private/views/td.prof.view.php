@@ -34,8 +34,8 @@
 <body>
 <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="card mb-4">
+            <div class="col-lg-10">
+                <div class="card mb-5">
                     <div class="card-body">
                         <div class="form-container">
                             <form action="importUsers/import" method="post" enctype="multipart/form-data">

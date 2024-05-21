@@ -153,7 +153,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/teachers/note">
+                    <a class="nav-link" href="<?= ROOT ?>/ImportNotes">
                     <i class="fa-solid fa-marker fa-shake"></i>&nbsp;Notes
                     </a>
                 </li>

@@ -1,9 +1,13 @@
 <?php 
     include "includes/header.view.php";
-
     include "includes/nav.prof.view.php";
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <style>
     .container {
         padding-top: 50px;
@@ -33,17 +37,17 @@
 
 <body>
 <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="form-container">
-                            <form action="importUsers/import" method="post" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label class="form-label" for="excel">Exporter Fichier :</label>
-                                    <input type="file" id="excel" name="excel" class="form-control" required>
-                                </div>
-                                <div class="form-group row">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="form-container">
+                        <form action="importNotes/importNotes" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="form-label" for="excel">Importer les notes :</label>
+                                <input type="file" id="excel" name="excel" class="form-control" required>
+                            </div>
+                            <div class="form-group row">
                                     <label class="col-form-label col-sm-3" for="filiere">Choisir la filière :</label>
                                     <div class="col-sm-4">
                                         <select id="filiere" name="filiere" class="form-control" required style="cursor: pointer;">
@@ -53,17 +57,15 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-outline-primary " name="import">Exporter</button>
-                                </div>
-                            </form>
-                        </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-outline-primary" name="import_notes">Import</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
-
-
 </html>
