@@ -140,3 +140,4 @@ class Login extends Controller
 // In your HTML view:
 $loginController = new Login();
 $last4WeeklyCounts = $loginController->getChartData();
+?>
