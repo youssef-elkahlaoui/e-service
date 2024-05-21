@@ -1,7 +1,7 @@
 <?php 
     include "includes/header.view.php";
 
-    include "includes/nav.admin.view.php";
+    include "includes/nav.prof.view.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
