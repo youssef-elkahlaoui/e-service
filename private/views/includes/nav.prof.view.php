@@ -104,25 +104,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="demandesDropdown"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="fa-solid fa-bell-concierge mb-1"></i>&nbsp;Demandes
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="demandesDropdown">
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/demande">Envoie de Demande</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/etatDemande">Etat des Demandes</a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= ROOT ?>/teachers/notifProfsend">
                         <i class="fa-solid fa-bell mb-1"></i>&nbsp;Envoie de Notification
@@ -169,10 +150,12 @@
                         <li>
                             <a class="dropdown-item" href="<?= ROOT ?>/teachers/td">TDs & TPs</a>
                         </li>
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/note">Notes</a>
-                        </li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= ROOT ?>/teachers/note">
+                    <i class="fa-solid fa-marker fa-shake"></i>&nbsp;Notes
+                    </a>
                 </li>
             </ul>
 
