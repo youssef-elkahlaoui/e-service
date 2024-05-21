@@ -16,13 +16,7 @@
     .container{
         padding-top: 50px;
     }
-
-    .containeer{
-
-    }
-
-
-
+    
         
 </style>
 <body>

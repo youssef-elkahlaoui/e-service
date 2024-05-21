@@ -20,12 +20,12 @@ class Notification extends Controller {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'youssefelkahlaoui@etu.uae.ac.ma';
+                $mail->Username = 'anass.essafi@etu.uae.ac.ma';
                 $mail->Password = 'dkmj kcwr waqm fedr'; 
                 $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                $mail->setFrom('youssef.elkahlaoui@etu.uae.ac.ma', 'ANASS');
+                $mail->setFrom('anass.essafi@etu.uae.ac.ma', 'ANASS');
                 $mail->Subject = "Don't reply to this message";
 
                 foreach($students as $student) {
@@ -50,9 +50,7 @@ class Notification extends Controller {
     }
 
     public function index() {
-
         $this->view('SendNotification');
-        // $this->view('notif.prof');
     }
 }
 

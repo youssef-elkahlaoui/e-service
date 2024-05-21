@@ -127,7 +127,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="archivageDropdown">
                         <li >
-                            <a class="dropdown-item" href="<?= ROOT ?>/Allnotifications">Notifications</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/Allnotification">Notifications</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="<?= ROOT?>/teachers/archProf">Profs</a>

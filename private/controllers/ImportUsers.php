@@ -31,21 +31,15 @@ class ImportUsers extends Controller {
                                 $email = $row[2];      
                                 $Filiere = $row[3];    
                                 $password = password_hash($row[4], PASSWORD_DEFAULT);
-                                $image = ''; // Assuming the image path or URL is not included in CSV
-                                $CNE = $row[5];       
-                                $CIN = $row[6];       
+                                $image = $row[5]; 
+                                $CNE = $row[6];       
+                                $CIN = $row[7];       
 
                                 // Insert the row into the database
                                 $result = $db->query(
                                     "INSERT INTO students (id, firstname, lastname, email, Filiere, date, idClasse, password, image, CNE, CIN) VALUES (?, ?, ?, ?, ?, NOW(), 1, ?, ?, ?, ?)", 
                                     [$id, $firstname, $lastname, $email, $Filiere, $password, $image, $CNE, $CIN]
                                 );
-
-                                if ($result) {
-                                    echo "Données insérées pour: $firstname $lastname ($email)<br/>";
-                                } else {
-                                    echo "Erreur d'insertion pour: $firstname $lastname ($email)<br/>";
-                                }
                             }
                             fclose($fichier);
                             echo 'Importation des données réussie';

@@ -1,9 +1,9 @@
 <?php
-class Seenotifications extends Controller {
-    public function scroll() {
+class Allnotification extends Controller{
+    public function allnotifications(){
         try {
             $db = new Database(); 
-            $query = "SELECT message FROM notifications ORDER BY DateNotification DESC LIMIT 4"; 
+            $query = "SELECT * FROM notifications"; 
             $notifications = $db->query($query, [], "assoc");
         } catch (PDOException $e) {
             error_log("Error: " . $e->getMessage());
@@ -11,11 +11,10 @@ class Seenotifications extends Controller {
         }
         return $notifications;
     }
-
-
+   
     public function index() {
-        $notifications = $this->scroll(); 
-        $this->view('home.admin', ['notifications' => $notifications]); 
+        
+        $allnotifications = $this->allnotifications();
+        $this->view('seenotifications.admin', ['allnotifications' => $allnotifications]);
     }
 }
-?>
