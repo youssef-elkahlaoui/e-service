@@ -5,8 +5,8 @@
     include "includes/header.view.php";
 ?>
 
-    <h3>Hi! <?=  Auth::getFirstname(); ?></h3>
-    <h2>allo</h2>
+    <h2>Hi! <?=  Auth::getFirstname(); ?></h2>
+    <h5>Nom Filiere : <?= $_SESSION['NIVEAU']->NomFiliere ?></h6>
 
 
 </body>

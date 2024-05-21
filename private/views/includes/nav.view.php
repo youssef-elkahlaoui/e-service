@@ -27,6 +27,7 @@
             background-color: #f8f9fa; /* Background color of dropdown items when hovered */
         }
     </style>
+    <body style="background-color: #eee;">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
         <!-- Container wrapper -->

@@ -21,23 +21,29 @@
             </div>
             
             <table class="table table-hover">
-                <tr>
-                    <th>Modules</th>
-                    <th>Professeur</th>
-                    <th>Description</th>
-                    <th>Documantation</th>
-                </tr>
-                <?php 
-                    foreach ($data as $key => $value) {
-                        echo '<tr>';
-                        echo '<td>' . htmlspecialchars($value->IdCours) . '</td>';
-                        echo '<td>' . htmlspecialchars($value->Titre) . '</td>';
-                        echo '<td>' . htmlspecialchars($value->Description) . '</td>';
-                        echo '<td><a href="documentation.php?id=' . urlencode($value->IdCours) . '">Voir</a></td>';
-                        echo '</tr>';
-                    }
-                ?>
-            </table>
+    <tr>
+        <th>Modules</th>
+        <th>Professeur</th>
+        <th>Email du professeur</th>
+        <th>Description</th>
+        <th>Documentation</th>
+    </tr>
+    <?php 
+        foreach ($modulesWithTeacherNames as $moduleWithTeacher) {
+            $module = $moduleWithTeacher['module'];
+            $teacher = $moduleWithTeacher['teacher'];
+            
+            echo '<tr>';
+            echo '<td>' . htmlspecialchars($module->Titre) . '</td>';
+            echo '<td>' . htmlspecialchars($teacher->firstname) . ' ' . htmlspecialchars($teacher->lastname) . '</td>';
+            echo '<td>' . htmlspecialchars($teacher->email) . '</td>';
+            echo '<td>' . htmlspecialchars($module->Description) . '</td>';
+            echo '<td><a href="documentation.php?id=' . urlencode($module->IdCours) . '">Voir</a></td>';
+            echo '</tr>';
+        }
+    ?>
+</table>
+
 
                 
             </div>

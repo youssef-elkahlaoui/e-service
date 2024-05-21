@@ -9,6 +9,14 @@ class Auth
 	public static function authenticateAdmin($row) {
         $_SESSION['ADMIN'] = $row;
     }
+    public static function authNiveau() {
+        if (isset($_SESSION['STUDENT'])) {
+
+            $classe = new Classe();
+            $classeData=$classe->where('idClasse',Auth::getIdclasse());
+            $_SESSION['NIVEAU'] =  $classeData[0] ;
+        }
+    }
 
     public static function authenticateStudent($row) {
         $_SESSION['STUDENT'] = $row;
