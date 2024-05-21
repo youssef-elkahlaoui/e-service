@@ -4,8 +4,6 @@ class Demandes extends Controller {
     public function demande() {
         // Create a new instance of the Database class
         $db = new Database();
-        
-        
         try {
             $demandes = $db->query("SELECT * FROM demands WHERE status = 'En attente'");
             if ($demandes === false) {

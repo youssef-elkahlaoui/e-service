@@ -16,11 +16,10 @@ class Students extends Controller
 		$this->view('home.etu',['rows'=>$data]);
     }
 	
-<<<<<<< HEAD
+
     function absence(){
         $this->view('absence.etu');
     }
-=======
 	function absence() {
 		if (!Auth::studentLoggedIn()) {
 			$this->redirect('login');
@@ -60,7 +59,7 @@ class Students extends Controller
 		$this->view('absence.etu', ['data' => $dataAbs]);
 	}
 	
->>>>>>> origin/youssef
+
 
 	function classe(){
         $this->view('classe.etu');
@@ -99,3 +98,5 @@ class Students extends Controller
         $this->view("profile");
     }
 }
+
+?>

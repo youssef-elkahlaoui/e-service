@@ -1,4 +1,5 @@
 <?php
+
 class ImportUsers extends Controller {
     public function import() {
         if (!empty($_FILES) && isset($_POST['import'])) {
@@ -11,7 +12,6 @@ class ImportUsers extends Controller {
                     $db = new Database();
                     $fichier = fopen($csv_file, 'r');
                     if ($fichier !== false) {
-                        fgetcsv($fichier); // Skip the header row
                         try {
                             // Determine the highest existing ID in the students table
                             $result = $db->query("SELECT MAX(id) AS max_id FROM students");
@@ -19,35 +19,36 @@ class ImportUsers extends Controller {
 
                             while (($row = fgetcsv($fichier)) !== false) {
 
-
-                                // Add an empty value for the id column if it's missing
-                                if (count($row) == 7) {
-                                    array_unshift($row, ""); // Add an empty value at the beginning
-                                }
-
-                                // Check if the row has at least 8 columns
-                                if (count($row) < 8) {
-                                    echo "Ligne CSV invalide: " . implode(", ", $row) . " (Number of columns: " . count($row) . ")<br/>";
+                                // Validate row
+                                if (count($row) !== 8) {
+                                    echo "Ligne CSV invalide: " . implode(", ", $row) . " (Nombre de colonnes: " . count($row) . ")<br/>";
                                     continue;
                                 }
 
                                 $id = $next_id++;
-                                $firstname = $row[1];  
-                                $lastname = $row[2];   
-                                $email = $row[3];      
-                                $Filiere = $row[4];    
-                                $password = password_hash($row[5], PASSWORD_DEFAULT);
-                                $CNE = $row[6];       
-                                $CIN = $row[7];       
+                                $firstname = $row[0];  
+                                $lastname = $row[1];   
+                                $email = $row[2];      
+                                $Filiere = $row[3];    
+                                $password = password_hash($row[4], PASSWORD_DEFAULT);
+                                $image = ''; // Assuming the image path or URL is not included in CSV
+                                $CNE = $row[5];       
+                                $CIN = $row[6];       
 
                                 // Insert the row into the database
                                 $result = $db->query(
-                                    "INSERT INTO students (id, firstname, lastname, email, Filiere, date, idClasse, password, CNE, CIN) VALUES (?, ?, ?, ?, ?, NOW(), 1, ?, ?, ?)", 
-                                    [$id, $firstname, $lastname, $email, $Filiere, $password, $CNE, $CIN]
-                                );                                
+                                    "INSERT INTO students (id, firstname, lastname, email, Filiere, date, idClasse, password, image, CNE, CIN) VALUES (?, ?, ?, ?, ?, NOW(), 1, ?, ?, ?, ?)", 
+                                    [$id, $firstname, $lastname, $email, $Filiere, $password, $image, $CNE, $CIN]
+                                );
+
+                                if ($result) {
+                                    echo "Données insérées pour: $firstname $lastname ($email)<br/>";
+                                } else {
+                                    echo "Erreur d'insertion pour: $firstname $lastname ($email)<br/>";
+                                }
                             }
                             fclose($fichier);
-                            echo 'Importation des données avec';
+                            echo 'Importation des données réussie';
                         } catch (PDOException $e) {
                             echo "Erreur d'insertion dans la base de données: " . $e->getMessage();
                         }
@@ -65,4 +66,5 @@ class ImportUsers extends Controller {
         $this->view('ImportUsers');
     }
 }
+
 ?>
