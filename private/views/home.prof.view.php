@@ -146,7 +146,6 @@
 <style>
     div{
         font-family: 'Poppins', sans-serif;
-
     }
     .wrapper{
         margin: -50px 0 50px;

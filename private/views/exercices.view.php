@@ -28,14 +28,38 @@
         border: 1px solid #ced4da;
         border-radius: 5px;
     }
+    .drop-zone {
+        border: 2px dashed #ced4da;
+        border-radius: 5px;
+        padding: 30px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .drop-zone.dragover {
+        background-color: #e9ecef;
+    }
+    .drop-zone input[type="file"] {
+        display: none;
+    }
 </style>
 
 <body>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-10">
+        <div class="row">
+                <div class="col">
+                    <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">TDs & TPs...</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
             <div class="card mb-4">
-                <div class="card-body">
+                <div class="card-body shadow rounded-3">
                     <div class="form-container">
                         <form action="CoursExercices/uploadExercice" method="post" enctype="multipart/form-data">
                             <div class="form-group">
@@ -57,7 +81,10 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="pdf">Télécharger un exercice (PDF) :</label>
-                                <input type="file" id="pdf" name="pdf" class="form-control" accept=".pdf" required>
+                                <div class="drop-zone" id="drop-zone">
+                                    <p>Glissez-déposez un fichier ici ou cliquez pour sélectionner un fichier</p>
+                                    <input type="file" id="pdf" name="pdf" class="form-control" accept=".pdf" required>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-outline-primary" name="upload">Télécharger</button>
@@ -69,5 +96,42 @@
         </div>
     </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('pdf');
+
+    dropZone.addEventListener('click', () => fileInput.click());
+
+    dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('dragover');
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        
+        const files = e.dataTransfer.files;
+        if (files.length) {
+            fileInput.files = files;
+            dropZone.querySelector('p').textContent = files[0].name;
+        }
+    });
+
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files.length) {
+            dropZone.querySelector('p').textContent = fileInput.files[0].name;
+        } else {
+            dropZone.querySelector('p').textContent = 'Glissez-déposez un fichier ici ou cliquez pour sélectionner un fichier';
+        }
+    });
+});
+</script>
+
 </body>
 </html>
