@@ -1,8 +1,18 @@
 <?php
 
-class Cours extends Controller
+class CoursExercices extends Controller
 {
-    public function upload()
+    public function uploadCour()
+    {
+        $this->handleUpload('cours', 'cours');
+    }
+
+    public function uploadExercice()
+    {
+        $this->handleUpload('exercices', 'exercices');
+    }
+
+    private function handleUpload($type, $view)
     {
         if (!empty($_FILES) && isset($_POST['upload'])) {
             if ($_FILES['pdf']['error'] === UPLOAD_ERR_OK) {
@@ -14,7 +24,7 @@ class Cours extends Controller
                 } else {
                     $pdf_file = $_FILES['pdf']['tmp_name'];
                     $file_name = basename($_FILES['pdf']['name']);
-                    $upload_dir = '../uploads/cours/';
+                    $upload_dir = "../uploads/$type/";
                     $upload_file = $upload_dir . $file_name;
 
                     // Ensure the upload directory exists
@@ -27,14 +37,16 @@ class Cours extends Controller
                         $titre = $_POST['titre'];
                         $description = $_POST['description'];
                         $idClasse = $_POST['selectedoption'];
-                        // Insert course metadata into the database
+
+                        // Insert metadata into the database
                         $db = new Database();
                         try {
                             $db->query(
-                                "INSERT INTO cours (Titre, Description, IdClasse) VALUES (?, ?, ?, ?)",
+                                "INSERT INTO cours (Titre, Description, IdClasse) VALUES (?, ?, ?)",
                                 [$titre, $description, $idClasse]
                             );
-                            echo '<script>alert("Téléchargement du cours réussi.");</script>';
+                            echo '<script>alert("Téléchargement réussi.");</script>';
+                            $this->view($view);
                         } catch (PDOException $e) {
                             echo "Erreur d'insertion dans la base de données: " . $e->getMessage();
                         }
@@ -50,7 +62,12 @@ class Cours extends Controller
 
     public function index()
     {
-        $this->view('cour.prof');
+        $type = isset($_GET['type']) ? $_GET['type'] : 'cours';
+        if ($type === 'exercices') {
+            $this->view('exercices');
+        } else {
+            $this->view('cours');
+        }
     }
 }
 ?>

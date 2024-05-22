@@ -37,7 +37,7 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="form-container">
-                        <form action="Cours/upload" method="post" enctype="multipart/form-data">
+                        <form action="CoursExercices/uploadCour" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label class="form-label" for="titre">Titre du cours :</label>
                                 <input type="text" id="titre" name="titre" class="form-control" required>

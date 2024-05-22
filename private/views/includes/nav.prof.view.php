@@ -93,7 +93,7 @@
                         role="button"
                         data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <i class="fa-solid fa-school mb-1"></i>&nbsp;Mes Clases
+                        <i class="fa-solid fa-school mb-1"></i>&nbsp;Mes Classes
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="mesClassesDropdown">
                         <li>
@@ -145,10 +145,10 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="exportsDropdown">
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/cour">Cours & Fichiers</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/CoursExercices?type=cours">Cours & Fichiers</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/td">TDs & TPs</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/CoursExercices?type=exercices">TDs & TPs</a>
                         </li>
                     </ul>
                 </li>
