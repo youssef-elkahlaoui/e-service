@@ -1,6 +1,5 @@
 <?php 
     include "includes/header.view.php";
-
     include "includes/nav.prof.view.php";
 ?>
 
@@ -33,37 +32,42 @@
 
 <body>
 <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="form-container">
-                            <form action="importUsers/import" method="post" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label class="form-label" for="excel">Exporter Fichier :</label>
-                                    <input type="file" id="excel" name="excel" class="form-control" required>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-form-label col-sm-3" for="filiere">Choisir la filière :</label>
-                                    <div class="col-sm-4">
-                                        <select id="filiere" name="filiere" class="form-control" required style="cursor: pointer;">
-                                            <option value="tdia">TDIA</option>
-                                            <option value="info">INFO</option>
-                                            <option value="id">ID</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-outline-primary " name="import">Exporter</button>
-                                </div>
-                            </form>
-                        </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="form-container">
+                        <form action="Cours/upload" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="form-label" for="titre">Titre du cours :</label>
+                                <input type="text" id="titre" name="titre" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="description">Description du cours :</label>
+                                <textarea id="description" name="description" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="selectedoption">Choisir la classe :</label>
+                                <select class="form-control" id="selectedoption" name="selectedoption" required>
+                                    <option value="" disabled selected hidden>Choose an option</option>
+                                    <option value="TDIA1">TDIA1</option>
+                                    <option value="GI1">GI1</option>
+                                    <option value="ID1">ID1</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="pdf">Télécharger un cours (PDF) :</label>
+                                <input type="file" id="pdf" name="pdf" class="form-control" accept=".pdf" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-outline-primary" name="upload">Télécharger</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
-
-
 </html>

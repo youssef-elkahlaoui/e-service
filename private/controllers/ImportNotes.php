@@ -14,7 +14,7 @@ class importNotes extends Controller{
                         fgetcsv($fichier); // Skip the header row
                         try {
                             while (($row = fgetcsv($fichier)) !== false) {
-                                if (count($row) < 6) {
+                                if (count($row) < 5) {
                                     echo "Ligne CSV invalide: " . implode(", ", $row) . " (Number of columns: " . count($row) . ")<br/>";
                                     continue;
                                 }
