@@ -28,7 +28,7 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                                 <div class="row">
                                     <div class="col">                                        
                                         <a href="#"><span class="h2 font-weight-bold mb-0 text-danger"><?= $sumOfLoginsLastSevenDays ?></span></a>
-                                        <h5 class="card-title text-uppercase text-darck mb-0 ">Connexions </h5>
+                                        <h5 class="card-title text-uppercase text-dark mb-0 ">Connexions </h5>
 
                                     </div>
                                     <div class="col-auto">
@@ -44,14 +44,14 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">New notifications</h5>
                                         <a href="#"><span class="h2 font-weight-bold mb-0 text-success">356</span></a>
+                                        <h5 class="card-title text-uppercase text-dark mb-0">notifications</h5>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-warning text-white rounded-circle shadow"></div>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-muted text-sm"></p>
+                                <p class="mt-3 mb-0 text-muted text-sm"><span style="color:#1df070;"><?= intdiv($sumOfLoginsLastSevenDays,4) ?></span> notification administrative</p>
                             </div>
                         </div>
                     </div>
@@ -60,14 +60,14 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Documents</h5>
                                         <a href="#"><span class="h2 font-weight-bold mb-0 text-warning">924</span></a>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Documents</h5>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-yellow text-white rounded-circle shadow"></div>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-muted text-sm"></p>
+                                <p class="mt-3 mb-0 text-muted text-sm">plus de <span style="color:burlywood;"><?= intdiv($sumOfLoginsLastSevenDays,3) ?></span>  documents par jour</p>
                             </div>
                         </div>
                     </div>
@@ -76,14 +76,14 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Logins</h5>
                                         <a href="#"><span class="h2 font-weight-bold mb-0">49,65%</span></a>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Logins</h5>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow"></div>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-muted text-sm"></p>
+                                <p class="mt-3 mb-0 text-muted text-sm"><span style="color:indianred;"><?= intdiv($sumOfLoginsLastSevenDays,7) ?></span> est la moyenne de connexion par jour</p>
                             </div>
                         </div>
                     </div>
