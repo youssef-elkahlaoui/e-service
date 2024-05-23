@@ -110,7 +110,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/teachers/archProf">
+                    <a class="nav-link" href="<?= ROOT ?>/Archive">
                         <i class="fa-solid fa-box-archive mb-1"></i>&nbsp;Archivage
                     </a>
                 </li>

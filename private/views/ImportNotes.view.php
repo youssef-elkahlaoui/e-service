@@ -58,7 +58,7 @@
                     <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Envoyer Notification...</li>
+                            <li class="breadcrumb-item active" aria-current="page">Notes...</li>
                         </ol>
                     </nav>
                 </div>
