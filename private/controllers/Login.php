@@ -11,59 +11,6 @@ class Login extends Controller
             $patternTeach = '/^[a-z]+\.[a-z]+@prof\.com$/i';
             $patternAdmin = '/^[a-z]+\.[a-z]+@admin\.com$/i';
             $EMAIL = $_POST['email'];
-
-<<<<<<< HEAD
-			$patternEtu = '/^[a-z]+\.[a-z]+@etu\.com$/i';
-			$patternTeach = '/^[a-z]+\.[a-z]+@prof\.com$/i';
-			$patternAdmin = '/^[a-z]+\.[a-z]+@admin\.com$/i';
-			$EMAIL=$_POST['email'];
-			if (preg_match($patternEtu,$EMAIL)) {
-				$user = new Student();
-				if($row = $user->where('email',$EMAIL))
-				{
-					$row = $row[0];
-					if(password_verify($_POST['password'], $row->password))
-					{
-						Auth::authenticateStudent($row);
-						auth::authNiveau();
-						if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'on') {
-							setcookie('remembered', 'true', time() + (86400 * 30), '/'); 
-						}
-						$this->redirect('/student');
-					}
-				}
-			}
-			elseif (preg_match($patternTeach,$EMAIL)) {
-				$user = new Teacher();
-				if($row = $user->where('email',$EMAIL))
-				{
-					$row = $row[0];
-					if(password_verify($_POST['password'], $row->password))
-					{
-						echo 'hello word';
-						Auth::authenticateTeacher($row);
-						if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'on') {
-							setcookie('remembered', 'true', time() + (86400 * 30), '/'); 
-						}
-						$this->redirect('/teachers');
-					}
-				}
-			}
-			elseif (preg_match($patternAdmin,$EMAIL)) {
-				$user = new Admin();
-				if($row = $user->where('email',$EMAIL))
-				{
-					$row = $row[0];
-					if(password_verify($_POST['password'], $row->password))
-					{
-					Auth::authenticateAdmin($row);
-						if(isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'on') {
-							setcookie('remembered', 'true', time() + (86400 * 30), '/'); 
-						}
-						$this->redirect('/admin');
-					}
-				}
-=======
             if (preg_match($patternEtu, $EMAIL)) {
                 $user = new Student();
                 if ($row = $user->where('email', $EMAIL)) {
@@ -171,7 +118,6 @@ class Login extends Controller
     
     return 0;
     }
->>>>>>> 5d684e4daa0ebf9fd830b1f74fea545f8ddd8a31
 
 }
 
