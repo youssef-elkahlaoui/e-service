@@ -61,7 +61,7 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                                 <div class="row">
                                     <div class="col">
                                         <a href="#"><span class="h2 font-weight-bold mb-0 text-warning">924</span></a>
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Documents</h5>
+                                        <h5 class="card-title text-uppercase text-dark mb-0">Documents</h5>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-yellow text-white rounded-circle shadow"></div>
@@ -77,7 +77,7 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                                 <div class="row">
                                     <div class="col">
                                         <a href="#"><span class="h2 font-weight-bold mb-0">49,65%</span></a>
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Logins</h5>
+                                        <h5 class="card-title text-uppercase text-dark mb-0">Logins</h5>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow"></div>
