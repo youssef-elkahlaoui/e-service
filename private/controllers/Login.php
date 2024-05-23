@@ -82,29 +82,44 @@ class Login extends Controller
     public function getLastSevenDaysData()
     {
         $cnx = new Database();
-        $pdo = $cnx->connect();
         $sevenDaysAgo = date('Y-m-d', strtotime('-6 days'));
-
-        $stmt = $pdo->prepare("SELECT date, count FROM logins WHERE date >= :sevenDaysAgo ORDER BY date");
-        $stmt->execute(['sevenDaysAgo' => $sevenDaysAgo]);
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+        $query = 'SELECT date, count FROM logins WHERE date >= :sevenDaysAgo ORDER BY date';
+        
+        $results = $cnx->query($query, ['sevenDaysAgo' => $sevenDaysAgo], "assoc");
+    
+        if ($results === false) {
+            return json_encode(['error' => 'Failed to fetch data']);
+        }
+    
         $data = [];
-        $dates = [];
         $currentDate = new DateTime($sevenDaysAgo);
-
-        for ($i = 0; $i <7; $i++) {
-            $dates[] = $currentDate->format('Y-m-d');
+    
+        for ($i = 0; $i < 7; $i++) {
             $data[$currentDate->format('Y-m-d')] = 0;
             $currentDate->modify('+1 day');
         }
-
+    
         foreach ($results as $result) {
             $data[$result['date']] = $result['count'];
         }
-
+    
         return json_encode(array_values($data));
     }
+    
+    public function getSumOfLoginsLastSevenDays()
+    {
+    $cnx = new Database();
+    $sevenDaysAgo = date('Y-m-d', strtotime('-6 days'));
+    $query = 'SELECT SUM(count) AS total_logins FROM logins WHERE date >= :sevenDaysAgo';
+    $result = $cnx->query($query, ['sevenDaysAgo' => $sevenDaysAgo], "assoc");
+    
+    if ($result && isset($result[0]['total_logins'])) {
+        return $result[0]['total_logins'];
+    }
+    
+    return 0;
+    }
+
 }
 
 ?>

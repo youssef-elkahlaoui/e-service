@@ -4,6 +4,7 @@ include "includes/nav.prof.view.php";
 include "includes/header.view.php";
 $loginController = new Login();
 $lastSevenDaysData = $loginController->getLastSevenDaysData();
+$sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
@@ -25,15 +26,16 @@ $lastSevenDaysData = $loginController->getLastSevenDaysData();
                         <div class="card card-stats mb-4 mb-xl-0">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                                        <a href="#"><span class="h2 font-weight-bold mb-0 text-danger">897</span></a>
+                                    <div class="col">                                        
+                                        <a href="#"><span class="h2 font-weight-bold mb-0 text-danger"><?= $sumOfLoginsLastSevenDays ?></span></a>
+                                        <h5 class="card-title text-uppercase text-darck mb-0 ">Connexions </h5>
+
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-danger text-white rounded-circle shadow"></div>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-muted text-sm"></p>
+                                <p class="mt-3 mb-0 text-muted text-sm"><span style="color:indianred;"><?= intdiv($sumOfLoginsLastSevenDays,7) ?></span> est la moyenne de connexion par jour</p>
                             </div>
                         </div>
                     </div>
