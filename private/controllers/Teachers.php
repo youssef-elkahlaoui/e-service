@@ -5,7 +5,6 @@ class Teachers extends Controller
 
     function index()
 	{
-        		// code...
 		if(!Auth::teacherLoggedIn())
 		{
 			$this->redirect('login');
@@ -16,45 +15,55 @@ class Teachers extends Controller
 
 		$this->view('home.prof',['rows'=>$data]);
     }
-	
+    
     function absence(){
         $this->view('absence.prof');
     }
 
-	function classe(){
-        $this->view('classe.etu');
+	function listeStudent(){
+        $this->view('listetu.prof');
+    }
+
+    function listeAdmin(){
+        $this->view('listeAdmin.prof');
     }
 
 	function demande(){
         $this->view('demande.prof');
     }
 
-	function note(){
-        $this->view('note.prof');
-    }
-
 	function listeProf(){
-        $this->view('listeProf');
+        $this->view('listeProf.prof');
     }
 
 	function etatDemande(){
         $this->view('demande.etat.prof');
     }
 
-	
-    function documentation(){
-        $this->view('documentation.prof');
+	function notifProfsend(){
+        $this->view('notif.send.prof');
     }
 
-	function devoir(){
-        $this->view('devoir.prof');
+    function archProf(){
+        $this->view('arch.prof');
+    }
+    function notifProfget(){
+        $this->view('notif.get.prof');
     }
     
-    function modules(){
-        $this->view("modules");
+	function cour(){
+        $this->view('cour.prof');
+    }
+
+    function td(){
+        $this->view('td.prof');
+    }
+
+    function note(){
+        $this->view('note.prof');
     }
 
     function profile($id = null){
-        $this->view("profile");
+        $this->view("profile.prof");
     }
 }

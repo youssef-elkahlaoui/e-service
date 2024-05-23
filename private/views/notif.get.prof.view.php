@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+<?php 
+    include "includes/nav.prof.view.php";
+    include "includes/header.view.php";
+?>
 <body>
     <form action="notification/sendNot" method="post">
     <div class="container" style="padding:100px">

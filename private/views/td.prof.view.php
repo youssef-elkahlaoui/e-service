@@ -3,15 +3,7 @@
 
     include "includes/nav.prof.view.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Send Notification</title>
-</head>
 <style>
     .container {
         padding-top: 50px;
@@ -42,17 +34,27 @@
 <body>
 <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="card mb-4">
+            <div class="col-lg-10">
+                <div class="card mb-5">
                     <div class="card-body">
                         <div class="form-container">
                             <form action="importUsers/import" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label class="form-label" for="excel">Importer les ètudiants :</label>
+                                    <label class="form-label" for="excel">Exporter Devoire :</label>
                                     <input type="file" id="excel" name="excel" class="form-control" required>
                                 </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-sm-3" for="filiere">Choisir la filière :</label>
+                                    <div class="col-sm-4">
+                                        <select id="filiere" name="filiere" class="form-control" required style="cursor: pointer;">
+                                            <option value="tdia">TDIA</option>
+                                            <option value="info">INFO</option>
+                                            <option value="id">ID</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-outline-primary " name="import">Import</button>
+                                    <button type="submit" class="btn btn-outline-primary " name="import">Exporter</button>
                                 </div>
                             </form>
                         </div>
@@ -62,6 +64,4 @@
         </div>
     </div>
 </body>
-
-
 </html>
