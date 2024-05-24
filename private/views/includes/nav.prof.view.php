@@ -178,7 +178,7 @@
                 <ul class="dropdown-menu dropdown-menu-start icon" aria-labelledby="navbarDropdownMenuAvatar">
                     <li class="dropdown-item"><?php echo Auth::getFirstname() . "  " . Auth::getLastname(); ?></li>
                     <li>
-                        <a class="dropdown-item" href="<?= ROOT ?>/profile">
+                        <a class="dropdown-item" href="<?= ROOT ?>/teachers/profile">
                             Profile
                             <i class="fa-solid fa-user"></i>
                         </a>
