@@ -78,6 +78,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php if($courses):?>
                                 <?php foreach ($courses as $course): ?>
                                     <tr>
                                         <td><?= $course['IdCours'] ?></td>
@@ -89,8 +90,10 @@
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
+                                <?php endif; ?>
                             </tbody>
                             <tbody>
+                                <?php if($dcourses):?>
                                 <?php foreach ($dcourses as $course): ?>
                                     <tr>
                                         <td><?= $course['IdCours'] ?></td>
@@ -102,6 +105,7 @@
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
