@@ -17,7 +17,7 @@
             </div>
 
             <div class="p-5 text-center bg-body-tertiary">
-                <h1 class="mb-3">Devoir</h1>
+                <h1 class="mb-3">Nouveau Demande</h1>
             </div>
             <?php if (isset($error)) : ?>
                 <div class="alert alert-danger" role="alert">

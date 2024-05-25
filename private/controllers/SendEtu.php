@@ -33,7 +33,7 @@ class SendEtu extends Controller
 			$demand->demand_type = $demande_type;
 			$demand->demand_description = $description;
 			$demand->demand_date = date('Y-m-d H:i:s'); // En supposant que demand_date est une colonne de type datetime
-	
+            $demand->status= 'en attend';
 			// Enregistrer la demande
 			try {
 				$saved = $demand->insert((array) $demand); // Insérer les données de la demande dans la base de données
