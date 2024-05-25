@@ -51,9 +51,9 @@
         include "includes/nav.prof.view.php";
         include "includes/header.view.php";
     ?>
-     <div class="container">
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-10">
+            <div class="col-lg-12">
                 <div class="row">
                     <div class="col">
                         <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
