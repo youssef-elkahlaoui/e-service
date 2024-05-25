@@ -2,8 +2,8 @@
 require_once 'Demandes.php';
 require_once 'Seenotifications.php';
 
-
 class Admins extends Controller {
+
     function index() {
         if(!Auth::adminLoggedIn()) {
             $this->redirect('login');
@@ -11,6 +11,30 @@ class Admins extends Controller {
         $user = new Admin();
         $data = $user->findAll();
         $this->view('home.admin', ['rows' => $data]);
+    }
+
+    function getAllAdmins() {
+        $adminModel = new Admin();
+        $admins = $adminModel->findAll(); 
+        $this->view('listeAdmin.admin', ['admins' => $admins]);
+    }
+    function getAllProfs() {
+        $teacherModel = new Teacher();
+        $teachers = $teacherModel->findAll(); 
+        $this->view('listeAdmin.prof', ['teachers' => $teachers]);
+    }
+    function getAllstudents(){
+        $studentModel = new Student();
+        $student = $studentModel->findAll();
+        $this->view('listeStudents.admin',['students'=>$student]);
+    }
+
+
+
+    function getDemandes() {
+        $demandesController = new Demandes();
+        $demandes = $demandesController->demande();
+        $this->view('demandes.admin', ['demandes' => $demandes]);
     }
 
     function listeStudent() {
@@ -49,11 +73,6 @@ class Admins extends Controller {
         $this->view("profile.admin");
     }
 
-    function getDemandes() {
-        $demandesController = new Demandes();
-        $demandes = $demandesController->demande();
-        $this->view('demandes.admin', ['demandes' => $demandes]);
-    }
     function getNotifs(){
         $NotifController = new Seenotifications();
         $notifications = $NotifController->scroll();

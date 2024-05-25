@@ -1,5 +1,4 @@
 <?php
-
 class Reset_password extends Controller {
     public function modifyPassword() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reset'])) {
@@ -11,22 +10,40 @@ class Reset_password extends Controller {
                 $db = new Database();
                 $result = $db->query("SELECT * FROM students WHERE reset_token = ? AND token_expiry > NOW()", [$token]);
 
-                if ($result && !empty($result)){
-                    
+                if ($result && !empty($result)) {
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                    $updateResult = $db->query("UPDATE students SET password = ?, reset_token = NULL, token_expiry = NULL WHERE reset_token = ?", [$hashedPassword, $token],'assoc');
+                    $updateResult = $db->query("UPDATE students SET password = ?, reset_token = NULL, token_expiry = NULL WHERE reset_token = ?", [$hashedPassword, $token]);
 
-                    if($updateResult !=false){
-                        echo "Password has been successfully updated.";    
-                    }else{
-                        echo "Erreur dans ";
+                    if ($updateResult !== false) {
+                        // Password updated successfully
+                        $message= '
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                Password updated successfully.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>';
+                    } else {
+                        // Error updating password
+                        $message= '
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                Error updating password. Please try again later.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>';
                     }
-                    
                 } else {
-                    echo "Invalid or expired token.";
+                    // Invalid or expired token
+                    $message='
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            Invalid or expired token.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>';
                 }
             } else {
-                echo "Please provide a token and a new password.";
+                // Token or password empty
+                $message= '
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Please provide a valid token and a new password.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>';
             }
         } 
     }
@@ -36,3 +53,5 @@ class Reset_password extends Controller {
         $this->view("modifypassword", ['token' => $token]);
     }
 }
+
+?>

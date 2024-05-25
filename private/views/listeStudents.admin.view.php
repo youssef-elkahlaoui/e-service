@@ -95,7 +95,7 @@
             <div class="card mb-4">
                 <div class="card-body shadow rounded-3">
                     <div class="p-5 text-center clr crd-body">
-                        <h1 class="mb-3">Les Proffesseurs</h1>
+                        <h1 class="mb-3">Les Admins</h1>
                     </div>
                     <table class="table table-hover">
                         <thead>
@@ -104,15 +104,17 @@
                                 <th>Nom</th>
                                 <th>Prénom</th>
                                 <th>Email</th>
+                                <th>Filiere</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($teachers as $teacher): ?>
+                            <?php foreach ($students as $student): ?>
                             <tr>
-                                <td><img src="<?= ROOT. $teacher->image;?>" alt="Profile Icon" class="profile-icon" onclick="zoomProfileIcon(this)"></td>
-                                <td><?= $teacher->firstname ?></td>
-                                <td><?= $teacher->lastname ?></td>
-                                <td><?= $teacher->email ?></td>
+                                <td><img src="<?= ROOT. $student->image;?>" alt="Profile Icon" class="profile-icon" onclick="zoomProfileIcon(this)"></td>
+                                <td><?= $student->firstname ?></td>
+                                <td><?= $student->lastname ?></td>
+                                <td><?= $student->email ?></td>
+                                <td><?= $student->Filiere ?></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

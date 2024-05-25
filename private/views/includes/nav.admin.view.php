@@ -93,15 +93,13 @@
                         role="button"
                         data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <i class="fa-solid fa-users"></i>&nbsp;Mes Clases
+                        <i class="fa-solid fa-users"></i>&nbsp;Classes
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="mesClassesDropdown">
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/listeStudent">Mes eleves</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/admins/getAllstudents">Les étudiants</a>
                         </li>
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/absence">Les absences</a>
-                        </li>
+                        
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -148,10 +146,10 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="contactsDropdown">
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/listeAdmin">Admins</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/admins/getAllAdmins">Admins</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/listeProf">Professeurs</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/admins/getAllProfs">Professeurs</a>
                         </li>
                     </ul>
                 </li>
@@ -168,12 +166,6 @@
                     <ul class="dropdown-menu" aria-labelledby="exportsDropdown">
                         <li >
                             <a class="dropdown-item" href="<?= ROOT ?>/ImportUsers">Importer Etudiants</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/cour">Cours & Fichiers</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/td">TDs & TPs</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="<?= ROOT ?>/teachers/note">Notes</a>
