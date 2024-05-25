@@ -17,6 +17,7 @@ class Login extends Controller
                     $row = $row[0];
                     if (password_verify($_POST['password'], $row->password)) {
                         Auth::authenticateStudent($row);
+                        Auth::authNiveau();
                         if (isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'on') {
                             setcookie('remembered', 'true', time() + (86400 * 30), '/');
                         }
