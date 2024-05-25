@@ -48,7 +48,7 @@
 </head>
 <body>
     <?php 
-        include "includes/nav.admin.view.php";
+        include "includes/nav.prof.view.php";
         include "includes/header.view.php";
     ?>
      <div class="container">
