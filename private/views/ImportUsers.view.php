@@ -1,7 +1,11 @@
 <?php 
     include "includes/header.view.php";
 
+<<<<<<< HEAD
     include "includes/nav.prof.view.php";
+=======
+    include "includes/nav.admin.view.php";
+>>>>>>> anas
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,8 +13,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<<<<<<< HEAD
 
     <title>Send Notification</title>
+=======
+>>>>>>> anas
 </head>
 <style>
     .container {
@@ -65,3 +72,12 @@
 
 
 </html>
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+>>>>>>> anas

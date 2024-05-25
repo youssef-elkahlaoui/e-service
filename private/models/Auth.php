@@ -72,23 +72,16 @@ class Auth
 		return false;
 	}
 
-    public static function __callStatic($method, $params)
-    {
-        $prop = strtolower(str_replace("get", "", $method));
+	public static function __callStatic($method,$params)
+	{
+		$prop = strtolower(str_replace("get","",$method));
 
-        if (isset($_SESSION['ADMIN']) && property_exists($_SESSION['ADMIN'], $prop)) {
-            return $_SESSION['ADMIN']->$prop;
-        }
+		if(isset($_SESSION['USER']->$prop))
+		{
+			return $_SESSION['USER']->$prop;
+		}
 
-        if (isset($_SESSION['STUDENT']) && property_exists($_SESSION['STUDENT'], $prop)) {
-            return $_SESSION['STUDENT']->$prop;
-        }
-
-        if (isset($_SESSION['TEACHER']) && property_exists($_SESSION['TEACHER'], $prop)) {
-            return $_SESSION['TEACHER']->$prop;
-        }
-
-        return 'Unknown';
-    }
+		return 'Unknown';
+	}
 	
 }

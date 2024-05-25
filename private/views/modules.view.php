@@ -1,8 +1,10 @@
 <?php 
-    include "includes/nav.view.php";
-    include "includes/header.view.php";
+    require("includes/header.view.php")
 ?>
 <body>
+    <?php
+        require("includes/nav.etu.view.php")
+    ?>
     
     <section style="background-color: #eee; ">
         <div class="container py-5" >
@@ -21,6 +23,7 @@
             </div>
             
             <table class="table table-hover">
+<<<<<<< HEAD
     <tr>
         <th>Modules</th>
         <th>Professeur</th>
@@ -44,6 +47,24 @@
     ?>
 </table>
 
+=======
+                <tr>
+                    <th>Modules</th>
+                    <th>Professeur</th>
+                    <th>Documant</th>
+                </tr>
+                <tr>
+                    <td>Alfreds Futterkiste</td>
+                    <td>Maria Anders</td>
+                    <td><a href="documentation">Voir</a></td>
+                </tr>
+                <tr>
+                    <td>Centro comercial Moctezuma</td>
+                    <td>Francisco Chang</td>
+                    <td><a href="documentation">Voir</a></td>
+                </tr>
+            </table>
+>>>>>>> anas
 
                 
             </div>
