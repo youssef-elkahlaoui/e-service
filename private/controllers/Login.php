@@ -47,7 +47,7 @@ class Login extends Controller
                             setcookie('remembered', 'true', time() + (86400 * 30), '/');
                         }
                         $this->incrementLoginCount();
-                        $this->redirect('/admin');
+                        $this->redirect('/admins');
                     }
                 }
             }
