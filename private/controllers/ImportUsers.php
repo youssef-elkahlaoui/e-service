@@ -12,9 +12,7 @@ class ImportUsers extends Controller {
         $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
 
         if (!empty($_FILES) && isset($_POST['import'])) {
-            // Check if a file has been uploaded
-            if ($_FILES['excel']['error'] === UPLOAD_ERR_OK){
-                // Check the MIME type of the file
+            if ($_FILES['excel']['error'] === UPLOAD_ERR_OK) {
                 $file_type = $_FILES['excel']['type'];
                 if ($file_type !== 'text/csv' && $file_type !== 'application/csv' && $file_type !== 'application/vnd.ms-excel') {
                     echo 'Type de fichier incorrect ! Le fichier doit être au format CSV !!';
@@ -22,8 +20,6 @@ class ImportUsers extends Controller {
                     $csv_file = $_FILES['excel']['tmp_name'];
                     $db = new Database();
                     $fichier = fopen($csv_file, 'r');
-                    fgetcsv($fichier); // Skip the header row
-
                     if ($fichier !== false) {
                         fgetcsv($fichier); // Skip the header row
                         $newUsersIds = [];

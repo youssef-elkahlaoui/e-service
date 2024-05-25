@@ -1,6 +1,6 @@
 <?php
 
-define('ROOT', 'http://localhost/e-service/public');
+define('ROOT', 'http://localhost/backup/public');
 define('ASSETS', 'http://localhost/e-service/public/assets');
 
 define('DBNAME', 'school_db2');

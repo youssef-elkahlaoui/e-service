@@ -1,17 +1,22 @@
-<?php 
+<?php
+require_once __DIR__ . '/Seenotifications.php';
 
-class Admins extends Controller
-{
-    function index()
-	{
-		if(!Auth::adminLoggedIn())
-		{
-			$this->redirect('login');
-		}
-		$user = new Admin();
+class Admins extends Controller {
+    public function index() {
+        if (!Auth::adminLoggedIn()) {
+            $this->redirect('login');
+        }
 
-		$data = $user->findAll();
+        $user = new Admin();
+        $data = $user->findAll();
 
-		$this->view('home.admin',['rows'=>$data]);
+        // Fetch notifications
+        $seenotifications = new Seenotifications();
+        $notifications = $seenotifications->scroll();
+
+        // Pass both user data and notifications to the view
+        $this->view('home.admin', ['rows' => $data, 'notifications' => $notifications]);
     }
 }
+
+?>

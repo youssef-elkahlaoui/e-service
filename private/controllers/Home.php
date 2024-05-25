@@ -8,9 +8,8 @@ class Home extends Controller
 		if(Auth::studentLoggedIn())
 		{
 			$this->redirect("/students");
-		}
-		elseif(Auth::teacherLoggedIn()){
-			$this->redirect("/teachers");
+		}elseif(Auth::teacherLoggedIn()){
+
 		}
 		elseif(Auth::adminLoggedIn()){
 			$this->redirect("/admins");
