@@ -190,8 +190,8 @@ class Students extends Controller
         $this->view('devoir.etu',['module' => $modulesData]);
     }
     
-	function modules(){
-		if(!Auth::studentLoggedIn()) {
+	function modules() {
+		if (!Auth::studentLoggedIn()) {
 			$this->redirect('login');
 		}
 		
@@ -209,6 +209,11 @@ class Students extends Controller
 			// Récupérer le nom du professeur pour ce module
 			$teacherData = $teacher->where('id', $moduleData->IdEnseignant); // Accès aux propriétés de l'objet avec ->
 			
+			// Assurez-vous que $teacherData est un tableau
+			if (!is_array($teacherData)) {
+				$teacherData = [];
+			}
+			
 			// Utiliser la méthode where pour récupérer uniquement le premier professeur correspondant
 			$teacherData = count($teacherData) > 0 ? $teacherData[0] : null;
 			
@@ -219,10 +224,10 @@ class Students extends Controller
 			];
 		}
 		
-		
 		// Passer les données des modules avec les noms des professeurs à la vue
 		$this->view("modules", ['modulesWithTeacherNames' => $modulesWithTeacherNames]);
 	}
+	
 	
 
     function profile($id = null){
