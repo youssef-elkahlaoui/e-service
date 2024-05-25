@@ -105,7 +105,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/Demandes">
+                    <a class="nav-link" href="<?= ROOT ?>/admins/getDemandes">
                         <i class="fa-solid fa-school"></i>&nbsp;Demandes
                     </a>
                 </li>
