@@ -26,7 +26,7 @@
         <th>Professeur</th>
         <th>Email du professeur</th>
         <th>Description</th>
-        <th>Documentation</th>
+        <th>Documents</th>
     </tr>
     <?php 
         foreach ($modulesWithTeacherNames as $moduleWithTeacher) {
@@ -38,7 +38,7 @@
             echo '<td>' . htmlspecialchars($teacher->firstname) . ' ' . htmlspecialchars($teacher->lastname) . '</td>';
             echo '<td>' . htmlspecialchars($teacher->email) . '</td>';
             echo '<td>' . htmlspecialchars($module->Description) . '</td>';
-            echo '<td><a href="documentation.php?id=' . urlencode($module->IdCours) . '">Voir</a></td>';
+            echo '<td><a href="'.ROOT.'/CoursExercices/displayDoc/'.$_SESSION['NIVEAU']->IdClasse.'/'.$module->IdCours.'?module_title='.urlencode($module->Titre).'">Voir</a></td>';
             echo '</tr>';
         }
     ?>

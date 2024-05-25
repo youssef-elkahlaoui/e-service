@@ -37,13 +37,14 @@ class CoursExercices extends Controller
                         $titre = $_POST['titre'];
                         $description = $_POST['description'];
                         $idClasse = $_POST['selectedoption'];
+                        $idModule = $_POST['idModule']; // New field
 
                         // Insert metadata into the database
                         $db = new Database();
                         try {
                             $db->query(
-                                "INSERT INTO cours (Titre, Description, IdClasse) VALUES (?, ?, ?)",
-                                [$titre, $description, $idClasse]
+                                "INSERT INTO cours (Titre, Description, IdClasse, FilePath, IdModule) VALUES (?, ?, ?, ?, ?)",
+                                [$titre, $description, $idClasse, $upload_file, $idModule]
                             );
                             echo '<script>alert("Téléchargement réussi.");</script>';
                             $this->view($view);
@@ -57,6 +58,40 @@ class CoursExercices extends Controller
             } else {
                 echo 'Erreur lors du téléchargement du fichier.';
             }
+        }
+    }
+
+    public function displayDoc($idClasse, $idModule)
+    {
+        if (!Auth::studentLoggedIn()) {
+            $this->redirect('login');
+        }
+
+        $db = new Database();
+        $coursData = $db->query(
+            "SELECT * FROM cours WHERE IdClasse = ? AND IdModule = ?",
+            [$idClasse, $idModule]
+        );
+
+        if ($coursData) {
+            $this->view("doc.etu", ['data' => $coursData]);
+        } else {
+            $this->view('doc.error.etu');
+        }
+    }
+
+    public function displayResults()
+    {
+        if (isset($_SESSION['results']) && isset($_SESSION['type'])) {
+            $results = $_SESSION['results'];
+            $type = $_SESSION['type'];
+            unset($_SESSION['results']);
+            unset($_SESSION['type']);
+
+            // Render the view with results
+            $this->view('doc.etu', ['results' => $results, 'type' => $type]);
+        } else {
+            echo "Aucun résultat à afficher.";
         }
     }
 

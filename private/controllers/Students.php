@@ -164,10 +164,14 @@ class Students extends Controller
 		{
 			$this->redirect('login');
 		}
-		$user = new Student();
+		$module = new Module();
+		
+		// Récupérer les données des modules pour la classe actuelle
+		$modulesData = $module->where('IdClasse', Auth::getIdclasse());
+		
+		// Créer un tableau pour stocker les données des modules avec les noms des professeurs
 
-		$data = $user->findAll();
-        $this->view('devoir.etu');
+        $this->view('devoir.etu',['module' => $modulesData]);
     }
     
 	function modules(){
@@ -215,4 +219,8 @@ class Students extends Controller
         $classeData=$classeData[0];
         $this->view("profile.etu", ['data'=>$classeData]);
     }
+
+	function test($id,$allo){
+		$this->view('test', ['id'=> $id,'allo'=> $allo]);
+	} 
 }
