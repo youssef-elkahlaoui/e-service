@@ -1,10 +1,8 @@
 <?php 
-    include("../includes/header.view.php");
+    include "includes/nav.view.php";
+    include "includes/header.view.php";
 ?>
-<body>
-    <?php
-        include("../includes/nav.etu.view.php");
-    ?>
+
 
     <section style="background-color: #eee;">
         <div class="container py-5">
@@ -13,14 +11,14 @@
                     <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Ma classe</li>
+                            <li class="breadcrumb-item active" aria-current="page"><?=$_SESSION['NIVEAU']->NomFiliere ?></li>
                         </ol>
                     </nav>
                 </div>
             </div>
 
             <div class="p-5 text-center bg-body-tertiary">
-                <h1 class="mb-3">Niveau de classe</h1>
+                <h1 class="mb-3"><?=$_SESSION['NIVEAU']->NomFiliere?></h1>
             </div>
 
             <h5 class="mb-3">Vos camarades :</h5>
@@ -32,14 +30,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                    </tr>
-                    <tr>
-                        <td>Centro comercial Moctezuma</td>
-                        <td>Francisco Chang</td>
-                    </tr>
+                <?php foreach ($data as $user): ?>
+                    <?php if (Auth::getId() != $user->id): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($user->firstname . ' ' . $user->lastname); ?></td>
+                            <td><?php echo htmlspecialchars($user->email); ?></td>
+                        </tr>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+
+
                 </tbody>
             </table>
         </div>

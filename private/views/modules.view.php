@@ -1,10 +1,8 @@
 <?php 
-    require("includes/header.view.php")
+    include "includes/nav.view.php";
+    include "includes/header.view.php";
 ?>
 <body>
-    <?php
-        require("includes/nav.etu.view.php")
-    ?>
     
     <section style="background-color: #eee; ">
         <div class="container py-5" >
@@ -23,22 +21,29 @@
             </div>
             
             <table class="table table-hover">
-                <tr>
-                    <th>Modules</th>
-                    <th>Professeur</th>
-                    <th>Documant</th>
-                </tr>
-                <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td><a href="documentation">Voir</a></td>
-                </tr>
-                <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td><a href="documentation">Voir</a></td>
-                </tr>
-            </table>
+    <tr>
+        <th>Modules</th>
+        <th>Professeur</th>
+        <th>Email du professeur</th>
+        <th>Description</th>
+        <th>Documentation</th>
+    </tr>
+    <?php 
+        foreach ($modulesWithTeacherNames as $moduleWithTeacher) {
+            $module = $moduleWithTeacher['module'];
+            $teacher = $moduleWithTeacher['teacher'];
+            
+            echo '<tr>';
+            echo '<td>' . htmlspecialchars($module->Titre) . '</td>';
+            echo '<td>' . htmlspecialchars($teacher->firstname) . ' ' . htmlspecialchars($teacher->lastname) . '</td>';
+            echo '<td>' . htmlspecialchars($teacher->email) . '</td>';
+            echo '<td>' . htmlspecialchars($module->Description) . '</td>';
+            echo '<td><a href="documentation.php?id=' . urlencode($module->IdCours) . '">Voir</a></td>';
+            echo '</tr>';
+        }
+    ?>
+</table>
+
 
                 
             </div>

@@ -1,7 +1,6 @@
 <?php 
     include "includes/nav.prof.view.php";
     include "includes/header.view.php";
-    // Assuming you have a function to fetch archived courses and files
     $archivedFiles = Auth::getArchivedFiles();
 ?>
 

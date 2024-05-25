@@ -11,11 +11,9 @@ class Seenotifications extends Controller {
         }
         return $notifications;
     }
-
-
     public function index() {
         $notifications = $this->scroll(); 
-        $this->view('home.admin', ['notifications' => $notifications]); 
+        $this->view('home.prof', ['notifications' => $notifications]); 
     }
 }
 ?>

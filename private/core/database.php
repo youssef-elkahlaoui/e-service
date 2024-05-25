@@ -1,9 +1,8 @@
 <?php
 class Database
 {
-	private function connect()
+	public function connect()
 	{
-		// code..
 		$string = DBDRIVER . ":host=".DBHOST.";dbname=".DBNAME;
 		if(!$con = new PDO($string,DBUSER,DBPASS)){
 			die("could not connect to database");

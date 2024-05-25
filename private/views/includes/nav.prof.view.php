@@ -93,7 +93,7 @@
                         role="button"
                         data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <i class="fa-solid fa-school mb-1"></i>&nbsp;Mes Clases
+                        <i class="fa-solid fa-school mb-1"></i>&nbsp;Mes Classes
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="mesClassesDropdown">
                         <li>
@@ -104,32 +104,13 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="demandesDropdown"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="fa-solid fa-bell-concierge mb-1"></i>&nbsp;Demandes
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="demandesDropdown">
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/demande">Envoie de Demande</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/etatDemande">Etat des Demandes</a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= ROOT ?>/teachers/notifProfsend">
                         <i class="fa-solid fa-bell mb-1"></i>&nbsp;Envoie de Notification
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/teachers/archProf">
+                    <a class="nav-link" href="<?= ROOT ?>/Archive">
                         <i class="fa-solid fa-box-archive mb-1"></i>&nbsp;Archivage
                     </a>
                 </li>
@@ -164,15 +145,17 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="exportsDropdown">
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/cour">Cours & Fichiers</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/CoursExercices?type=cours">Cours & Fichiers</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/td">TDs & TPs</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/note">Notes</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/CoursExercices?type=exercices">TDs & TPs</a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= ROOT ?>/ImportNotes">
+                    <i class="fa-solid fa-marker fa-shake"></i>&nbsp;Notes
+                    </a>
                 </li>
             </ul>
 
@@ -195,7 +178,7 @@
                 <ul class="dropdown-menu dropdown-menu-start icon" aria-labelledby="navbarDropdownMenuAvatar">
                     <li class="dropdown-item"><?php echo Auth::getFirstname() . "  " . Auth::getLastname(); ?></li>
                     <li>
-                        <a class="dropdown-item" href="<?= ROOT ?>/profile">
+                        <a class="dropdown-item" href="<?= ROOT ?>/teachers/profile">
                             Profile
                             <i class="fa-solid fa-user"></i>
                         </a>

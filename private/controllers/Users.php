@@ -1,8 +1,5 @@
 <?php
 
-/**
- * users controller
- */
 class Users extends Controller
 {
 	
