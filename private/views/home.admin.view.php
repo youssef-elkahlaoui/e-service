@@ -1,17 +1,14 @@
-
-
 <?php 
-    include "includes/nav.admin.view.php";
-    include "includes/header.view.php";
+include "includes/nav.admin.view.php";
+include "includes/header.view.php";
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-    div{
+    div {
         font-family: 'Poppins', sans-serif;
-
     }
-    .wrapper{
+    .wrapper {
         margin: -50px 0 50px;
     }
 </style>
@@ -110,35 +107,35 @@
     </div>
     <!-- Page content -->
     <div class="row">
-  <div class="col-md-9">
-    <div class="card" style="height: 500px;">
-      <canvas id="myChart" class="m-5" style="width: calc(100% - 10px); height: calc(100% - 10px);"></canvas>
-    </div>
-  </div>
-  <div class="col-md-3">
-      <div class="card" style="height: 500px;">
-          <div class="card-body">
-              <h5 class="card-title">Latest News</h5>
-              <?php if (isset($notifications) && !empty($notifications)) : ?>
-                  <?php foreach ($notifications as $notification) : ?>
-                      <div class="news-item">
-                          <h6 class="news-label" style="background-color: #d7ecfb; padding: 5px;">Notification</h6>
-                          <h6 class="news-title"><?= htmlspecialchars($notification['message']) ?></h6>
-                      </div>
-                      <hr>
-                  <?php endforeach; ?>
-              <?php else : ?>
-                  <p>No notifications available.</p>
-              <?php endif; ?>
+      <div class="col-md-9">
+        <div class="card" style="height: 500px;">
+          <canvas id="myChart" class="m-5" style="width: calc(100% - 10px); height: calc(100% - 10px);"></canvas>
+        </div>
+      </div>
+      <div class="col-md-3">
+          <div class="card" style="height: 500px;">
+              <div class="card-body">
+                  <h5 class="card-title">Latest News</h5>
+                  
+                  <?php 
+                  print_r($notifications); // Debug statement
+                  if (!empty($notifications)) : ?>
+                      <?php foreach ($notifications as $notification) : ?>
+                          <div class="news-item">
+                              <h6 class="news-label" style="background-color: #d7ecfb; padding: 5px;">Notification</h6>
+                              <h6 class="news-title"><?= htmlspecialchars($notification['message']) ?></h6>
+                          </div>
+                          <hr>
+                      <?php endforeach; ?>
+                  <?php else : ?>
+                      <p>No notifications available.</p>
+                  <?php endif; ?>
+              </div>
           </div>
       </div>
+
+    </div>
   </div>
-
-</div>
-
-
-</div>
-
 </body>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -164,7 +161,7 @@
         labels: labels,
         datasets: [{
           label: 'Number of Users per day',
-          data: [50, 19, 3, 5, 2, 3,0,21,98,28],
+          data: [50, 19, 3, 5, 2, 3, 0, 21, 98, 28],
           borderWidth: 4,
           borderColor: 'rgba(54, 162, 235, 1)',
           backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -202,7 +199,4 @@
     });
   });
 </script>
-
-
-
 <script src="https://unpkg.com/bs-brain@2.0.4/components/charts/chart-1/assets/controller/chart-1.js"></script>
