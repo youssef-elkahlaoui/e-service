@@ -3,55 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Notification</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-.container {
-    padding-top: 50px;
-}
-.card {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-}
-.form-container {
-    background-color: #f8f9fa;
-    border: 1px solid #ced4da;
-    border-radius: 10px;
-    padding: 30px;
-}
-.form-group {
-    margin-bottom: 20px;
-}
-.form-label {
-    font-weight: bold;
-}
-.form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-}
-.drop-zone {
-    border: 2px dashed #ced4da;
-    border-radius: 5px;
-    padding: 30px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.drop-zone.dragover {
-    background-color: #e9ecef;
-}
-.drop-zone input[type="file"] {
-    display: none;
-}
-</style>
-
+        .container {
+            padding-top: 50px;
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+        .form-container {
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            border-radius: 10px;
+            padding: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <?php 
-        include "includes/nav.admin.view.php";
-        include "includes/header.view.php";
-    ?>
-     <div class="container">
+    <?php include "includes/nav.admin.view.php"; ?>
+    <?php include "includes/header.view.php"; ?>
+
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="row">
@@ -64,6 +49,27 @@
                         </nav>
                     </div>
                 </div>
+
+                <?php if (isset($message)): ?>
+                <div class="card mb-4">
+                    <div class="card-body shadow rounded-3">
+                        <div class="alert alert-success" role="alert">
+                            <?= $message ?>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <?php if (isset($message1)): ?>
+                <div class="card mb-4">
+                    <div class="card-body shadow rounded-3">
+                        <div class="alert alert-info" role="alert">
+                            <?= $message1 ?>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
+
                 <div class="card mb-4">
                     <div class="card-body shadow rounded-3">
                         <div class="form-container">
