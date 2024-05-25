@@ -66,7 +66,7 @@
             <div class="card mb-4">
                 <div class="card-body shadow rounded-3">
                     <div class="form-container">
-                        <form action="importNotes/importNotes" method="post" enctype="multipart/form-data">
+                        <form action="<?= ROOT ?>/importNotes/importNotes" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label class="form-label" for="excel">Importer les notes :</label>
                                 <div class="drop-zone" id="drop-zone">

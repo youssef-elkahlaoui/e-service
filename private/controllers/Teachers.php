@@ -51,16 +51,16 @@ class Teachers extends Controller
         $this->view('notif.get.prof');
     }
     
-	function cour(){
-        $this->view('cour.prof');
+	public function cours(){
+        $this->view('cours');
     }
 
-    function td(){
-        $this->view('td.prof');
+    function exercices(){
+        $this->view('exercices.prof');
     }
 
     function note(){
-        $this->view('note.prof');
+        $this->view('importNotes');
     }
 
     function profile($id = null){
