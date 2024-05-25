@@ -2,7 +2,7 @@
 class Notification extends Controller {
 
     public function sendNot() {
-        // No initialization needed in the constructor
+        
         require './assets/PHPMailer-master/src/PHPMailer.php';
         require './assets/PHPMailer-master/src/SMTP.php';
         require './assets/PHPMailer-master/src/Exception.php';
