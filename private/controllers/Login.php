@@ -21,7 +21,7 @@ class Login extends Controller
                         if (isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'on') {
                             setcookie('remembered', 'true', time() + (86400 * 30), '/');
                         }
-                        // $this->incrementLoginCount();
+                        $this->incrementLoginCount();
                         $this->redirect('/student');
                     }
                 }
