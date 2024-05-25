@@ -104,11 +104,13 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a class="dropdown-item" href="<?= ROOT ?>/students/absence"><i class="fa-solid fa-circle-xmark"></i>Absences</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= ROOT ?>/students/absence"><i class="fa-solid fa-circle-xmark"></i>&nbsp;Absences</a>
                 </li>
-                <li>
-                    <a class="dropdown-item" href="<?= ROOT ?>/students/note"><i class="fa-solid fa-marker"></i>Notes</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= ROOT ?>/students/note">
+                    <i class="fa-solid fa-marker fa-shake"></i>&nbsp;Notes
+                    </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a
