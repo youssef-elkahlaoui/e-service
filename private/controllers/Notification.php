@@ -20,12 +20,12 @@ class Notification extends Controller {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'anass.essafi@etu.uae.ac.ma';
+                $mail->Username = 'youssefelkahlaoui@etu.uae.ac.ma';
                 $mail->Password = 'dkmj kcwr waqm fedr'; 
                 $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                $mail->setFrom('anass.essafi@etu.uae.ac.ma', 'ANASS');
+                $mail->setFrom('youssef.elkahlaoui@etu.uae.ac.ma', 'ANASS');
                 $mail->Subject = "Don't reply to this message";
 
                 foreach($students as $student) {
@@ -41,16 +41,18 @@ class Notification extends Controller {
                 echo 'Error: '. $ex->getMessage();
             }
             try{
-                $db->query("INSERT INTO notifications (Filiere, Message, DateNotification) VALUES (?, ?, NOW())", array($choice, $notification));
+                $db->query("INSERT INTO notifications (Filiere,Message,DateTime) VALUES (?,?,NOW())",array($choice,$notification));
                 echo "Notification has been inserted succesfully in Database";
             }catch(Exception $e){
-                echo "Error inserting Notification in Database , ". $e->getMessage();
+                echo "Error inserting Notiifcation in Database". $e->getMessage();
             }
         }
     }
 
     public function index() {
+
         $this->view('SendNotification');
+        // $this->view('notif.prof');
     }
 }
 

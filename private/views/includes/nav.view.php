@@ -166,7 +166,7 @@
                     >
                         <li><?php echo Auth::getFirstname();?></li>
                       <li>
-                        <a class="dropdown-item" href="profile">Profile</a>
+                        <a class="dropdown-item" href="<?= ROOT ?>/students/profile">Profile</a>
                       </li>
                       <li>
                         <a class="dropdown-item" href="<?= ROOT ?>/logout">Logout</a>
