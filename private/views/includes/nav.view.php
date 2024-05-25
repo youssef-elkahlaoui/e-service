@@ -100,15 +100,15 @@
                             <a class="dropdown-item" href="<?= ROOT ?>/students/modules">Modules</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/students/absence">Absences</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/students/note">Notes</a>
-                        </li>
-                        <li>
                             <a class="dropdown-item" href="<?= ROOT ?>/students/devoir">Rendre Devoir</a>
                         </li>
                     </ul>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="<?= ROOT ?>/students/absence"><i class="fa-solid fa-circle-xmark"></i>Absences</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="<?= ROOT ?>/students/note"><i class="fa-solid fa-marker"></i>Notes</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a
