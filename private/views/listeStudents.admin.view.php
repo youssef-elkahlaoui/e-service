@@ -86,7 +86,7 @@
                     <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Les admins</li>
+                            <li class="breadcrumb-item active" aria-current="page">Les étudiants</li>
                         </ol>
                     </nav>
                 </div>
@@ -95,7 +95,7 @@
             <div class="card mb-4">
                 <div class="card-body shadow rounded-3">
                     <div class="p-5 text-center clr crd-body">
-                        <h1 class="mb-3">Les Admins</h1>
+                        <h1 class="mb-3">Les étudiants</h1>
                     </div>
                     <table class="table table-hover">
                         <thead>
