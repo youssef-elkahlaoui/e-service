@@ -136,16 +136,32 @@ class Students extends Controller
         $this->view('listeProf');
     }
 
-	function etatDemande(){
-        if(!Auth::studentLoggedIn())
+		function etatDemande()
 		{
-			$this->redirect('login');
+			// Vérifie si l'étudiant est connecté
+			if (!Auth::studentLoggedIn()) {
+				$this->redirect('login');
+			}
+	
+			// Obtenir l'ID de l'étudiant depuis la session
+			$student_id = $_SESSION['STUDENT']->id;
+	
+			// Récupérer toutes les demandes de l'étudiant connecté
+			$sql = "SELECT * FROM demands WHERE student_id = ?";
+			try {
+				$db = new Database();
+				$demands = $db->query($sql, [$student_id]);
+				$this->view('demande.etat.etu', ['demands' => $demands]);
+			} catch (Exception $e) {
+				$this->view('demande.etat.etu', ['error' => "Erreur lors de la récupération des demandes: " . $e->getMessage()]);
+			}
 		}
-		$user = new Student();
+	
+	
 
-		$data = $user->findAll();
-        $this->view('demande.etat.etu');
-    }
+	
+
+	
 
 	
     function documentation(){
