@@ -1,196 +1,216 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include('header.view.php'); ?>
 <head>
-    
     <style>
-        .navbar-nav .nav-item .dropdown-toggle {
-            color: #555; /* Change this to your preferred font color */
+        .navbar-nav .nav-item .nav-link,
+        .navbar-nav .nav-item .dropdown-toggle,
+        .dropdown-item {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px; 
+            border-radius: 10px; 
+        }
+        .dropdown-item {
+            font-size: 20px;
+        }
+        .navbar-nav .nav-item .dropdown-toggle,
+        .navbar-nav .nav-item .nav-link,
+        .dropdown-item {
+            color: #555;
             padding: 8px 12px;
             transition: background-color 0.3s, color 0.3s;
+            border-radius: 10px;
         }
-        
+
         .navbar-nav .nav-item .dropdown-toggle:hover,
-        .navbar-nav .nav-item .dropdown-toggle:focus {
-            color: #fff; /* Color when hovered or focused */
-            background-color: #0062cc; /* Background color when hovered or focused */
+        .navbar-nav .nav-item .dropdown-toggle:focus,
+        .navbar-nav .nav-item .nav-link:hover,
+        .navbar-nav .nav-item .nav-link:focus,
+        .dropdown-item:hover,
+        .dropdown-item:focus {
+            color: #fff; 
+            background-color: #0062cc; 
         }
 
         .dropdown-menu {
-            border-radius: 4px; /* Rounded corners for dropdown */
+            border-radius: 4px; 
         }
 
         .dropdown-item {
-            color: #333; /* Dropdown item font color */
+            color: #333;
         }
 
         .dropdown-item:hover {
-            background-color: #f8f9fa; /* Background color of dropdown items when hovered */
+            background-color: #f8f9fa;
+            color: #555;
+        }
+        .icon{
+
+            transform: translateX(-100%);
+        }
+        @media (max-width:980px){
+            .icon{
+            transform: translateX(10%);
+            }
         }
     </style>
+    <link rel="stylesheet" href="../styles/stylenav.css">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
-        <!-- Container wrapper -->
-        <div class="container-fluid">
-            <!-- Toggle button -->
-            <button
-              data-mdb-collapse-init
-              class="navbar-toggler"
-              type="button"
-              data-mdb-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i class="fas fa-bars"></i>
-            </button>
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+    <div class="container-fluid">
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
 
-            <!-- Collapsible wrapper -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="<?= ROOT?>/admins">
-                    <img
-                      src="/final/public/mdb/img/logo-ensah.png"
-                      height="30"
-                      alt="ENSAH Logo"
-                      loading="lazy"
-                    />
-                </a>
-                
-                <!-- Left links -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <a class="navbar-brand mt-2 mt-lg-0" href="<?= ROOT ?>/admins">
+                <img
+                    src="<?= ROOT ?>/mdb/img/logo.png"
+                    height="60"
+                    alt="ENSAH Logo"
+                    loading="lazy"
+                />
+            </a>
+            
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/admins">Accuille</a>
+                    <a class="nav-link" href="<?= ROOT ?>/admins">
+                        <i class="fa-solid fa-house mt-1"></i>&nbsp;Accueil
+                    </a>
                 </li>
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <a
-                                data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center "
-                                href="#"
-                                id="0"
-                                role="button"
-                                aria-expanded="false"
-                            >Mes etudes</a>
-                            <ul
-                                class="dropdown-menu dropdown-menu-end"
-                                aria-labelledby="0"
-                            >
-                                <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/modules">Modules</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/absence">Mes absence</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/note">Affichage des notes</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <a
-                                data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center "
-                                href="#"
-                                id="1"
-                                role="button"
-                                aria-expanded="false"
-                            >Scolaritee</a>
-                            <ul
-                                class="dropdown-menu dropdown-menu-end"
-                                aria-labelledby="1"
-                            >
-                                <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/classe">Ma classe</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/listeProf">Mes professeurs</a>
-                                </li>
-                        </div>
-                        
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <a
-                                data-mdb-dropdown-init
-                                class="dropdown-toggle d-flex align-items-center "
-                                href="#"
-                                id="3"
-                                role="button"
-                                aria-expanded="false"
-                            >Demandes</a>
-                            <ul
-                                class="dropdown-menu dropdown-menu-end"
-                                aria-labelledby="3"
-                            >
-                                <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/demande">Nouveau Demande</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="<?= ROOT ?>/admins/etatDemande">Mes Demandes</a>
-                                </li>
-                        </div>
-                        
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="Notification">Send Notification</a>
-                    </li>
-                </li>
-                    
-                </ul>
-                <!-- Left links -->
-
-                <!-- Right elements -->
-                <div class="dropdown">
+                <li class="nav-item dropdown">
                     <a
-                      data-mdb-dropdown-init
-                      class="dropdown-toggle d-flex align-items-center hidden-arrow"
-                      href="#"
-                      id="navbarDropdownMenuAvatar"
-                      role="button"
-                      aria-expanded="false"
-                    >
-                      <img
-                        src="../public/<?= Auth::getImage();?>"
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="mesClassesDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-users"></i>&nbsp;Classes
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="mesClassesDropdown">
+                        <li>
+                            <a class="dropdown-item" href="<?= ROOT ?>/admins/getAllstudents">Les étudiants</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= ROOT ?>/admins/getDemandes">
+                        <i class="fa-solid fa-school"></i>&nbsp;Demandes
+                    </a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= ROOT ?>/admins/notifAdminsend">
+                        <i class="fa-solid fa-bell mb-1"></i>&nbsp;Envoie de Notification
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="archivageDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-box-archive mb-1"></i>&nbsp;Archivage
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="archivageDropdown">
+                        <li >
+                            <a class="dropdown-item" href="<?= ROOT ?>/Allnotification">Notifications</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="<?= ROOT?>/teachers/archProf">Profs</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="contactsDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fa-regular fa-id-card"></i>&nbsp;Contacts
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="contactsDropdown">
+                        <li>
+                            <a class="dropdown-item" href="<?= ROOT ?>/admins/getAllAdmins">Admins</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="<?= ROOT ?>/admins/getAllProfs">Professeurs</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="exportsDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fas fa-file-excel"></i>&nbsp;Importer
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="exportsDropdown">
+                        <li >
+                            <a class="dropdown-item" href="<?= ROOT ?>/admins/importusers">Importer Etudiants</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="<?= ROOT ?>/admins/note">Notes</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div  class="dropdown">
+                <a
+                    class="nav-link dropdown-toggle d-flex align-items-center hidden-arrow"
+                    href="#"
+                    id="navbarDropdownMenuAvatar"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img
+                        src="<?= ROOT . Auth::getimage(); ?>"
                         class="rounded-circle"
                         height="40"
                         alt="Black and White Portrait of a Man"
                         loading="lazy"
-                      />
-                    </a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end"
-                      aria-labelledby="navbarDropdownMenuAvatar"
-                    >
-                        <li><?php echo Auth::getFirstname();?></li>
-                      <li>
-                        <a class="dropdown-item" href="profile">Profile</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="<?= ROOT ?>/logout">logout</a>
-                      </li>
-
-                </div>
+                    />
+                </a>
+                <ul class="dropdown-menu dropdown-menu-start icon" aria-labelledby="navbarDropdownMenuAvatar">
+                    <li class="dropdown-item"><?php echo Auth::getFirstname() . "  " . Auth::getLastname(); ?></li>
+                    <li>
+                        <a class="dropdown-item" href="<?= ROOT ?>/admins/profile">
+                            Profile
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="<?= ROOT ?>/logout">
+                            Logout
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <!-- Collapsible wrapper -->
         </div>
-        <!-- Container wrapper -->
-    </nav>
-    <!-- Navbar -->
-    <!-- End your project here-->
+    </div>
+</nav>
 
-    <!-- MDB -->
-    <script type="text/javascript" src="../public/mdb/js/mdb.umd.min.js"></script>
-    <!-- Custom scripts -->
-
-
-
-    <h3>Hi!</h3>
-
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

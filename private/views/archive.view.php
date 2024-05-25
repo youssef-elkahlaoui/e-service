@@ -8,7 +8,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive Courses/Exercises</title>
     <style>
         .container {
             padding-top: 50px;
@@ -53,7 +52,7 @@
 <body>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-10">
+        <div class="col-lg-12">
             <div class="row">
                 <div class="col">
                     <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
@@ -78,6 +77,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php if($courses):?>
                                 <?php foreach ($courses as $course): ?>
                                     <tr>
                                         <td><?= $course['IdCours'] ?></td>
@@ -85,12 +85,14 @@
                                         <td><?= $course['Description'] ?></td>
                                         <td><?= $course['IdClasse'] ?></td>
                                         <td>
-                                            <a href="<?= ROOT ?>/Archive/archive/<?= $course['IdCours'] ?>" class="btn btn-danger">Archive</a>
+                                            <a href="<?= ROOT ?>/teachers/archive/<?= $course['IdCours'] ?>" class="btn btn-danger">Archive</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
+                                <?php endif; ?>
                             </tbody>
                             <tbody>
+                                <?php if($dcourses):?>
                                 <?php foreach ($dcourses as $course): ?>
                                     <tr>
                                         <td><?= $course['IdCours'] ?></td>
@@ -98,10 +100,11 @@
                                         <td><?= $course['Description'] ?></td>
                                         <td><?= $course['IdClasse'] ?></td>
                                         <td>
-                                            <a href="<?= ROOT ?>/Archive/desarchive/<?= $course['IdCours'] ?>" class="btn btn-primary">Desarchive</a>
+                                            <a href="<?= ROOT ?>/teachers/desarchive/<?= $course['IdCours'] ?>" class="btn btn-primary">Desarchive</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>

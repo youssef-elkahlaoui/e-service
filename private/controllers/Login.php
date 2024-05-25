@@ -17,6 +17,7 @@ class Login extends Controller
                     $row = $row[0];
                     if (password_verify($_POST['password'], $row->password)) {
                         Auth::authenticateStudent($row);
+                        Auth::authNiveau();
                         if (isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'on') {
                             setcookie('remembered', 'true', time() + (86400 * 30), '/');
                         }
@@ -47,7 +48,7 @@ class Login extends Controller
                             setcookie('remembered', 'true', time() + (86400 * 30), '/');
                         }
                         $this->incrementLoginCount();
-                        $this->redirect('/admin');
+                        $this->redirect('/admins');
                     }
                 }
             }
@@ -68,11 +69,9 @@ class Login extends Controller
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($result) {
-            // Increment today's login count
             $stmt = $pdo->prepare("UPDATE logins SET count = count + 1 WHERE date = :date");
             $stmt->execute(['date' => $today]);
         } else {
-            // Insert a new record for today
             $stmt = $pdo->prepare("INSERT INTO logins (date, count) VALUES (:date, 1)");
             $stmt->execute(['date' => $today]);
         }

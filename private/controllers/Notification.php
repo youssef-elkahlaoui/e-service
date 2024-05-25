@@ -2,7 +2,7 @@
 class Notification extends Controller {
 
     public function sendNot() {
-        // No initialization needed in the constructor
+        
         require './assets/PHPMailer-master/src/PHPMailer.php';
         require './assets/PHPMailer-master/src/SMTP.php';
         require './assets/PHPMailer-master/src/Exception.php';
@@ -20,12 +20,12 @@ class Notification extends Controller {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'youssefelkahlaoui@etu.uae.ac.ma';
+                $mail->Username = 'anass.essafi@etu.uae.ac.ma';
                 $mail->Password = 'dkmj kcwr waqm fedr'; 
                 $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                $mail->setFrom('youssef.elkahlaoui@etu.uae.ac.ma', 'ANASS');
+                $mail->setFrom('anass.essafi@etu.uae.ac.ma', 'ANASS');
                 $mail->Subject = "Don't reply to this message";
 
                 foreach($students as $student) {
@@ -36,23 +36,23 @@ class Notification extends Controller {
                         $mail->send();
                     }
                 }
-                echo 'Mail has been sent successfully<br>';
+                $message = 'Mail has been sent successfully<br>';
             } catch(\PHPMailer\PHPMailer\Exception $ex) {
-                echo 'Error: '. $ex->getMessage();
+                $message =  'Error: '. $ex->getMessage();
             }
             try{
                 $db->query("INSERT INTO notifications (Filiere,Message,DateTime) VALUES (?,?,NOW())",array($choice,$notification));
-                echo "Notification has been inserted succesfully in Database";
+                $message1= "Notification has been inserted succesfully in Database";
             }catch(Exception $e){
-                echo "Error inserting Notiifcation in Database". $e->getMessage();
+                $message1 =  "Error inserting Notiifcation in Database". $e->getMessage();
+                	$this->view("SendNotification",['message'=>$message,"message1"=>$message1]);
             }
         }
     }
-
+    
     public function index() {
 
         $this->view('SendNotification');
-        // $this->view('notif.prof');
     }
 }
 

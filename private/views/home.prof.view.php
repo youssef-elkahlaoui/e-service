@@ -101,21 +101,18 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
         <div class="col-md-3">
             <div class="card" style="height: 500px;">
                 <div class="card-body">
-                    <h5 class="card-title">Latest News</h5>
+                <h5 class="card-title">Latest News</h5>
+                <?php if (isset($notifications) && !empty($notifications)) : ?>
+                    <?php foreach ($notifications as $notification) : ?>
                     <div class="news-item">
-                        <h6 class="news-label" style="background-color: #d7ecfb; padding: 5px;">News 1</h6>
-                        <h6 class="news-title">Lorem Ipsum Dolor Sit Amet</h6>
-                        <p class="news-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <button class="btn btn-outline-primary btn-sm" style="color: blue;">Read More</button>
+                        <h6 class="news-label" style="background-color: #d7ecfb; padding: 5px;">Notification</h6>
+                        <h6 class="news-title"><?= htmlspecialchars($notification['message']) ?></h6>
                     </div>
                     <hr>
-                    <div class="news-item">
-                        <h6 class="news-label" style="background-color: #d7ecfb; padding: 5px;">News 2</h6>
-                        <h6 class="news-title">Consectetur Adipiscing Elit</h6>
-                        <p class="news-content">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <button class="btn btn-outline-primary btn-sm" style="color: blue;">Read More</button>
-                    </div>
-                    <hr>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p>No notifications available.</p>
+                <?php endif; ?>
                 </div>
             </div>
         </div>

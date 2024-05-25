@@ -4,7 +4,7 @@
     foreach ($data as $key => $value) {
         ${$key}= $value;
     }
-    
+    echo Auth::getIdclasse();
 ?>
     <section style="background-color: #eee; ">
     <div class="container py-5" >
@@ -27,7 +27,7 @@
                     class="rounded-circle img-fluid" style="width: 150px;">
                     <h5 class="my-3"><?=Auth::getFirstname()."  ".Auth::getLastname();?></h5>
                     <br>
-                    <p class="text-muted mb-1">Filiere: <?=$NomFiliere?></p>
+                    <p class="text-muted mb-1">Filiere: <?=$NomClasse?></p>
                     <p class="text-muted mb-1">CNE: <?= Auth::getCne();?></p>
                     <p class="text-muted mb-4" >CIN: <?= Auth::getCin();?></p>
                 </div>
@@ -77,7 +77,7 @@
                         <p class="mb-0">Filiere:</p>
                     </div>
                     <div class="col-sm-9">
-                        <p class="text-muted mb-0"><?=$NomFiliere?></p>
+                        <p class="text-muted mb-0"><?=$NomClasse?></p>
                     </div>
                     </div>
                     <hr>
