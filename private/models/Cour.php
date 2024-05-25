@@ -1,6 +1,6 @@
 <?php
 
-class Cour {
+class Cour extends Model {
     public static function getAll() {
         $db = new Database();
         $query = "SELECT * FROM cours ";
