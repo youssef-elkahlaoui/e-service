@@ -6,9 +6,6 @@
 class Auth
 {
 	
-	public static function authenticateAdmin($row) {
-        $_SESSION['ADMIN'] = $row;
-    }
     public static function authNiveau() {
         if (isset($_SESSION['STUDENT'])) {
 
@@ -26,6 +23,11 @@ class Auth
         $_SESSION['TEACHER'] = $row;
     }
 
+    public static function authenticateAdmin($row) {
+        $_SESSION['ADMIN'] = $row;
+    }
+
+    
 	public static function logout() {
         if (isset($_SESSION['ADMIN'])) {
             unset($_SESSION['ADMIN']);

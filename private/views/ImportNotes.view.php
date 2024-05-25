@@ -52,7 +52,7 @@
 <body>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-10">
+        <div class="col-lg-12">
             <div class="row">
                 <div class="col">
                     <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
@@ -66,7 +66,7 @@
             <div class="card mb-4">
                 <div class="card-body shadow rounded-3">
                     <div class="form-container">
-                        <form action="importNotes/importNotes" method="post" enctype="multipart/form-data">
+                        <form action="<?= ROOT ?>/importNotes/importNotes" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label class="form-label" for="excel">Importer les notes :</label>
                                 <div class="drop-zone" id="drop-zone">

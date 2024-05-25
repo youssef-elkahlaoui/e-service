@@ -110,7 +110,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/Archive">
+                    <a class="nav-link" href="<?= ROOT ?>/teachers/archivecours">
                         <i class="fa-solid fa-box-archive mb-1"></i>&nbsp;Archivage
                     </a>
                 </li>
@@ -145,15 +145,15 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="exportsDropdown">
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/CoursExercices?type=cours">Cours & Fichiers</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/cours">Cours & Fichiers</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/CoursExercices?type=exercices">TDs & TPs</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/techers/exercices">TDs & TPs</a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/ImportNotes">
+                    <a class="nav-link" href="<?= ROOT ?>/teachers/note">
                     <i class="fa-solid fa-marker fa-shake"></i>&nbsp;Notes
                     </a>
                 </li>

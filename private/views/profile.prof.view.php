@@ -85,7 +85,7 @@
                 <div class="card-body shadow rounded-3">
                     <div class="row">
                         <div class="col-lg-4 text-center">
-                            <img src="<?= ROOT.Auth::getImage(); ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                            <img src="<?= ROOT.Auth::getImage(); ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;" onclick="zoomProfileIcon(this)">
                             <h5 class="my-3"><?= Auth::getFirstname() . " " . Auth::getLastname(); ?></h5>
                             <p class="text-muted mb-4">CIN: <?= Auth::getCin(); ?></p>
                         </div>
@@ -112,4 +112,13 @@
     </div>
 </div>
 </body>
+<script>
+    function zoomProfileIcon(element) {
+        element.style.transform = "scale(2.5)";
+        element.style.transition = "transform 1s";
+        setTimeout(function(){
+            element.style.transform = "scale(1)";
+        }, 1000);
+    }
+</script>
 </html>
