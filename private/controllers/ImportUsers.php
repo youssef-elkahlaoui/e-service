@@ -108,7 +108,7 @@ class ImportUsers extends Controller {
     }   
 
     public function index() {
-        $this->view('ImportUsers');
+       $this->view('home.admin');
     }
 }
 ?>

@@ -72,11 +72,14 @@ class Admins extends Controller {
     function profile($id = null) {
         $this->view("profile.admin");
     }
-
-    function getNotifs(){
-        $NotifController = new Seenotifications();
-        $notifications = $NotifController->scroll();
-        $this->view('home.admin',['notifications'=> $notifications]);
+    function importusers(){
+        $this->view('ImportUsers');
     }
+
+    // function getNotifs(){
+    //     $NotifController = new Seenotifications();
+    //     $notifications = $NotifController->scroll();
+    //     $this->view('home.admin',['notifications'=> $notifications]);
+    // }
 }
 ?>

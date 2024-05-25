@@ -165,10 +165,10 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="exportsDropdown">
                         <li >
-                            <a class="dropdown-item" href="<?= ROOT ?>/ImportUsers">Importer Etudiants</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/admins/importusers">Importer Etudiants</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/note">Notes</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/admins/note">Notes</a>
                         </li>
                     </ul>
                 </li>
