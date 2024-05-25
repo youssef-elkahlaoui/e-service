@@ -89,8 +89,7 @@ class Students extends Controller
         $this->view('notes.etu', ['data'=> $data]);
     }
 
-	function seulnote($id)
-	{
+	function seulnote($id) {
 		if (!Auth::studentLoggedIn()) {
 			$this->redirect('login');
 		}
@@ -101,27 +100,38 @@ class Students extends Controller
 		// Check if the course exists
 		$courseData = $module->where('IdCours', $id);
 		if (empty($courseData)) {
-			$this->redirect('errorPage'); // Redirect to an error page if course does not exist
+			$this->redirect('404'); // Redirect to an error page if the course does not exist
 		}
 	
 		// Check if the student is enrolled in the course
 		$studentId = Auth::getId();
 		$enrolled = false;
+	
+		// Assuming course data contains the idClasse
 		foreach ($courseData as $course) {
-			if ($course->IdCours == $id && $course->IdClasse == $studentId) {
+			if (@$course->idClasse == $studentId) {
 				$enrolled = true;
 				break;
 			}
 		}
 	
 		if (!$enrolled) {
-			$this->redirect('errorPage'); // Redirect to an error page if student is not enrolled in the course
+			$this->redirect('404'); // Redirect to an error page if the student is not enrolled in the course
 		}
 	
-		// Fetch the notes for the course and the student
-		$data = $note->where('IdCours', $id);
-		$this->view('note.etu', ['note' => $data, 'module' => $courseData]);
+		// Manually construct the query to fetch the notes for the specific course and student
+		$query = "SELECT * FROM notes WHERE IdCours = :IdCours AND idstudent = :idstudent";
+		$data = $note->query($query, ['IdCours' => $id, 'idstudent' => $studentId]);
+	
+		// Check if data is fetched properly
+		if (empty($data)) {
+			// Handle the case where no notes are found
+			$this->view('note.etu', ['message' => 'No notes found for this course.', 'module' => $courseData]);
+		} else {
+			$this->view('note.etu', ['note' => $data, 'module' => $courseData]);
+		}
 	}
+	
 	
 	
 

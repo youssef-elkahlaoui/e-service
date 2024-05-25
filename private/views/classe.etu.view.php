@@ -11,14 +11,14 @@
                     <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><?=$_SESSION['NIVEAU']->NomFiliere ?></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?=$_SESSION['NIVEAU']->NomClasse ?></li>
                         </ol>
                     </nav>
                 </div>
             </div>
 
             <div class="p-5 text-center bg-body-tertiary">
-                <h1 class="mb-3"><?=$_SESSION['NIVEAU']->NomFiliere?></h1>
+                <h1 class="mb-3"><?=$_SESSION['NIVEAU']->NomClasse?></h1>
             </div>
 
             <h5 class="mb-3">Vos camarades :</h5>
