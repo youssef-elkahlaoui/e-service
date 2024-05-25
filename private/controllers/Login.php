@@ -68,11 +68,9 @@ class Login extends Controller
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($result) {
-            // Increment today's login count
             $stmt = $pdo->prepare("UPDATE logins SET count = count + 1 WHERE date = :date");
             $stmt->execute(['date' => $today]);
         } else {
-            // Insert a new record for today
             $stmt = $pdo->prepare("INSERT INTO logins (date, count) VALUES (:date, 1)");
             $stmt->execute(['date' => $today]);
         }
