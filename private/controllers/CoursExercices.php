@@ -27,19 +27,15 @@ class CoursExercices extends Controller
                     $upload_dir = "../uploads/$type/";
                     $upload_file = $upload_dir . $file_name;
 
-                    // Ensure the upload directory exists
                     if (!is_dir($upload_dir)) {
                         mkdir($upload_dir, 0755, true);
                     }
 
                     if (move_uploaded_file($pdf_file, $upload_file)) {
-                        // Gather form data
                         $titre = $_POST['titre'];
                         $description = $_POST['description'];
                         $idClasse = $_POST['selectedoption'];
-                        $idModule = $_POST['idModule']; // New field
-
-                        // Insert metadata into the database
+                        $idModule = $_POST['idModule']; 
                         $db = new Database();
                         try {
                             $db->query(
@@ -95,14 +91,14 @@ class CoursExercices extends Controller
         }
     }
 
-    public function index()
-    {
-        $type = isset($_GET['type']) ? $_GET['type'] : 'cours';
-        if ($type === 'exercices') {
-            $this->view('exercices');
-        } else {
-            $this->view('cours');
-        }
-    }
+    // public function index()
+    // {
+    //     $type = isset($_GET['type']) ? $_GET['type'] : 'cours';
+    //     if ($type === 'exercices') {
+    //         $this->view('exercices');
+    //     } else {
+    //         $this->view('cours');
+    //     }
+    // }
 }
 ?>

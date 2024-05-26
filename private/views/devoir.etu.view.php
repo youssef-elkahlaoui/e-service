@@ -49,7 +49,6 @@
                 <label for="exampleFormControlSelect1">Module de :</label>
                 <select class="form-control" id="exampleFormControlSelect1" name="module">
                 <?php 
-                    // Parcourez les modules et générer les options avec les titres
                     foreach ($modules as $module) {
                         echo '<option value="' . $module->IdCours . '">' . $module->Titre . '</option>';
                     }

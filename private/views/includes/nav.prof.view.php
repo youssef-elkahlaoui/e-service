@@ -148,7 +148,7 @@
                             <a class="dropdown-item" href="<?= ROOT ?>/teachers/cours">Cours & Fichiers</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/techers/exercices">TDs & TPs</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/td">TDs & TPs</a>
                         </li>
                     </ul>
                 </li>

@@ -62,8 +62,8 @@ class Teachers extends Controller
         $this->view('cours');
     }
 
-    function exercices(){
-        $this->view('exercices.prof');
+    function td(){
+        $this->view('exercices');
     }
 
     function note(){

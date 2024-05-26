@@ -1,5 +1,5 @@
 <?php require("includes/header.view.php"); ?>
-<?php require("includes/nav.admin.view.php"); ?>
+<?php require("includes/nav.prof.view.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
