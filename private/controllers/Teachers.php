@@ -20,6 +20,21 @@ class Teachers extends Controller
         $this->view('absence.prof');
     }
 
+    function archivecours(){
+        $dcourses = Cour::getArchived();
+        $courses = Cour::getDesarchived();
+        $this->view('archive', ['courses' => $courses, 'dcourses' => $dcourses]);
+    }
+
+    public function archive($id) {
+        Cour::archiveById($id);
+        $this->archivecours();
+    }
+    public function desarchive($id) {
+        Cour::desarchiveById($id);
+        $this->archivecours();
+    }
+
 	function listeStudent(){
         $this->view('listetu.prof');
     }
@@ -28,20 +43,12 @@ class Teachers extends Controller
         $this->view('listeAdmin.prof');
     }
 
-	function demande(){
-        $this->view('demande.prof');
-    }
-
 	function listeProf(){
         $this->view('listeProf.prof');
     }
 
-	function etatDemande(){
-        $this->view('demande.etat.prof');
-    }
-
 	function notifProfsend(){
-        $this->view('notif.send.prof');
+        $this->view('SendNotProf');
     }
 
     function archProf(){
@@ -51,16 +58,16 @@ class Teachers extends Controller
         $this->view('notif.get.prof');
     }
     
-	function cour(){
-        $this->view('cour.prof');
+	public function cours(){
+        $this->view('cours');
     }
 
     function td(){
-        $this->view('td.prof');
+        $this->view('exercices');
     }
 
     function note(){
-        $this->view('note.prof');
+        $this->view('importNotes');
     }
 
     function profile($id = null){

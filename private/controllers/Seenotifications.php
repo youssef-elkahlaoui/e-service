@@ -1,19 +1,22 @@
 <?php
 class Seenotifications extends Controller {
     public function scroll() {
+        $db = new Database(); 
         try {
-            $db = new Database(); 
             $query = "SELECT message FROM notifications ORDER BY DateNotification DESC LIMIT 4"; 
-            $notifications = $db->query($query, [], "assoc");
+            $notifications = $db->query($query);
+            if($notifications === false){
+                $notifications = [];
+            }
         } catch (PDOException $e) {
-            error_log("Error: " . $e->getMessage());
+            echo ("Error: " . $e->getMessage());
             $notifications = [];
         }
         return $notifications;
     }
     public function index() {
         $notifications = $this->scroll(); 
-        $this->view('home.prof', ['notifications' => $notifications]); 
+        $this->view('home.admin', ['notifications' => $notifications]); 
     }
 }
 ?>

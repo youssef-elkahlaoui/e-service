@@ -27,23 +27,20 @@ class CoursExercices extends Controller
                     $upload_dir = "../uploads/$type/";
                     $upload_file = $upload_dir . $file_name;
 
-                    // Ensure the upload directory exists
                     if (!is_dir($upload_dir)) {
                         mkdir($upload_dir, 0755, true);
                     }
 
                     if (move_uploaded_file($pdf_file, $upload_file)) {
-                        // Gather form data
                         $titre = $_POST['titre'];
                         $description = $_POST['description'];
                         $idClasse = $_POST['selectedoption'];
-
-                        // Insert metadata into the database
+                        $idModule = $_POST['idModule']; 
                         $db = new Database();
                         try {
                             $db->query(
-                                "INSERT INTO cours (Titre, Description, IdClasse) VALUES (?, ?, ?)",
-                                [$titre, $description, $idClasse]
+                                "INSERT INTO cours (Titre, Description, IdClasse, FilePath, IdModule) VALUES (?, ?, ?, ?, ?)",
+                                [$titre, $description, $idClasse, $upload_file, $idModule]
                             );
                             echo '<script>alert("Téléchargement réussi.");</script>';
                             $this->view($view);
@@ -60,14 +57,48 @@ class CoursExercices extends Controller
         }
     }
 
-    public function index()
+    public function displayDoc($idClasse, $idModule)
     {
-        $type = isset($_GET['type']) ? $_GET['type'] : 'cours';
-        if ($type === 'exercices') {
-            $this->view('exercices');
+        if (!Auth::studentLoggedIn()) {
+            $this->redirect('login');
+        }
+
+        $db = new Database();
+        $coursData = $db->query(
+            "SELECT * FROM cours WHERE IdClasse = ? AND IdModule = ?",
+            [$idClasse, $idModule]
+        );
+
+        if ($coursData) {
+            $this->view("doc.etu", ['data' => $coursData]);
         } else {
-            $this->view('cours');
+            $this->view('doc.error.etu');
         }
     }
+
+    public function displayResults()
+    {
+        if (isset($_SESSION['results']) && isset($_SESSION['type'])) {
+            $results = $_SESSION['results'];
+            $type = $_SESSION['type'];
+            unset($_SESSION['results']);
+            unset($_SESSION['type']);
+
+            // Render the view with results
+            $this->view('doc.etu', ['results' => $results, 'type' => $type]);
+        } else {
+            echo "Aucun résultat à afficher.";
+        }
+    }
+
+    // public function index()
+    // {
+    //     $type = isset($_GET['type']) ? $_GET['type'] : 'cours';
+    //     if ($type === 'exercices') {
+    //         $this->view('exercices');
+    //     } else {
+    //         $this->view('cours');
+    //     }
+    // }
 }
 ?>

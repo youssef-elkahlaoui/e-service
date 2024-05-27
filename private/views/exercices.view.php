@@ -47,7 +47,7 @@
 <body>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-10">
+        <div class="col-lg-12">
         <div class="row">
                 <div class="col">
                     <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
@@ -61,7 +61,7 @@
             <div class="card mb-4">
                 <div class="card-body shadow rounded-3">
                     <div class="form-container">
-                        <form action="CoursExercices/uploadExercice" method="post" enctype="multipart/form-data">
+                        <form action="<?= ROOT ?>/CoursExercices/uploadExercice" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label class="form-label" for="titre">Titre de l'exercice :</label>
                                 <input type="text" id="titre" name="titre" class="form-control" required>
@@ -69,6 +69,10 @@
                             <div class="form-group">
                                 <label class="form-label" for="description">Description de l'exercice :</label>
                                 <textarea id="description" name="description" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="description">Module :</label>
+                                <textarea id="idModule" name="idModule" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="selectedoption">Choisir la classe :</label>

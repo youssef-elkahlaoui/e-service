@@ -8,7 +8,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archive Courses/Exercises</title>
     <style>
         .container {
             padding-top: 50px;
@@ -86,7 +85,7 @@
                                         <td><?= $course['Description'] ?></td>
                                         <td><?= $course['IdClasse'] ?></td>
                                         <td>
-                                            <a href="<?= ROOT ?>/Archive/archive/<?= $course['IdCours'] ?>" class="btn btn-danger">Archive</a>
+                                            <a href="<?= ROOT ?>/teachers/archive/<?= $course['IdCours'] ?>" class="btn btn-danger">Archive</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -101,7 +100,7 @@
                                         <td><?= $course['Description'] ?></td>
                                         <td><?= $course['IdClasse'] ?></td>
                                         <td>
-                                            <a href="<?= ROOT ?>/Archive/desarchive/<?= $course['IdCours'] ?>" class="btn btn-primary">Desarchive</a>
+                                            <a href="<?= ROOT ?>/teachers/desarchive/<?= $course['IdCours'] ?>" class="btn btn-primary">Desarchive</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

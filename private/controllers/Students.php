@@ -89,8 +89,7 @@ class Students extends Controller
         $this->view('notes.etu', ['data'=> $data]);
     }
 
-	function seulnote($id)
-	{
+	function seulnote($id) {
 		if (!Auth::studentLoggedIn()) {
 			$this->redirect('login');
 		}
@@ -101,27 +100,38 @@ class Students extends Controller
 		// Check if the course exists
 		$courseData = $module->where('IdCours', $id);
 		if (empty($courseData)) {
-			$this->redirect('errorPage'); // Redirect to an error page if course does not exist
+			$this->redirect('404'); // Redirect to an error page if the course does not exist
 		}
 	
 		// Check if the student is enrolled in the course
 		$studentId = Auth::getId();
 		$enrolled = false;
+	
+		// Assuming course data contains the idClasse
 		foreach ($courseData as $course) {
-			if ($course->IdCours == $id && $course->IdClasse == $studentId) {
+			if (@$course->idClasse == $studentId) {
 				$enrolled = true;
 				break;
 			}
 		}
 	
 		if (!$enrolled) {
-			$this->redirect('errorPage'); // Redirect to an error page if student is not enrolled in the course
+			$this->redirect('404'); // Redirect to an error page if the student is not enrolled in the course
 		}
 	
-		// Fetch the notes for the course and the student
-		$data = $note->where('IdCours', $id);
-		$this->view('note.etu', ['note' => $data, 'module' => $courseData]);
+		// Manually construct the query to fetch the notes for the specific course and student
+		$query = "SELECT * FROM notes WHERE IdCours = :IdCours AND idstudent = :idstudent";
+		$data = $note->query($query, ['IdCours' => $id, 'idstudent' => $studentId]);
+	
+		// Check if data is fetched properly
+		if (empty($data)) {
+			// Handle the case where no notes are found
+			$this->view('note.etu', ['message' => 'No notes found for this course.', 'module' => $courseData]);
+		} else {
+			$this->view('note.etu', ['note' => $data, 'module' => $courseData]);
+		}
 	}
+	
 	
 	
 
@@ -136,16 +146,32 @@ class Students extends Controller
         $this->view('listeProf');
     }
 
-	function etatDemande(){
-        if(!Auth::studentLoggedIn())
+		function etatDemande()
 		{
-			$this->redirect('login');
+			// Vérifie si l'étudiant est connecté
+			if (!Auth::studentLoggedIn()) {
+				$this->redirect('login');
+			}
+	
+			// Obtenir l'ID de l'étudiant depuis la session
+			$student_id = $_SESSION['STUDENT']->id;
+	
+			// Récupérer toutes les demandes de l'étudiant connecté
+			$sql = "SELECT * FROM demands WHERE student_id = ?";
+			try {
+				$db = new Database();
+				$demands = $db->query($sql, [$student_id]);
+				$this->view('demande.etat.etu', ['demands' => $demands]);
+			} catch (Exception $e) {
+				$this->view('demande.etat.etu', ['error' => "Erreur lors de la récupération des demandes: " . $e->getMessage()]);
+			}
 		}
-		$user = new Student();
+	
+	
 
-		$data = $user->findAll();
-        $this->view('demande.etat.etu');
-    }
+	
+
+	
 
 	
     function documentation(){
@@ -164,14 +190,18 @@ class Students extends Controller
 		{
 			$this->redirect('login');
 		}
-		$user = new Student();
+		$module = new Module();
+		
+		// Récupérer les données des modules pour la classe actuelle
+		$modulesData = $module->where('IdClasse', Auth::getIdclasse());
+		
+		// Créer un tableau pour stocker les données des modules avec les noms des professeurs
 
-		$data = $user->findAll();
-        $this->view('devoir.etu');
+        $this->view('devoir.etu',['module' => $modulesData]);
     }
     
-	function modules(){
-		if(!Auth::studentLoggedIn()) {
+	function modules() {
+		if (!Auth::studentLoggedIn()) {
 			$this->redirect('login');
 		}
 		
@@ -189,6 +219,11 @@ class Students extends Controller
 			// Récupérer le nom du professeur pour ce module
 			$teacherData = $teacher->where('id', $moduleData->IdEnseignant); // Accès aux propriétés de l'objet avec ->
 			
+			// Assurez-vous que $teacherData est un tableau
+			if (!is_array($teacherData)) {
+				$teacherData = [];
+			}
+			
 			// Utiliser la méthode where pour récupérer uniquement le premier professeur correspondant
 			$teacherData = count($teacherData) > 0 ? $teacherData[0] : null;
 			
@@ -199,10 +234,10 @@ class Students extends Controller
 			];
 		}
 		
-		
 		// Passer les données des modules avec les noms des professeurs à la vue
 		$this->view("modules", ['modulesWithTeacherNames' => $modulesWithTeacherNames]);
 	}
+	
 	
 
     function profile($id = null){
@@ -215,4 +250,8 @@ class Students extends Controller
         $classeData=$classeData[0];
         $this->view("profile.etu", ['data'=>$classeData]);
     }
+
+	function test($id,$allo){
+		$this->view('test', ['id'=> $id,'allo'=> $allo]);
+	} 
 }

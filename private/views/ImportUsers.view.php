@@ -1,7 +1,7 @@
 <?php 
     include "includes/header.view.php";
 
-    include "includes/nav.prof.view.php";
+    include "includes/nav.admin.view.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,10 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Send Notification</title>
+    
 </head>
 <style>
-    .container {
+   .container {
         padding-top: 50px;
     }
     .card {
@@ -37,30 +37,44 @@
         border: 1px solid #ced4da;
         border-radius: 5px;
     }
+    .container {
+            padding-top: 50px;
+    }
+    </style>
 </style>
 
 <body>
-<div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="form-container">
-                            <form action="importUsers/import" method="post" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label class="form-label" for="excel">Importer les ètudiants :</label>
-                                    <input type="file" id="excel" name="excel" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-outline-primary " name="import">Import</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+    <div class="container">
+<div class="row justify-content-center">
+    <div class="col-lg-12">
+        
+        <div class="row">
+            <div class="col">
+
+                    <ol class="breadcrumb mb-0 bg-body-tertiary rounded-3 p-3 mb-4 shadow">
+                        <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Envoyer Notification...</li>
+                    </ol>
             </div>
         </div>
     </div>
+</div>
+<div class="card mb-4">
+    <div class="card-body shadow rounded-3">
+        <div class="form-container">
+                <form action="importUsers/import" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="form-label" for="excel">Importer les ètudiants :</label>
+                        <input type="file" id="excel" name="excel" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-primary " name="import">Import</button>
+                    </div>
+                </form>
+        </div>
+    </div> 
+</div>
+</div>
 </body>
 
 

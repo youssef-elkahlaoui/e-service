@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes professeurs</title>
+    <title>Liste des Admins</title>
     <style>
         .container {
             padding-top: 50px;
@@ -80,7 +80,7 @@
 <body>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-10">
+        <div class="col-lg-12">
             <div class="row bg-white">
                 <div class="col">
                     <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
@@ -95,31 +95,26 @@
             <div class="card mb-4">
                 <div class="card-body shadow rounded-3">
                     <div class="p-5 text-center clr crd-body">
-                        <h1 class="mb-3">Les Admins</h1>
+                        <h1 class="mb-3">Les Proffesseurs</h1>
                     </div>
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th></th> <!-- New column for profile icons -->
-                                <th>Admins</th>
-                                <th>Telephones</th>
+                                <th>Avatar</th> <!-- Column for profile icons -->
+                                <th>Nom</th>
+                                <th>Prénom</th>
                                 <th>Email</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($teachers as $teacher): ?>
                             <tr>
-                                <td><img src="<?= ROOT.Auth::getImage();?>" alt="Profile Icon" class="profile-icon" onclick="zoomProfileIcon(this)"></td>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Maria Anders</td>
+                                <td><img src="<?= ROOT. $teacher->image;?>" alt="Profile Icon" class="profile-icon" onclick="zoomProfileIcon(this)"></td>
+                                <td><?= $teacher->firstname ?></td>
+                                <td><?= $teacher->lastname ?></td>
+                                <td><?= $teacher->email ?></td>
                             </tr>
-                            <tr>
-                                <td><img src="<?= ROOT.Auth::getImage();?>" alt="Profile Icon" class="profile-icon" onclick="zoomProfileIcon(this)"></td>
-                                <td>Centro comercial Moctezuma</td>
-                                <td>Francisco Chang</td>
-                                <td>Maria Anders</td>
-                            </tr>
-                            <!-- Add more rows as needed -->
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
