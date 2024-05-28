@@ -2,6 +2,11 @@
     include "includes/nav.prof.view.php";
     include "includes/header.view.php";
     
+    if (isset($data) && isset($data['modules'])) {
+        $modules = $data['modules'];
+    } else {
+        $modules = [];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -102,6 +107,16 @@
                                 <div class="form-group">
                                     <label class="form-label" for="telephone">Telephone</label>
                                     <p class="form-control"><?= Auth::getTelephone(); ?></p>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="modules">Modules Enseignés</label>
+                                    <ul class="list-group">
+                                        <?php foreach ($modules as $module): ?>
+                                            <li class="list-group-item form-control">
+                                                <?= htmlspecialchars($module->Titre) ?> - Classe: <?= htmlspecialchars($module->class_name) ?>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

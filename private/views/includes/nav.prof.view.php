@@ -110,6 +110,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= ROOT ?>/teachers/devoire">
+                        <i class="fa-solid fa-book mb-1"></i>&nbsp;Devoires
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?= ROOT ?>/teachers/archivecours">
                         <i class="fa-solid fa-box-archive mb-1"></i>&nbsp;Archivage
                     </a>
@@ -148,7 +153,7 @@
                             <a class="dropdown-item" href="<?= ROOT ?>/teachers/cours">Cours & Fichiers</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/td">TDs & TPs</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/td">TDs,TPs & Devoires</a>
                         </li>
                     </ul>
                 </li>
