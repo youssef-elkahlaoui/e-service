@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
+<?php 
+        include "includes/nav.prof.view.php";
+        include "includes/header.view.php";
+    ?>
+<style>
 .container {
     padding-top: 50px;
 }
@@ -47,10 +45,6 @@
 
 </head>
 <body>
-    <?php 
-        include "includes/nav.prof.view.php";
-        include "includes/header.view.php";
-    ?>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -64,6 +58,7 @@
                         </nav>
                     </div>
                 </div>
+                
                 <div class="card mb-4">
                     <div class="card-body shadow rounded-3">
                         <div class="form-container">

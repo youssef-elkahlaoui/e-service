@@ -3,44 +3,74 @@
 
     include "includes/nav.admin.view.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    
-</head>
 <style>
-   .container {
-        padding-top: 50px;
-    }
-    .card {
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    }
-    .form-container {
-        background-color: #f8f9fa;
-        border: 1px solid #ced4da;
-        border-radius: 10px;
-        padding: 30px;
-    }
-    .form-group {
-        margin-bottom: 20px;
-    }
-    .form-label {
-        font-weight: bold;
-    }
-    .form-control {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ced4da;
-        border-radius: 5px;
-    }
-    .container {
+        .container {
             padding-top: 50px;
-    }
-    </style>
+        }
+        .card {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+        .crd-body {
+            border: 1px solid #ced4da;
+            border-radius: 10px;
+        }
+        .form-container {
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            border-radius: 10px;
+            padding: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .drop-zone {
+            border: 2px dashed #ced4da;
+            border-radius: 5px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .drop-zone.dragover {
+            background-color: #e9ecef;
+        }
+        .drop-zone input[type="file"] {
+            display: none;
+        }
+        .bg-body-tertiary {
+            background-color: #f8f9fa;
+        }
+        .clr{
+            background-color: #f8f9fa;
+        }
+        .rounded-3 {
+            border-radius: 0.3rem !important;
+        }
+        .p-3 {
+            padding: 1rem !important;
+        }
+        .mb-4, .my-4 {
+            margin-bottom: 1.5rem !important;
+        }
+        .breadcrumb-item a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .profile-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
 </style>
 
 <body>

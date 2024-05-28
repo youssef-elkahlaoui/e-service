@@ -36,7 +36,9 @@ class Teachers extends Controller
     }
 
 	function listeStudent(){
-        $this->view('listetu.prof');
+        $studentModel = new Student();
+        $students = $studentModel->findAll(); 
+        $this->view('listetu.prof', ['students' => $students]);
     }
 
     function listeAdmin(){

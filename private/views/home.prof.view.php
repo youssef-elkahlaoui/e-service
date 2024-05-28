@@ -28,14 +28,13 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                                 <div class="row">
                                     <div class="col">                                        
                                         <a href="#"><span class="h2 font-weight-bold mb-0 text-danger"><?= $sumOfLoginsLastSevenDays ?></span></a>
-                                        <h5 class="card-title text-uppercase text-dark mb-0 ">Connexions </h5>
-
+                                        <h5 class="card-title text-uppercase text-dark mb-0 ">Connexions <span class="mt-3 mb-0 text-muted text-sm" style="font-size: small;">cette semaine</span></h5>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-danger text-white rounded-circle shadow"></div>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-muted text-sm"><span style="color:indianred;"><?= intdiv($sumOfLoginsLastSevenDays,7) ?></span> est la moyenne de connexion par jour</p>
+                                <p class="mt-3 mb-0  text-sm"><span style="color:indianred;"><?= intdiv($sumOfLoginsLastSevenDays,7) ?></span> est la moyenne de connexion par jour</p>
                             </div>
                         </div>
                     </div>
@@ -51,7 +50,7 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                                         <div class="icon icon-shape bg-warning text-white rounded-circle shadow"></div>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-muted text-sm"><span style="color:#1df070;"><?= intdiv($sumOfLoginsLastSevenDays,4) ?></span> notification administrative</p>
+                                <p class="mt-3 mb-0 text-sm"><span style="color:#1df070;"><?= intdiv($sumOfLoginsLastSevenDays,4) ?></span> notification administrative</p>
                             </div>
                         </div>
                     </div>
@@ -67,7 +66,7 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                                         <div class="icon icon-shape bg-yellow text-white rounded-circle shadow"></div>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">plus de <span style="color:burlywood;"><?= intdiv($sumOfLoginsLastSevenDays,3) ?></span>  documents par jour</p>
+                                <p class="mt-3 mb-0 text-sm">plus de <span style="color:burlywood;"><?= intdiv($sumOfLoginsLastSevenDays,3) ?></span>  documents par jour</p>
                             </div>
                         </div>
                     </div>
@@ -83,7 +82,7 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow"></div>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-muted text-sm"><span style="color:indianred;"><?= intdiv($sumOfLoginsLastSevenDays,7) ?></span> est la moyenne de connexion par jour</p>
+                                <p class="mt-3 mb-0 text-sm"><span style="color:cornflowerblue;"><?= intdiv($sumOfLoginsLastSevenDays,6) ?></span> est la moyenne de connexion par jour</p>
                             </div>
                         </div>
                     </div>
