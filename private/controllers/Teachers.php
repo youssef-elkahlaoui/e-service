@@ -65,11 +65,27 @@ class Teachers extends Controller
     }
     
 	public function cours(){
-        $this->view('cours');
+        $teacherId = Auth::getId();
+
+        $modules = (new Module())->query(
+            "SELECT modules.* 
+            FROM modules 
+            JOIN teacher_modules ON modules.IdCours = teacher_modules.module_id
+            WHERE teacher_modules.teacher_id = ?", [$teacherId]
+        );
+        $this->view('cours',['modules' => $modules]);
     }
 
     function td(){
-        $this->view('exercices');
+        $teacherId = Auth::getId();
+
+        $modules = (new Module())->query(
+            "SELECT modules.* 
+            FROM modules 
+            JOIN teacher_modules ON modules.IdCours = teacher_modules.module_id
+            WHERE teacher_modules.teacher_id = ?", [$teacherId]
+        );
+        $this->view('exercices',['modules' => $modules]);
     }
 
     function note(){
@@ -91,6 +107,7 @@ class Teachers extends Controller
 
         $this->view('profile.prof', ['modules' => $modules]);
     }
+
     function devoire(){
                 $devoir = new Devoir();
                 $teacherId = Auth::getId();

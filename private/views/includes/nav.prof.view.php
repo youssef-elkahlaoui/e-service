@@ -150,7 +150,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="exportsDropdown">
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/cours">Cours & Fichiers</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/cours">Cours, Fichiers & Videos</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="<?= ROOT ?>/teachers/td">TDs,TPs & Devoires</a>
