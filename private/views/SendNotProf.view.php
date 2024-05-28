@@ -1,6 +1,11 @@
 <?php 
         include "includes/nav.prof.view.php";
         include "includes/header.view.php";
+        if (isset($data) && isset($data['modules'])) {
+            $modules = $data['modules'];
+        } else {
+            $modules = [];
+        }
     ?>
 <style>
 .container {
@@ -68,18 +73,16 @@
                                     <textarea class="form-control" name="notification" id="notification" rows="4" placeholder="Write your notification" required></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="selectOption">Select Option:</label>
-                                    <select class="form-control" id="selectOption" name="selectedoption" required>
-                                        <option value="" disabled selected hidden>Choose an option</option>
-                                        <option value="CP1">CP1</option>
-                                        <option value="CP2">CP2</option>
-                                        <option value="TDIA1">TDIA1</option>
-                                        <option value="GI1">GI1</option>
-                                        <option value="ID1">ID1</option>
-                                        <option value="GM1">GM1</option>
-                                        <option value="ALL">ALL</option>
-                                    </select>
-                                </div>
+                                <label class="form-label" for="module">Module :</label>
+                                <select class="form-control" id="module" name="module" required>
+                                    <option value="" disabled selected hidden>Choisir un module</option>
+                                    <?php foreach ($modules as $module): ?>
+                                        <option value="<?= htmlspecialchars($module->IdCours) ?>">
+                                            <?= htmlspecialchars($module->Titre) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-outline-primary btn-lg" name="notif">SEND</button>
                                 </div>

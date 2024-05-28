@@ -72,7 +72,6 @@
                                     <th>ID</th>
                                     <th>Title</th>
                                     <th>Description</th>
-                                    <th>Class</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -83,9 +82,9 @@
                                         <td><?= $course['IdCours'] ?></td>
                                         <td><?= $course['Titre'] ?></td>
                                         <td><?= $course['Description'] ?></td>
-                                        <td><?= $course['IdClasse'] ?></td>
                                         <td>
                                             <a href="<?= ROOT ?>/teachers/archive/<?= $course['IdCours'] ?>" class="btn btn-danger">Archive</a>
+                                            
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -98,7 +97,6 @@
                                         <td><?= $course['IdCours'] ?></td>
                                         <td><?= $course['Titre'] ?></td>
                                         <td><?= $course['Description'] ?></td>
-                                        <td><?= $course['IdClasse'] ?></td>
                                         <td>
                                             <a href="<?= ROOT ?>/teachers/desarchive/<?= $course['IdCours'] ?>" class="btn btn-primary">Desarchive</a>
                                         </td>

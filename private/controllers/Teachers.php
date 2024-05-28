@@ -54,7 +54,15 @@ class Teachers extends Controller
     }
 
 	function notifProfsend(){
-        $this->view('SendNotProf');
+        $teacherId = Auth::getId();
+
+        $modules = (new Module())->query(
+            "SELECT modules.* 
+            FROM modules 
+            JOIN teacher_modules ON modules.IdCours = teacher_modules.module_id
+            WHERE teacher_modules.teacher_id = ?", [$teacherId]
+        );
+        $this->view('SendNotProf',['modules' => $modules]);
     }
 
     function archProf(){
@@ -89,14 +97,23 @@ class Teachers extends Controller
     }
 
     function note(){
-        $this->view('importNotes');
+        $teacherId = Auth::getId();
+
+        $modules = (new Module())->query(
+            "SELECT modules.*, classes.NomClasse as class_name 
+            FROM modules 
+            JOIN teacher_modules ON modules.IdCours = teacher_modules.module_id
+            JOIN classes ON modules.IdClasse = classes.IdClasse
+            WHERE teacher_modules.teacher_id = ?", [$teacherId]
+        );
+
+        $this->view('importNotes',['modules' => $modules]);
     }
 
     function profile($id = null){
         
         $teacherId = Auth::getId();
 
-        // Get the modules taught by this teacher
         $modules = (new Module())->query(
             "SELECT modules.*, classes.NomClasse as class_name 
             FROM modules 
