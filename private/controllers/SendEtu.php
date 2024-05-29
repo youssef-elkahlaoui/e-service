@@ -4,31 +4,39 @@ class SendEtu extends Controller
 {
 	function demande()
 	{
+		// Vérifie si l'étudiant est connecté
 		if (!Auth::studentLoggedIn()) {
 			$this->redirect('login');
 		}
 	
+		// Traitement de la soumission du formulaire
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			// Assainir les données d'entrée
 			$sujet = htmlspecialchars($_POST['sujet'], ENT_QUOTES, 'UTF-8');
 			$demande_type = htmlspecialchars($_POST['demande_type'], ENT_QUOTES, 'UTF-8');
 			$description = htmlspecialchars($_POST['description'], ENT_QUOTES, 'UTF-8');
 	
+			// Valider les entrées
 			if (empty($sujet) || empty($demande_type) || empty($description)) {
 				$this->view('demande.etu', ['error' => "Tous les champs sont obligatoires."]);
 				return;
 			}
 	
+			// Obtenir l'ID de l'étudiant depuis la session
 			$student_id = $_SESSION['STUDENT']->id;
 	
+			// Créer une nouvelle instance de Demand
 			$demand = new Demand();
 	
+			// Définir les valeurs
 			$demand->student_id = $student_id;
 			$demand->demand_type = $demande_type;
 			$demand->demand_description = $description;
-			$demand->demand_date = date('Y-m-d H:i:s'); 
+			$demand->demand_date = date('Y-m-d H:i:s'); // En supposant que demand_date est une colonne de type datetime
             $demand->status= 'en attend';
+			// Enregistrer la demande
 			try {
-				$saved = $demand->insert((array) $demand);
+				$saved = $demand->insert((array) $demand); // Insérer les données de la demande dans la base de données
 				if ($saved) {
 					$this->view('demande.etu', ['success' => "Demande enregistrée avec succès."]);
 					return;
@@ -37,11 +45,13 @@ class SendEtu extends Controller
 					return;
 				}
 			} catch (Exception $e) {
+				// Gérer les erreurs de base de données
 				$this->view('demande.etu', ['error' => "Erreur lors de l'enregistrement de la demande: " . $e->getMessage()]);
 				return;
 			}
 		}
 	
+		// Si la méthode est GET, affiche simplement la vue sans messages
 		$this->view('demande.etu');
 	}
 	
@@ -50,6 +60,7 @@ class SendEtu extends Controller
 	
 	function sendDevoir()
     {
+        // Vérifie si l'étudiant est connecté
         if (!Auth::studentLoggedIn()) {
             $this->redirect('login');
         }
@@ -125,6 +136,7 @@ class SendEtu extends Controller
             }
         }
 
+        // Si la méthode est GET, affiche simplement la vue sans messages
 		$this->view('devoir.etu', ['module'=> $modulesData]);
     }
 	
