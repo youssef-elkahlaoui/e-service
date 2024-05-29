@@ -12,9 +12,4 @@ class Seenotifications extends Controller {
         return $notifications;
     }
 }
-<<<<<<< HEAD
 ?>
-<?php
-=======
-?>
->>>>>>> parent of ddfa28c (Revert "Revert "Revert "Merge branch 'ayoubwaa5aroun'""")
