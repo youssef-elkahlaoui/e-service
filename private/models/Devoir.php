@@ -5,7 +5,7 @@ class Devoir extends Model
         'id_etudiant',
         'sujet',
         'fichier',
-        'fichier_chemin', // Nouvelle colonne pour le chemin du fichier
+        'fichier_chemin',
         'id_module',
         'description',
         'date_creation',
