@@ -70,7 +70,7 @@
                             <form action="<?= ROOT ?>/notification/sendNot" method="post">
                                 <div class="form-group">
                                     <label class="form-label" for="notification">Notification:</label>
-                                    <textarea class="form-control" name="notification" id="notification" rows="4" placeholder="Write your notification" required></textarea>
+                                    <textarea class="form-control" name="notification" id="notification" rows="4" placeholder="Écrivez votre notification" required></textarea>
                                 </div>
                                 <div class="form-group">
                                 <label class="form-label" for="module">Module :</label>

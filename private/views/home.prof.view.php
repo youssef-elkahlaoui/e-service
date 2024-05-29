@@ -1,10 +1,12 @@
 <?php 
 require('/xampp/htdocs/e-service/private/controllers/Login.php');
+require('/xampp/htdocs/e-service/private/controllers/Seenotifications.php');
 include "includes/nav.prof.view.php";
 include "includes/header.view.php";
 $loginController = new Login();
 $lastSevenDaysData = $loginController->getLastSevenDaysData();
 $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
+
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
@@ -98,23 +100,27 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card" style="height: 500px;">
-                <div class="card-body">
-                <h5 class="card-title">Latest News</h5>
-                <?php if (isset($notifications) && !empty($notifications)) : ?>
+        <div class="card" style="height: 500px;">
+            <div class="card-body">
+                <h5 class="card-title">Dernières Nouvelles</h5>
+                <?php
+                $NotifController = new Seenotifications();
+                $notifications = $NotifController->scroll();
+
+                if (isset($notifications) && !empty($notifications)) : ?>
                     <?php foreach ($notifications as $notification) : ?>
-                    <div class="news-item">
-                        <h6 class="news-label" style="background-color: #d7ecfb; padding: 5px;">Notification</h6>
-                        <h6 class="news-title"><?= htmlspecialchars($notification['message']) ?></h6>
-                    </div>
-                    <hr>
+                        <div class="news-item">
+                            <h6 class="news-label" style="background-color: #d7ecfb; padding: 5px;">Notification</h6>
+                            <h6 class="news-title"><?= htmlspecialchars($notification->message) ?></h6>
+                        </div>
+                        <hr>
                     <?php endforeach; ?>
                 <?php else : ?>
                     <p>No notifications available.</p>
                 <?php endif; ?>
-                </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
 </body>

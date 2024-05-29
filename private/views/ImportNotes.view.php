@@ -91,7 +91,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-outline-primary" name="import_notes">Import</button>
+                                <button type="submit" class="btn btn-outline-primary" name="import_notes">Exporter</button>
                             </div>
                         </form>
                     </div>

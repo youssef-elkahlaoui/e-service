@@ -75,7 +75,7 @@
 <body>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-10">
+        <div class="col-lg-12">
             <div class="row">
                 <div class="col">
                     <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
@@ -90,7 +90,7 @@
                 <div class="card-body shadow rounded-3">
                     <div class="row">
                         <div class="col-lg-4 text-center">
-                            <img src="<?= ROOT.Auth::getImage(); ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;" onclick="zoomProfileIcon(this)">
+                            <img src="<?= ROOT.Auth::getImage(); ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 200px;" onclick="zoomProfileIcon(this)">
                             <h5 class="my-3"><?= Auth::getFirstname() . " " . Auth::getLastname(); ?></h5>
                             <p class="text-muted mb-4">CIN: <?= Auth::getCin(); ?></p>
                         </div>
@@ -129,7 +129,7 @@
 </body>
 <script>
     function zoomProfileIcon(element) {
-        element.style.transform = "scale(2.5)";
+        element.style.transform = "scale(2)";
         element.style.transition = "transform 1s";
         setTimeout(function(){
             element.style.transform = "scale(1)";

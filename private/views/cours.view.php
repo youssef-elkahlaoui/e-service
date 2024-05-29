@@ -105,7 +105,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-outline-primary" name="upload">Importer</button>
+                                <button type="submit" class="btn btn-outline-primary" name="upload">Exporter</button>
                             </div>
                         </form>
                     </div>

@@ -91,7 +91,6 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
             </div>
         </div>
     </div>
-    <!-- Page content -->
     <div class="row">
         <div class="col-md-9">
             <div class="card" style="height: 500px;">

@@ -13,4 +13,3 @@ class Seenotifications extends Controller {
     }
 }
 ?>
-<?php

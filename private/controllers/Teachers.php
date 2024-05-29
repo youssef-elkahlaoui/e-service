@@ -12,8 +12,17 @@ class Teachers extends Controller
 		$user = new Teacher();
 
 		$data = $user->findAll();
+        $db = new Database(); 
+        try {
+            $notifications = $db->query("SELECT COUNT(*) FROM notifications");
+            
+        } catch (PDOException $e) {
+            echo ("Error: " . $e->getMessage());
+            $notifications = [];
+        }
+        return $notifications;
 
-		$this->view('home.prof',['rows'=>$data]);
+		$this->view('home.prof',['rows'=>$data,'notif'=>$notifications]);
     }
     
     function absence(){

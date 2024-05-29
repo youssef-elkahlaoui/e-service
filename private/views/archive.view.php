@@ -70,7 +70,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Title</th>
+                                    <th>Titre</th>
                                     <th>Description</th>
                                     <th>Action</th>
                                 </tr>
