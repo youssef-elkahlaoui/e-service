@@ -1,13 +1,6 @@
 <?php require("includes/header.view.php"); ?>
 <?php require("includes/nav.prof.view.php"); ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes professeurs</title>
-    <style>
+<style>
         .container {
             padding-top: 50px;
         }
@@ -51,7 +44,7 @@
             display: none;
         }
         .bg-body-tertiary {
-            background-color: #f8f9fa ;
+            background-color: #f8f9fa;
         }
         .clr{
             background-color: #f8f9fa;
@@ -95,34 +88,30 @@
             <div class="card mb-4">
                 <div class="card-body shadow rounded-3">
                     <div class="p-5 text-center clr crd-body">
-                        <h1 class="mb-3">Les professeurs</h1>
+                        <h1 class="mb-3">professeurs</h1>
                     </div>
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th>Professeurs</th>
-                                <th>Telephones</th>
+                                <th>Avatar</th> 
+                                <th>Nom</th>
+                                <th>Prénom</th>
                                 <th>Email</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($teachers as $teacher): ?>
                             <tr>
-                                <td><img src="path/to/profile-icon1.png" alt="Profile Icon" class="profile-icon"  onclick="zoomProfileIcon(this)"></td>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Maria Anders</td>
+                                <td><img src="<?= ROOT. $teacher->image;?>" alt="Profile Icon" class="profile-icon" onclick="zoomProfileIcon(this)"></td>
+                                <td><?= $teacher->firstname ?></td>
+                                <td><?= $teacher->lastname ?></td>
+                                <td><?= $teacher->email ?></td>
                             </tr>
-                            <tr>
-                                <td><img src="path/to/profile-icon2.png" alt="Profile Icon" class="profile-icon"  onclick="zoomProfileIcon(this)"></td>
-                                <td>Centro comercial Moctezuma</td>
-                                <td>Francisco Chang</td>
-                                <td>Maria Anders</td>
-                            </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
