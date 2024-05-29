@@ -12,8 +12,17 @@ class Teachers extends Controller
 		$user = new Teacher();
 
 		$data = $user->findAll();
+        $db = new Database(); 
+        try {
+            $notifications = $db->query("SELECT COUNT(*) FROM notifications");
+            
+        } catch (PDOException $e) {
+            echo ("Error: " . $e->getMessage());
+            $notifications = [];
+        }
+        return $notifications;
 
-		$this->view('home.prof',['rows'=>$data]);
+		$this->view('home.prof',['rows'=>$data,'notif'=>$notifications]);
     }
     
     function absence(){
@@ -36,19 +45,33 @@ class Teachers extends Controller
     }
 
 	function listeStudent(){
-        $this->view('listetu.prof');
+        $studentModel = new Student();
+        $students = $studentModel->findAll(); 
+        $this->view('listetu.prof', ['students' => $students]);
     }
 
     function listeAdmin(){
-        $this->view('listeAdmin.prof');
+        $adminModel = new Admin();
+        $admins = $adminModel->findAll(); 
+        $this->view('listeAdmin.prof', ['admins' => $admins]);
     }
 
 	function listeProf(){
-        $this->view('listeProf.prof');
+        $teacherModel = new Teacher();
+        $teachers = $teacherModel->findAll(); 
+        $this->view('listeProf.prof', ['teachers' => $teachers]);
     }
 
 	function notifProfsend(){
-        $this->view('SendNotProf');
+        $teacherId = Auth::getId();
+
+        $modules = (new Module())->query(
+            "SELECT modules.* 
+            FROM modules 
+            JOIN teacher_modules ON modules.IdCours = teacher_modules.module_id
+            WHERE teacher_modules.teacher_id = ?", [$teacherId]
+        );
+        $this->view('SendNotProf',['modules' => $modules]);
     }
 
     function archProf(){
@@ -59,18 +82,86 @@ class Teachers extends Controller
     }
     
 	public function cours(){
-        $this->view('cours');
+        $teacherId = Auth::getId();
+
+        $modules = (new Module())->query(
+            "SELECT modules.* 
+            FROM modules 
+            JOIN teacher_modules ON modules.IdCours = teacher_modules.module_id
+            WHERE teacher_modules.teacher_id = ?", [$teacherId]
+        );
+        $this->view('cours',['modules' => $modules]);
     }
 
-    function exercices(){
-        $this->view('exercices.prof');
+    function td(){
+        $teacherId = Auth::getId();
+
+        $modules = (new Module())->query(
+            "SELECT modules.* 
+            FROM modules 
+            JOIN teacher_modules ON modules.IdCours = teacher_modules.module_id
+            WHERE teacher_modules.teacher_id = ?", [$teacherId]
+        );
+        $this->view('exercices',['modules' => $modules]);
     }
 
     function note(){
-        $this->view('importNotes');
+        $teacherId = Auth::getId();
+
+        $modules = (new Module())->query(
+            "SELECT modules.*, classes.NomClasse as class_name 
+            FROM modules 
+            JOIN teacher_modules ON modules.IdCours = teacher_modules.module_id
+            JOIN classes ON modules.IdClasse = classes.IdClasse
+            WHERE teacher_modules.teacher_id = ?", [$teacherId]
+        );
+
+        $this->view('importNotes',['modules' => $modules]);
     }
 
     function profile($id = null){
-        $this->view("profile.prof");
+        
+        $teacherId = Auth::getId();
+
+        $modules = (new Module())->query(
+            "SELECT modules.*, classes.NomClasse as class_name 
+            FROM modules 
+            JOIN teacher_modules ON modules.IdCours = teacher_modules.module_id
+            JOIN classes ON modules.IdClasse = classes.IdClasse
+            WHERE teacher_modules.teacher_id = ?", [$teacherId]
+        );
+
+        $this->view('profile.prof', ['modules' => $modules]);
     }
+
+    function devoire(){
+                $devoir = new Devoir();
+                $teacherId = Auth::getId();
+        
+                // Get the modules taught by this teacher
+                $modules = (new Module())->query(
+                    "SELECT * FROM modules 
+                    JOIN teacher_modules ON modules.IdCours = teacher_modules.module_id
+                    WHERE teacher_modules.teacher_id = ?", [$teacherId]
+                );
+        
+                // Get the devoirs for those modules
+                $moduleIds = array_map(function ($module) {
+                    return $module->IdCours;
+                }, $modules);
+        
+                if (count($moduleIds) > 0) {
+                    $placeholders = implode(',', array_fill(0, count($moduleIds), '?'));
+                    $devoirs = $devoir->query(
+                        "SELECT devoirs.*, students.firstname, students.lastname 
+                        FROM devoirs 
+                        JOIN students ON devoirs.id_etudiant = students.id 
+                        WHERE id_module IN ($placeholders)", $moduleIds
+                    );
+                } else {
+                    $devoirs = [];
+                }
+        
+                $this->view('devoire.prof', ['devoirs' => $devoirs]);
+            }
 }
