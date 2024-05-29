@@ -37,14 +37,12 @@
         border: 1px solid #ced4da;
         border-radius: 5px;
     }
-    .container {
-            padding-top: 50px;
-    }
+    
     </style>
 </style>
 
 <body>
-    <div class="container">
+<div class="container">
 <div class="row justify-content-center">
     <div class="col-lg-12">
         

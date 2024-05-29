@@ -12,7 +12,6 @@ class Notification extends Controller {
             $choice = $_POST['selectedoption'];
             $db = new Database();
 
-            // Initialize PHPMailer
             $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
             try {
                 $students = $db->query("SELECT * FROM students");
@@ -41,19 +40,15 @@ class Notification extends Controller {
                 $message =  'Error: '. $ex->getMessage();
             }
             try{
-                $db->query("INSERT INTO notifications (Filiere,Message,DateTime) VALUES (?,?,NOW())",array($choice,$notification));
+                $db->query("INSERT INTO notifications (Filiere,Message,DateNotification) VALUES (?,?,NOW())",array($choice,$notification));
                 $message1= "Notification has been inserted succesfully in Database";
             }catch(Exception $e){
-                $message1 =  "Error inserting Notiifcation in Database". $e->getMessage();
-                	$this->view("SendNotification",['message'=>$message,"message1"=>$message1]);
+                $message1 =  "Error inserting Notifcation in Database". $e->getMessage();
             }
+            $this->view("SendNotification",['message'=>$message,"message1"=>$message1]);
         }
     }
     
-    public function index() {
-
-        $this->view('SendNotification');
-    }
 }
 
 ?>

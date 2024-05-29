@@ -99,23 +99,27 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card" style="height: 500px;">
-                <div class="card-body">
+        <div class="card" style="height: 500px;">
+            <div class="card-body">
                 <h5 class="card-title">Latest News</h5>
-                <?php if (isset($notifications) && !empty($notifications)) : ?>
+                <?php
+                $NotifController = new Seenotifications();
+                $notifications = $NotifController->scroll();
+
+                if (isset($notifications) && !empty($notifications)) : ?>
                     <?php foreach ($notifications as $notification) : ?>
-                    <div class="news-item">
-                        <h6 class="news-label" style="background-color: #d7ecfb; padding: 5px;">Notification</h6>
-                        <h6 class="news-title"><?= htmlspecialchars($notification['message']) ?></h6>
-                    </div>
-                    <hr>
+                        <div class="news-item">
+                            <h6 class="news-label" style="background-color: #d7ecfb; padding: 5px;">Notification</h6>
+                            <h6 class="news-title"><?= htmlspecialchars($notification->message) ?></h6>
+                        </div>
+                        <hr>
                     <?php endforeach; ?>
                 <?php else : ?>
                     <p>No notifications available.</p>
                 <?php endif; ?>
-                </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
 </body>
