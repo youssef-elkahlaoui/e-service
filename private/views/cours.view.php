@@ -1,14 +1,17 @@
 <?php 
     include "includes/header.view.php";
     include "includes/nav.prof.view.php";
+    
+    if (isset($data) && isset($data['modules'])) {
+        $modules = $data['modules'];
+    } else {
+        $modules = [];
+    }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Cours</title>
     <style>
         .container {
             padding-top: 50px;
@@ -77,23 +80,32 @@
                                 <textarea id="description" name="description" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="selectedoption">Choisir la classe :</label>
-                                <select class="form-control" id="selectedoption" name="selectedoption" required>
-                                    <option value="" disabled selected hidden>Choisir une option</option>
-                                    <option value="TDIA1">TDIA1</option>
-                                    <option value="GI1">GI1</option>
-                                    <option value="ID1">ID1</option>
+                                <label class="form-label" for="module">Module :</label>
+                                <select class="form-control" id="module" name="module" required>
+                                    <option value="" disabled selected hidden>Choisir un module</option>
+                                    <?php foreach ($modules as $module): ?>
+                                        <option value="<?= htmlspecialchars($module->IdCours) ?>">
+                                            <?= htmlspecialchars($module->Titre) ?>
+                                        </option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="pdf">Télécharger un cours (PDF) :</label>
-                                <div class="drop-zone" id="drop-zone">
+                                <div class="drop-zone" id="drop-zone-pdf">
                                     <p>Glissez-déposez un fichier ici ou cliquez pour sélectionner un fichier</p>
-                                    <input type="file" id="pdf" name="pdf" class="form-control" accept=".pdf" required>
+                                    <input type="file" id="pdf" name="pdf" class="form-control" accept=".pdf">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-outline-primary" name="upload">Eporter</button>
+                                <label class="form-label" for="video">Télécharger un cours (Video) :</label>
+                                <div class="drop-zone" id="drop-zone-video">
+                                    <p>Glissez-déposez un fichier ici ou cliquez pour sélectionner un fichier</p>
+                                    <input type="file" id="video" name="video" class="form-control" accept="video/*">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-outline-primary" name="upload">Importer</button>
                             </div>
                         </form>
                     </div>
@@ -104,36 +116,58 @@
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const dropZone = document.getElementById('drop-zone');
-    const fileInput = document.getElementById('pdf');
+    const dropZonePdf = document.getElementById('drop-zone-pdf');
+    const fileInputPdf = document.getElementById('pdf');
+    const dropZoneVideo = document.getElementById('drop-zone-video');
+    const fileInputVideo = document.getElementById('video');
 
-    dropZone.addEventListener('click', () => fileInput.click());
-
-    dropZone.addEventListener('dragover', (e) => {
+    dropZonePdf.addEventListener('click', () => fileInputPdf.click());
+    dropZonePdf.addEventListener('dragover', (e) => {
         e.preventDefault();
-        dropZone.classList.add('dragover');
+        dropZonePdf.classList.add('dragover');
     });
-
-    dropZone.addEventListener('dragleave', () => {
-        dropZone.classList.remove('dragover');
+    dropZonePdf.addEventListener('dragleave', () => {
+        dropZonePdf.classList.remove('dragover');
     });
-
-    dropZone.addEventListener('drop', (e) => {
+    dropZonePdf.addEventListener('drop', (e) => {
         e.preventDefault();
-        dropZone.classList.remove('dragover');
-        
+        dropZonePdf.classList.remove('dragover');
         const files = e.dataTransfer.files;
         if (files.length) {
-            fileInput.files = files;
-            dropZone.querySelector('p').textContent = files[0].name;
+            fileInputPdf.files = files;
+            dropZonePdf.querySelector('p').textContent = files[0].name;
+        }
+    });
+    fileInputPdf.addEventListener('change', () => {
+        if (fileInputPdf.files.length) {
+            dropZonePdf.querySelector('p').textContent = fileInputPdf.files[0].name;
+        } else {
+            dropZonePdf.querySelector('p').textContent = 'Glissez-déposez un fichier ici ou cliquez pour sélectionner un fichier';
         }
     });
 
-    fileInput.addEventListener('change', () => {
-        if (fileInput.files.length) {
-            dropZone.querySelector('p').textContent = fileInput.files[0].name;
+    dropZoneVideo.addEventListener('click', () => fileInputVideo.click());
+    dropZoneVideo.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZoneVideo.classList.add('dragover');
+    });
+    dropZoneVideo.addEventListener('dragleave', () => {
+        dropZoneVideo.classList.remove('dragover');
+    });
+    dropZoneVideo.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZoneVideo.classList.remove('dragover');
+        const files = e.dataTransfer.files;
+        if (files.length) {
+            fileInputVideo.files = files;
+            dropZoneVideo.querySelector('p').textContent = files[0].name;
+        }
+    });
+    fileInputVideo.addEventListener('change', () => {
+        if (fileInputVideo.files.length) {
+            dropZoneVideo.querySelector('p').textContent = fileInputVideo.files[0].name;
         } else {
-            dropZone.querySelector('p').textContent = 'Glissez-déposez un fichier ici ou cliquez pour sélectionner un fichier';
+            dropZoneVideo.querySelector('p').textContent = 'Glissez-déposez un fichier ici ou cliquez pour sélectionner un fichier';
         }
     });
 });

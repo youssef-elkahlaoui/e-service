@@ -1,12 +1,5 @@
 <?php require("includes/header.view.php"); ?>
-<?php require("includes/nav.admin.view.php"); ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des Admins</title>
+<?php require("includes/nav.prof.view.php"); ?>
     <style>
         .container {
             padding-top: 50px;
@@ -95,7 +88,7 @@
             <div class="card mb-4">
                 <div class="card-body shadow rounded-3">
                     <div class="p-5 text-center clr crd-body">
-                        <h1 class="mb-3">Les Proffesseurs</h1>
+                        <h1 class="mb-3">Les Admins</h1>
                     </div>
                     <table class="table table-hover">
                         <thead>
@@ -107,12 +100,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($teachers as $teacher): ?>
+                            <?php foreach ($admins as $admin): ?>
                             <tr>
-                                <td><img src="<?= ROOT. $teacher->image;?>" alt="Profile Icon" class="profile-icon" onclick="zoomProfileIcon(this)"></td>
-                                <td><?= $teacher->firstname ?></td>
-                                <td><?= $teacher->lastname ?></td>
-                                <td><?= $teacher->email ?></td>
+                                <td><img src="<?= ROOT. $admin->image;?>" alt="Profile Icon" class="profile-icon" onclick="zoomProfileIcon(this)"></td>
+                                <td><?= $admin->firstname ?></td>
+                                <td><?= $admin->lastname ?></td>
+                                <td><?= $admin->email ?></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

@@ -1,7 +1,6 @@
 <?php require("includes/header.view.php"); ?>
 <?php require("includes/nav.admin.view.php"); ?>
-
-    <style>
+<style>
         .container {
             padding-top: 50px;
         }
@@ -74,13 +73,13 @@
 <body>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-10">
+        <div class="col-lg-12">
             <div class="row bg-white">
                 <div class="col">
                     <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Les étudiants</li>
+                            <li class="breadcrumb-item active" aria-current="page">Les professeurs</li>
                         </ol>
                     </nav>
                 </div>
@@ -89,26 +88,24 @@
             <div class="card mb-4">
                 <div class="card-body shadow rounded-3">
                     <div class="p-5 text-center clr crd-body">
-                        <h1 class="mb-3">Les étudiants</h1>
+                        <h1 class="mb-3">Les professeurs</h1>
                     </div>
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Avatar</th> <!-- Column for profile icons -->
+                                <th>Avatar</th> 
                                 <th>Nom</th>
                                 <th>Prénom</th>
                                 <th>Email</th>
-                                <th>Filière</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($students as $student): ?>
+                            <?php foreach ($teachers as $teacher): ?>
                             <tr>
-                                <td><img src="<?= ROOT. $student->image;?>" alt="Profile Icon" class="profile-icon" onclick="zoomProfileIcon(this)"></td>
-                                <td><?= $student->firstname ?></td>
-                                <td><?= $student->lastname ?></td>
-                                <td><?= $student->email ?></td>
-                                <td><?= $student->Filiere ?></td>
+                                <td><img src="<?= ROOT. $teacher->image;?>" alt="Profile Icon" class="profile-icon" onclick="zoomProfileIcon(this)"></td>
+                                <td><?= $teacher->firstname ?></td>
+                                <td><?= $teacher->lastname ?></td>
+                                <td><?= $teacher->email ?></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

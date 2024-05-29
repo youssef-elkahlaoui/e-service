@@ -1,6 +1,11 @@
 <?php 
     include "includes/header.view.php";
     include "includes/nav.prof.view.php";
+    if (isset($data) && isset($data['modules'])) {
+        $modules = $data['modules'];
+    } else {
+        $modules = [];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,12 +80,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="filiere">Choisir la filière :</label>
-                                <select id="filiere" name="filiere" class="form-control" required>
-                                    <option value="" disabled selected hidden>Choose an option</option>
-                                    <option value="tdia">TDIA</option>
-                                    <option value="info">INFO</option>
-                                    <option value="id">ID</option>
+                                <label class="form-label" for="module">Choisir Module :</label>
+                                <select class="form-control" id="module" name="module" required>
+                                    <option value="" disabled selected hidden>Choisir un module</option>
+                                    <?php foreach ($modules as $module): ?>
+                                        <option value="<?= htmlspecialchars($module->IdCours) ?>">
+                                            <?= htmlspecialchars($module->Titre) ?>
+                                        </option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group">

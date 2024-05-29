@@ -22,7 +22,7 @@ class Admins extends Controller {
     function getAllProfs() {
         $teacherModel = new Teacher();
         $teachers = $teacherModel->findAll(); 
-        $this->view('listeAdmin.prof', ['teachers' => $teachers]);
+        $this->view('listeProf.admin', ['teachers' => $teachers]);
     }
     function getAllstudents(){
         $studentModel = new Student();
@@ -50,7 +50,7 @@ class Admins extends Controller {
     }
 
     function archProf() {
-        $this->view('arch.prof');
+        $this->view('archprof');
     }
 
 

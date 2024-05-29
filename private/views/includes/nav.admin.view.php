@@ -129,7 +129,7 @@
                             <a class="dropdown-item" href="<?= ROOT ?>/admins/archivenotif">Notifications</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT?>/teachers/archProf">Profs</a>
+                            <a class="dropdown-item" href="<?= ROOT?>/admins/archProf">Profs</a>
                         </li>
                     </ul>
                 </li>
