@@ -126,10 +126,10 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="archivageDropdown">
                         <li >
-                            <a class="dropdown-item" href="<?= ROOT ?>/admins/archivenotif">Notifications</a>
+                            <a class="dropdown-item" href="<?= ROOT ?>/Allnotification">Notifications</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="<?= ROOT?>/admins/archProf">Profs</a>
+                            <a class="dropdown-item" href="<?= ROOT?>/teachers/archProf">Profs</a>
                         </li>
                     </ul>
                 </li>
@@ -167,10 +167,7 @@
                         <li >
                             <a class="dropdown-item" href="<?= ROOT ?>/admins/importusers">Importer Etudiants</a>
                         </li>
-                        <li >
-                            <a class="dropdown-item" href="<?= ROOT ?>/admins/ajouterUser">Ajouter Utilisateur</a>
-                        </li>
-                        
+                        <li>
                             <a class="dropdown-item" href="<?= ROOT ?>/admins/note">Notes</a>
                         </li>
                     </ul>
