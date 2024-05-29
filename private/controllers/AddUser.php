@@ -9,8 +9,8 @@ class AddUser extends Controller {
             $rank = $_POST['rank'];
             $password = $_POST['password'];
             $confirmation = $_POST['confirmation'];
-            $filiere = $_POST['filiere'];
-            $CNE = $_POST['cne'];
+            $filiere = $_POST['filiere'] ?? '';
+            $CNE = $_POST['cne'] ?? '';
             $CIN = $_POST['cin'];
 
             $errors = [];
