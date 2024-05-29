@@ -41,18 +41,15 @@
 <body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-12">
+            <div class="col-lg-10">
                 <div class="row">
                     <div class="col">
-<<<<<<< HEAD
-                            <ol class="breadcrumb mb-0 bg-body-tertiary rounded-3 p-3 mb-4 shadow">
-=======
-                        <nav aria-label="breadcrumb" class="rounded-3 p-2 mb-4 shadow">
+                        <nav aria-label="breadcrumb" class="rounded-3 p-3 mb-4 shadow">
                             <ol class="breadcrumb mb-0 bg-body-tertiary">
->>>>>>> 1b38717773f23bb3af1b51d7f6a5c2871ef1e5d3
                                 <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Envoyer Notification...</li>
                             </ol>
+                        </nav>
                     </div>
                 </div>
                 

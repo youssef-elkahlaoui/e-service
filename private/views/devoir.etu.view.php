@@ -2,11 +2,15 @@
     include "includes/nav.view.php";
     include "includes/header.view.php";
 
+    // Vérifiez si $data est défini et s'il contient des modules
     if(isset($data) && isset($data['module'])) {
         $modules = $data['module']; // Récupérez les modules de $data
     } else {
+        // Si $data n'est pas défini ou s'il ne contient pas de modules, initialisez $modules avec un tableau vide
         $modules = array();
     }
+
+    // Vérifiez et affichez les messages de succès ou d'erreur
 
 ?>
 <section style="background-color: #eee;">
@@ -45,6 +49,7 @@
                 <label for="exampleFormControlSelect1">Module de :</label>
                 <select class="form-control" id="exampleFormControlSelect1" name="module">
                 <?php 
+                    // Parcourez les modules et générer les options avec les titres
                     foreach ($modules as $module) {
                         echo '<option value="' . $module->IdCours . '">' . $module->Titre . '</option>';
                     }

@@ -1,11 +1,6 @@
 <?php 
     include "includes/header.view.php";
     include "includes/nav.prof.view.php";
-    if (isset($data) && isset($data['modules'])) {
-        $modules = $data['modules'];
-    } else {
-        $modules = [];
-    }
 ?>
 
 <style>
@@ -66,7 +61,7 @@
             <div class="card mb-4">
                 <div class="card-body shadow rounded-3">
                     <div class="form-container">
-                        <form action="<?= ROOT ?>/CoursExercices/uploadExercice" method="post" enctype="multipart/form-data">
+                        <form action="CoursExercices/uploadExercice" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label class="form-label" for="titre">Titre de l'exercice :</label>
                                 <input type="text" id="titre" name="titre" class="form-control" required>
@@ -76,14 +71,12 @@
                                 <textarea id="description" name="description" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="module">Module :</label>
-                                <select class="form-control" id="module" name="module" required>
-                                    <option value="" disabled selected hidden>Choisir un module</option>
-                                    <?php foreach ($modules as $module): ?>
-                                        <option value="<?= htmlspecialchars($module->IdCours) ?>">
-                                            <?= htmlspecialchars($module->Titre) ?>
-                                        </option>
-                                    <?php endforeach; ?>
+                                <label class="form-label" for="selectedoption">Choisir la classe :</label>
+                                <select class="form-control" id="selectedoption" name="selectedoption" required>
+                                    <option value="" disabled selected hidden>Choose an option</option>
+                                    <option value="TDIA1">TDIA1</option>
+                                    <option value="GI1">GI1</option>
+                                    <option value="ID1">ID1</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -94,7 +87,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-outline-primary" name="upload">Exporter</button>
+                                <button type="submit" class="btn btn-outline-primary" name="upload">Télécharger</button>
                             </div>
                         </form>
                     </div>

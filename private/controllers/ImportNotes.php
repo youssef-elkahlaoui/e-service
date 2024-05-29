@@ -18,11 +18,14 @@ class importNotes extends Controller{
                                     echo "Ligne CSV invalide: " . implode(", ", $row) . " (Number of columns: " . count($row) . ")<br/>";
                                     continue;
                                 }
+
                                 $IdUtilisateur = $row[0];
                                 $IdCours = $row[1];
                                 $TypeNote = $row[2];
                                 $Valeur = $row[3];
                                 $Coefficient = $row[4];
+
+                                // Insert the row into the notes table
                                 $result = $db->query(
                                     "INSERT INTO notes (IdUtilisateur, IdCours, TypeNote, Valeur, Coefficient) VALUES (?, ?, ?, ?, ?)", 
                                     [$IdUtilisateur, $IdCours, $TypeNote, $Valeur, $Coefficient]

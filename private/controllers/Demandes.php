@@ -15,10 +15,14 @@ class Demandes extends Controller {
             $demandes = [];
         }
         
-        return $demandes; 
+        return $demandes; // Return the fetched data
     }
 
     public function index() {
-        $this->view('demandes.admin');
+        // Fetch the data
+        $demandes = $this->demande();
+        
+        // Pass the fetched data to the view
+        $this->view('demandes.admin', ['demandes' => $demandes]);
     }
 }

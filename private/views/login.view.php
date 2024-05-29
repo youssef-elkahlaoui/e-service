@@ -64,7 +64,7 @@
                 <div class="row align-items-center">
                     <div class="header-text mb-4">
                         <h2>Hello, Again</h2>
-                        <p>Nous sommes heureux de vous revoir.</p>
+                        <p>We are happy to have you back.</p>
                     </div>
 
                     <?php if(count($errors) > 0):?>
@@ -94,7 +94,7 @@
                         <div class="input-group mb-5 d-flex justify-content-between">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
-                                <label for="rememberMe" class="form-check-label text-secondary"><small>Se rappeler de moi</small></label>
+                                <label for="rememberMe" class="form-check-label text-secondary"><small>Remember Me</small></label>
                             </div>
                         </div>
 
