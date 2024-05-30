@@ -1,7 +1,7 @@
 <?php 
-require('/xampp/htdocs/e-service/private/controllers/Login.php');
-include "includes/nav.admin.view.php";
-include "includes/header.view.php";
+require_once __DIR__ . '/../controllers/Login.php';
+include __DIR__ . "/includes/nav.admin.view.php";
+include __DIR__ . "/includes/header.view.php";
 $loginController = new Login();
 $lastSevenDaysData = $loginController->getLastSevenDaysData();
 $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
