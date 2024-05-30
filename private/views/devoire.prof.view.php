@@ -57,7 +57,7 @@ if (isset($data) && isset($data['devoirs'])) {
                         <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Voir les Devoires</li>
+                                <li class="breadcrumb-item active" aria-current="page">Voir les Devoirs</li>
                             </ol>
                         </nav>
                     </div>
