@@ -77,14 +77,16 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <a href="#"><span class="h2 font-weight-bold mb-0">49,65%</span></a>
-                                        <h5 class="card-title text-uppercase text-dark mb-0">Logins</h5>
+                                    <br>
+                                        <a href="<?= ROOT ?>/teachers/listeStudent"><span class="h2 font-weight-bold mb-0">Emplois</span></a>
+                                        <h5 class="card-title text-uppercase text-dark mb-0">du Temps</h5>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow"></div>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-sm"><span style="color:cornflowerblue;"><?= intdiv($sumOfLoginsLastSevenDays,6) ?></span> est la moyenne de connexion par jour</p>
+                                <p class="mt-3 mb-0 text-sm"><span style="color:cornflowerblue;"></p>
+                                
                             </div>
                         </div>
                     </div>
@@ -128,13 +130,11 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
 document.addEventListener("DOMContentLoaded", function() {
     const ctx = document.getElementById('myChart').getContext('2d');
     
-    // Parse the JSON data from PHP
     const dailyData = <?php echo $lastSevenDaysData; ?>;
 
     const labels = [];
     const data = dailyData;
 
-    // Get the labels for the last 7 days
     for (let i = 6; i >= 0; i--) {
         const date = new Date();
         date.setDate(date.getDate() - i);
