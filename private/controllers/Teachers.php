@@ -16,7 +16,17 @@ class Teachers extends Controller
     }
     
     function absence(){
-        $this->view('absence.prof');
+        $teacherId = Auth::getId();
+
+        $modules = (new Module())->query(
+            "SELECT modules.*, classes.NomClasse as class_name 
+            FROM modules 
+            JOIN teacher_modules ON modules.IdCours = teacher_modules.module_id
+            JOIN classes ON modules.IdClasse = classes.IdClasse
+            WHERE teacher_modules.teacher_id = ?", [$teacherId]
+        );
+
+        $this->view('absence.prof',['modules' => $modules]);
     }
 
     function archivecours(){

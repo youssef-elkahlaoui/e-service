@@ -1,58 +1,15 @@
-<!-- <?php 
-    // include "includes/nav.prof.view.php";
-    // include "includes/header.view.php";
-?> -->
-
-    <!-- <section style="background-color: #eee; ">
-        <div class="container py-5" >
-            <div class="row">
-                <div class="col">
-                    <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accuile</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Absences</li>
-                    </ol>
-                    </nav>
-                </div>
-            </div>
-            <div class="p-5 text-center bg-body-tertiary">
-                <h1 class="mb-3">Vos absences</h1>
-                <h5 class="mb-3">Nombre totales est:<?=count($data)?></h5>
-            </div>
-            
-            <table class="table table-hover">
-                <tr>
-                    <th>Modules</th>
-                    <th>Date</th>
-                    <th>Justifiée</th>
-                </tr> -->
-                <?php 
-                    
-                    // foreach ($data as $row) {
-                        // echo "<tr>";
-                        // echo "<td>{$row->ModuleName}</td>";
-                        // echo "<td>{$row->DateAbsence}</td>";
-                        // // Si la justification est 0, afficher "non", sinon afficher "oui"
-                        // $justification = $row->Justifiée == 0 ? "non" : "oui";
-                        // echo "<td>$justification</td>";
-                        // echo "</tr>";
-                //     }
-                    
-                // ?>
-            </table>
-                
-        </div>
-    </section>
 <?php require("includes/header.view.php"); ?>
-<?php require("includes/nav.prof.view.php"); ?>
+<?php require("includes/nav.prof.view.php"); 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes professeurs</title>
-    <style>
+if (isset($data) && isset($data['modules'])) {
+    $modules = $data['modules'];
+} else {
+    $modules = [];
+}
+
+?>
+
+<style>
         .container {
             padding-top: 50px;
         }
@@ -120,7 +77,7 @@
             margin-right: 10px;
             border-radius: 50%;
         }
-    </style>
+</style>
 </head>
 <body>
 <div class="container">
@@ -136,39 +93,33 @@
                     </nav>
                 </div>
             </div>
-
             <div class="card mb-4">
                 <div class="card-body shadow rounded-3">
                     <div class="p-5 text-center clr crd-body">
                         <h1 class="mb-3">Les Absences</h1>
                     </div>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Eleves</th>
-                                <th>Email</th>
-                                <th>Absences</th>
-                                <th>Justifier</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><img src="path/to/profile-icon1.png" alt="Profile Icon" class="profile-icon"  onclick="zoomProfileIcon(this)"></td>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Maria Anders</td>
-                                <td>CNE</td>
-                            </tr>
-                            <tr>
-                                <td><img src="path/to/profile-icon2.png" alt="Profile Icon" class="profile-icon"  onclick="zoomProfileIcon(this)"></td>
-                                <td>Centro comercial Moctezuma</td>
-                                <td>Francisco Chang</td>
-                                <td>Maria Anders</td>
-                                <td>CNE</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <form action="insert_absence.php" method="post">
+            <div class="mb-3">
+                <label for="studentId" class="form-label">Student ID</label>
+                <input type="number" class="form-control" id="studentId" name="studentId" required>
+            </div>
+            <div class="mb-3">
+                <label for="courseId" class="form-label">Course ID</label>
+                <input type="number" class="form-control" id="courseId" name="courseId" required>
+            </div>
+            <div class="mb-3">
+                <label for="dateAbsence" class="form-label">Date of Absence</label>
+                <input type="date" class="form-control" id="dateAbsence" name="dateAbsence" required>
+            </div>
+            <div class="mb-3">
+                <label for="justified" class="form-label">Justified</label>
+                <select class="form-control" id="justified" name="justified" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Insert Absence</button>
+        </form>
                 </div>
             </div> 
         </div>

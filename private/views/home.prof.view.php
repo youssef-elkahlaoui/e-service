@@ -94,7 +94,6 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
             </div>
         </div>
     </div>
-    <!-- Page content -->
     <div class="row">
         <div class="col-md-9">
             <div class="card" style="height: 500px;">
@@ -173,8 +172,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     display: true
                 },
                 animation: {
-                    duration: 2000, // 2 seconds
-                    easing: 'easeInOutQuart' // smooth animation
+                    duration: 2000,
+                    easing: 'easeInOutQuart'
                 }
             }
         }

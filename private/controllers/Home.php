@@ -15,7 +15,7 @@ class Home extends Controller
 		elseif(Auth::adminLoggedIn()){
 			$this->redirect("/admins");
 		}
-		$this->redirect('login');
+		$this->redirect('/login');
 
 	}
 

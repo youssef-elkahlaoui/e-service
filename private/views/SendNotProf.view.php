@@ -67,18 +67,18 @@
                 <div class="card mb-4">
                     <div class="card-body shadow rounded-3">
                         <div class="form-container">
-                            <form action="<?= ROOT ?>/notification/sendNot" method="post">
+                            <form action="<?= ROOT ?>/NotificationProf/sendNot" method="post">
                                 <div class="form-group">
                                     <label class="form-label" for="notification">Notification:</label>
                                     <textarea class="form-control" name="notification" id="notification" rows="4" placeholder="Écrivez votre notification" required></textarea>
                                 </div>
                                 <div class="form-group">
-                                <label class="form-label" for="module">Module :</label>
-                                <select class="form-control" id="module" name="module" required>
+                                <label class="form-label" for="selectOption">Module :</label>
+                                <select class="form-control" id="selectOption" name="selectOption" required>
                                     <option value="" disabled selected hidden>Choisir un module</option>
                                     <?php foreach ($modules as $module): ?>
-                                        <option value="<?= htmlspecialchars($module->IdCours) ?>">
-                                            <?= htmlspecialchars($module->Titre) ?>
+                                        <option value="">
+                                            <?= htmlspecialchars($module->class_name) ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>

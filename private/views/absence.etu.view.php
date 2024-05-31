@@ -32,7 +32,6 @@
                         echo "<tr>";
                         echo "<td>{$row->ModuleName}</td>";
                         echo "<td>{$row->DateAbsence}</td>";
-                        // Si la justification est 0, afficher "non", sinon afficher "oui"
                         $justification = $row->Justifiée == 0 ? "non" : "oui";
                         echo "<td>$justification</td>";
                         echo "</tr>";

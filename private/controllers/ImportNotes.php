@@ -18,28 +18,52 @@ class importNotes extends Controller{
                                     echo "Ligne CSV invalide: " . implode(", ", $row) . " (Number of columns: " . count($row) . ")<br/>";
                                     continue;
                                 }
-                                $IdUtilisateur = $row[0];
+                                $idstudent = $row[0];
                                 $IdCours = $row[1];
                                 $TypeNote = $row[2];
                                 $Valeur = $row[3];
                                 $Coefficient = $row[4];
                                 $result = $db->query(
-                                    "INSERT INTO notes (IdUtilisateur, IdCours, TypeNote, Valeur, Coefficient) VALUES (?, ?, ?, ?, ?)", 
-                                    [$IdUtilisateur, $IdCours, $TypeNote, $Valeur, $Coefficient]
+                                    "INSERT INTO notes (idstudent, IdCours, TypeNote, Valeur, Coefficient) VALUES (?, ?, ?, ?, ?)", 
+                                    [$idstudent, $IdCours, $TypeNote, $Valeur, $Coefficient]
                                 );                                
                             }
                             fclose($fichier);
-                            $this->view('ImportNotes');
-                            echo '<script>alert("Importation des notes avec succès.");</script>';
+                                echo '<div class="card mb-4">
+                                    <div class="card-body shadow rounded-3">
+                                        <div class="alert alert-success" role="alert">
+                                    Importation des notes avec succès.
+                                    </div>
+                                    </div>
+                                </div>';
+                                $this->view('ImportNotes');
+
                         } catch (PDOException $e) {
-                            echo '<script>alert("Importation des notes avec succès.");</script>' . $e->getMessage();
+                            echo '<div class="card mb-4">
+                                    <div class="card-body shadow rounded-3">
+                                        <div class="alert alert-danger" role="alert">
+                                    Problem d insertion des donnes.
+                                        </div>
+                                    </div>
+                                </div>'. $e->getMessage();
                         }
                     } else {
-                        echo "Erreur dans l'ouverture du fichier";
+                            echo '<div class="card mb-4">
+                                    <div class="card-body shadow rounded-3">
+                                        <div class="alert alert-danger" role="alert">
+                                    Erreur dans l ouverture du fichier
+                                        </div>
+                                    </div>
+                                </div>';
                     }
                 }
             } else {
-                echo 'Erreur lors du téléchargement du fichier.';
+                                                                    echo '<div class="card mb-4">
+                                    <div class="card-body shadow rounded-3">
+                                        <div class="alert alert-danger" role="alert">
+Erreur lors du téléchargement du fichier                                        </div>
+                                    </div>
+                                </div>';
             }
         }
     }

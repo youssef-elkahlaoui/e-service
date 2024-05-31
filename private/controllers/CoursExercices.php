@@ -11,94 +11,69 @@ class CoursExercices extends Controller
     {
         $this->handleUpload('exercices', 'exercices');
     }
-    
 
     private function handleUpload($type, $view)
     {
         if (!empty($_FILES) && isset($_POST['upload'])) {
-            $pdf_file = null;
-            $video_file = null;
-    
-            if ($_FILES['pdf']['error'] === UPLOAD_ERR_OK) {
-                $file_type = $_FILES['pdf']['type'];
-                $allowed_types = ['application/pdf'];
-    
-                if (!in_array($file_type, $allowed_types)) {
-                    echo 'Type de fichier incorrect ! Le fichier doit être au format PDF !!';
-                    return;
-                } else {
-                    $pdf_file = $_FILES['pdf']['tmp_name'];
-                    $file_name = basename($_FILES['pdf']['name']);
-                    $upload_dir = "../uploads/$type/";
-                    $upload_file = $upload_dir . $file_name;
-    
-                    if (!is_dir($upload_dir)) {
-                        mkdir($upload_dir, 0755, true);
+            $pdf_file = $this->uploadFile('pdf', ['application/pdf'], $type);
+            $video_file = $this->uploadFile('video', ['video/mp4', 'video/avi', 'video/mpeg', 'video/quicktime'], $type);
+
+            if ($pdf_file || $video_file) {
+                $titre = $_POST['titre'];
+                $description = $_POST['description'];
+                $idModule = $_POST['module'];
+                $db = new Database();
+
+                try {
+                    if ($pdf_file) {
+                        $db->query(
+                            "INSERT INTO cours (Titre, Description, FilePath, IdModule) VALUES (?, ?, ?, ?)",
+                            [$titre, $description, $pdf_file, $idModule]
+                        );
                     }
-    
-                    if (!move_uploaded_file($pdf_file, $upload_file)) {
-                        echo 'Erreur lors du téléchargement du fichier PDF.';
-                        return;
+                    if ($video_file) {
+                        $db->query(
+                            "INSERT INTO cours (Titre, Description, FilePath, IdModule) VALUES (?, ?, ?, ?)",
+                            [$titre, $description, $video_file, $idModule]
+                        );
                     }
-                    $pdf_file = $upload_file;
+                    echo '<script> alert("Téléchargement réussi."); window.location.href = "' . $_SERVER['HTTP_REFERER'] . '"; </script>';
+                    exit();
+                } catch (PDOException $e) {
+                    echo "Erreur d'insertion dans la base de données: " . $e->getMessage();
                 }
+            } else {
+                echo 'Erreur lors du téléchargement des fichiers.';
             }
-    
-            if ($_FILES['video']['error'] === UPLOAD_ERR_OK) {
-                $file_type = $_FILES['video']['type'];
-                $allowed_types = ['video/mp4', 'video/avi', 'video/mpeg', 'video/quicktime'];
-    
-                if (!in_array($file_type, $allowed_types)) {
-                    echo 'Type de fichier incorrect ! Le fichier doit être au format vidéo (MP4, AVI, MPEG, QuickTime) !!';
-                    return;
-                } else {
-                    $video_file = $_FILES['video']['tmp_name'];
-                    $file_name = basename($_FILES['video']['name']);
-                    $upload_dir = "../uploads/$type/";
-                    $upload_file = $upload_dir . $file_name;
-    
-                    if (!is_dir($upload_dir)) {
-                        mkdir($upload_dir, 0755, true);
-                    }
-    
-                    if (!move_uploaded_file($video_file, $upload_file)) {
-                        echo 'Erreur lors du téléchargement du fichier vidéo.';
-                        return;
-                    }
-                    $video_file = $upload_file;
-                }
-            }
-    
-            $titre = $_POST['titre'];
-            $description = $_POST['description'];
-            $idModule = $_POST['module'];
-            $db = new Database();
-    
-            try {
-                if($pdf_file){
-                    $db->query(
-                        "INSERT INTO cours (Titre, Description,FilePath, IdModule) VALUES (?, ?, ?, ?)",
-                        [$titre, $description, $pdf_file, $idModule]
-                    );
-                }
-                
-                if($video_file){            
-                    $db->query(
-                        "INSERT INTO cours (Titre, Description, FilePath, IdModule) VALUES (?, ?, ?, ?)",
-                        [$titre, $description, $video_file, $idModule]
-                    );
-                }
-                echo '<script>
-                alert("Téléchargement réussi.");
-                window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";
-                </script>';
-                exit();
-            } catch (PDOException $e) {
-                echo "Erreur d'insertion dans la base de données: " . $e->getMessage();
-            }
-        } else {
-            echo 'Erreur lors du téléchargement des fichiers.';
         }
+    }
+
+    private function uploadFile($fileType, $allowedTypes, $type)
+    {
+        if ($_FILES[$fileType]['error'] === UPLOAD_ERR_OK) {
+            $file_type = $_FILES[$fileType]['type'];
+            if (!in_array($file_type, $allowedTypes)) {
+                echo "Type de fichier incorrect ! Le fichier doit être au format " . implode(", ", $allowedTypes) . " !!";
+                return null;
+            } else {
+                $tmp_file = $_FILES[$fileType]['tmp_name'];
+                $file_name = basename($_FILES[$fileType]['name']);
+                $upload_dir = "../uploads/$type/";
+                $upload_file = $upload_dir . $file_name;
+
+                if (!is_dir($upload_dir)) {
+                    mkdir($upload_dir, 0755, true);
+                }
+
+                if (!move_uploaded_file($tmp_file, $upload_file)) {
+                    echo "Erreur lors du téléchargement du fichier $fileType.";
+                    return null;
+                }
+
+                return $upload_file;
+            }
+        }
+        return null;
     }
 
 
@@ -121,19 +96,43 @@ class CoursExercices extends Controller
         }
     }
 
-    public function displayResults()
+  public function displayResults()
     {
         if (isset($_SESSION['results']) && isset($_SESSION['type'])) {
             $results = $_SESSION['results'];
             $type = $_SESSION['type'];
             unset($_SESSION['results']);
             unset($_SESSION['type']);
-
             $this->view('doc.etu', ['results' => $results, 'type' => $type]);
         } else {
             echo "Aucun résultat à afficher.";
         }
     }
 
+   public function download($fileId)
+{
+    $db = new Database();
+    $fileData = $db->query("SELECT FilePath FROM cours WHERE IdCours = ?", [$fileId]);
+
+    if ($fileData) {
+        $filePath = $fileData[0]->FilePath; 
+
+        if (file_exists($filePath)) {
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename=' . basename($filePath));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($filePath));
+            readfile($filePath);
+            exit();
+        } else {
+            echo 'Le fichier n’a pas été trouvé.';
+        }
+    } else {
+        echo 'Aucune donnée trouvée pour le fichier demandé.';
+    }
+}
 }
 ?>
