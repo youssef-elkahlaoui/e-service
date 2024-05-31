@@ -25,7 +25,6 @@ class Teacher extends Model
     {
         $this->errors = array();
 
-        
         // Check for first name
         if (empty($DATA['firstname']) || !preg_match('/^[a-zA-Z]+$/', $DATA['firstname'])) {
             $this->errors['firstname'] = "Only letters allowed in first name";

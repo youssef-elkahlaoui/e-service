@@ -4,7 +4,6 @@
     foreach ($data as $key => $value) {
         ${$key}= $value;
     }
-    echo Auth::getIdclasse();
 ?>
     <section style="background-color: #eee; ">
     <div class="container py-5" >

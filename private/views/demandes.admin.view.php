@@ -1,8 +1,6 @@
-<?php 
-    include "includes/header.view.php";
-    include "includes/nav.admin.view.php";
-?>
 <!DOCTYPE html>
+<?php require("includes/header.view.php"); ?>
+<?php require("includes/nav.admin.view.php"); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,15 +42,12 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col">
-<<<<<<< HEAD
-                            <ol class="breadcrumb mb-0 bg-body-tertiary rounded-3 p-3 mb-4 shadow">
-=======
-                        <nav aria-label="breadcrumb" class="rounded-3 p-2 mb-4 shadow">
-                            <ol class="breadcrumb mb-0 bg-body-tertiary">
->>>>>>> 1b38717773f23bb3af1b51d7f6a5c2871ef1e5d3
+                        <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
+                            <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Envoyer Notification...</li>
                             </ol>
+                        </nav>
                     </div>
                 </div>
                 
@@ -74,20 +69,22 @@
                                     </thead>
                                     <tbody>
                                         <?php foreach ($demandes as $key => $demande): ?>
-                                            <tr>
-                                                <th scope="row"><?php echo $key + 1; ?></th>
-                                                <td><?php echo htmlspecialchars($demande->student_id); ?></td>
-                                                <td><?php echo htmlspecialchars($demande->demand_type); ?></td>
-                                                <td><?php echo htmlspecialchars($demande->demand_description); ?></td>
-                                                <td><?php echo htmlspecialchars($demande->demand_date); ?></td>
-                                                <td><?php echo htmlspecialchars($demande->status); ?></td>
-                                                <td>
-                                                    <form action="<?= ROOT ?>/modifyDemand/modify" method="post">
-                                                        <input type="hidden" name="approuver" value="<?php echo htmlspecialchars($demande->id); ?>">
-                                                        <button type="submit" class="btn btn-outline-success btn-sm">Approuver</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
+                                            <?php if ($demande->status !== 'Approuvé'): ?>
+                                                <tr>
+                                                    <th scope="row"><?php echo $key + 1; ?></th>
+                                                    <td><?php echo htmlspecialchars($demande->student_id); ?></td>
+                                                    <td><?php echo htmlspecialchars($demande->demand_type); ?></td>
+                                                    <td><?php echo htmlspecialchars($demande->demand_description); ?></td>
+                                                    <td><?php echo htmlspecialchars($demande->demand_date); ?></td>
+                                                    <td><?php echo htmlspecialchars($demande->status); ?></td>
+                                                    <td>
+                                                        <form action="<?= ROOT ?>/modifyDemand/modify" method="post">
+                                                            <input type="hidden" name="approuver" value="<?php echo htmlspecialchars($demande->id); ?>">
+                                                            <button type="submit" class="btn btn-outline-success btn-sm">Approuver</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            <?php endif; ?>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>

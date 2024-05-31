@@ -26,7 +26,7 @@ class SendEtu extends Controller
 			$demand->demand_type = $demande_type;
 			$demand->demand_description = $description;
 			$demand->demand_date = date('Y-m-d H:i:s'); 
-            $demand->status= 'en attend';
+            $demand->status= 'Non approuvé';
 			try {
 				$saved = $demand->insert((array) $demand);
 				if ($saved) {

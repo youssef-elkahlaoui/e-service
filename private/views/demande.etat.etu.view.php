@@ -1,7 +1,7 @@
 <?php 
-    include "includes/nav.view.php";
-    include "includes/header.view.php";
-    $nbr = 1;
+include "includes/nav.view.php";
+include "includes/header.view.php";
+$nbr = 1;
 ?>
 
 <section style="background-color: #eee;">
@@ -27,7 +27,7 @@
             </div>
         <?php endif; ?>
 
-        <?php if(isset($data['demands']) && count($data['demands']) > 0): ?>
+        <?php if(isset($data['demands']) && is_array($data['demands']) && count($data['demands']) > 0): ?>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -40,7 +40,7 @@
                 </thead>
                 <tbody>
                     <?php foreach ($data['demands'] as $demand): ?>
-                        <tr class="<?= ($demand->status == 'realise') ? 'table-success' : (($demand->status == 'refuse') ? 'table-danger' : 'table-warning') ?>">
+                        <tr class="<?= ($demand->status == 'Approuvé') ? 'table-success'  : 'table-warning' ?>">
                             <td><?= $nbr++ ?></td>
                             <td><?= htmlspecialchars($demand->demand_type, ENT_QUOTES, 'UTF-8') ?></td>
                             <td><?= htmlspecialchars($demand->demand_description, ENT_QUOTES, 'UTF-8') ?></td>

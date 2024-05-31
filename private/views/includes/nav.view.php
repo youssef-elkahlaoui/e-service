@@ -54,7 +54,7 @@
     </style>
     <link rel="stylesheet" href="../styles/stylenav.css">
 </head>
-<body style="background-color: #eee;">
+<body style="background-color: #ebebeb;">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
     <div class="container-fluid">

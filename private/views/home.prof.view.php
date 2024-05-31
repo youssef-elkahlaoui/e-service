@@ -1,8 +1,8 @@
 <?php 
-require('/xampp/htdocs/e-service/private/controllers/Login.php');
-require('/xampp/htdocs/e-service/private/controllers/Seenotifications.php');
-include "includes/nav.prof.view.php";
-include "includes/header.view.php";
+require_once __DIR__ . '/../controllers/Login.php';
+require_once __DIR__ . '/../controllers/Seenotifications.php';
+include __DIR__ . "/includes/nav.prof.view.php";
+include __DIR__ . "/includes/header.view.php";
 $loginController = new Login();
 $lastSevenDaysData = $loginController->getLastSevenDaysData();
 $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
@@ -78,7 +78,7 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                                 <div class="row">
                                     <div class="col">
                                     <br>
-                                        <a href="<?= ROOT ?>/teachers/listeStudent"><span class="h2 font-weight-bold mb-0">Emplois</span></a>
+                                        <a href="<?= ROOT ?>/teachers/emplois"><span class="h2 font-weight-bold mb-0">Emplois</span></a>
                                         <h5 class="card-title text-uppercase text-dark mb-0">du Temps</h5>
                                     </div>
                                     <div class="col-auto">
@@ -94,6 +94,7 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
             </div>
         </div>
     </div>
+    <!-- Page content -->
     <div class="row">
         <div class="col-md-9">
             <div class="card" style="height: 500px;">
@@ -172,8 +173,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     display: true
                 },
                 animation: {
-                    duration: 2000,
-                    easing: 'easeInOutQuart'
+                    duration: 2000, // 2 seconds
+                    easing: 'easeInOutQuart' // smooth animation
                 }
             }
         }

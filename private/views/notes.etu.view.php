@@ -20,7 +20,7 @@
             <div class="card mb-4">
                 <div class="card-body text-center">
                     <h5 class="my-3"><?=Auth::getFirstname().' '.Auth::getLastname();?></h5>
-                    <p class="text-muted mb-1">Niveau</p>
+                    <p class="text-muted mb-1"><?=$_SESSION['NIVEAU']->NomClasse?></p>
                     <p class="text-muted mb-1"><?=Auth::getCne();?></p>
                     <p class="text-muted mb-4"><?=Auth::getCin();?></p>
                 </div>

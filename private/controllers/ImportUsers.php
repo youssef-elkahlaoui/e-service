@@ -1,5 +1,4 @@
 <?php
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -9,20 +8,21 @@ require './assets/PHPMailer-master/src/Exception.php';
 
 class ImportUsers extends Controller {
     public function import() {
-        $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
+        $mail = new PHPMailer(true);
+        $message1 = ''; // Initialize the message variables
+        $message2 = '';
 
         if (!empty($_FILES) && isset($_POST['import'])) {
             // Check if a file has been uploaded
-            if ($_FILES['excel']['error'] === UPLOAD_ERR_OK){
+            if ($_FILES['excel']['error'] === UPLOAD_ERR_OK) {
                 // Check the MIME type of the file
                 $file_type = $_FILES['excel']['type'];
                 if ($file_type !== 'text/csv' && $file_type !== 'application/csv' && $file_type !== 'application/vnd.ms-excel') {
-                    echo 'Type de fichier incorrect ! Le fichier doit être au format CSV !!';
+                    $message2 = 'Type de fichier incorrect ! Le fichier doit être au format CSV !!';
                 } else {
                     $csv_file = $_FILES['excel']['tmp_name'];
                     $db = new Database();
                     $fichier = fopen($csv_file, 'r');
-                    fgetcsv($fichier); // Skip the header row
 
                     if ($fichier !== false) {
                         fgetcsv($fichier); // Skip the header row
@@ -33,7 +33,7 @@ class ImportUsers extends Controller {
 
                             while (($row = fgetcsv($fichier)) !== false) {
                                 if (count($row) !== 8) {
-                                    echo "Ligne CSV invalide: " . implode(", ", $row) . " (Nombre de colonnes: " . count($row) . ")<br/>";
+                                    $message2 .= "Ligne CSV invalide: " . implode(", ", $row) . " (Nombre de colonnes: " . count($row) . ")<br/>";
                                     continue;
                                 }
 
@@ -42,23 +42,25 @@ class ImportUsers extends Controller {
                                 $lastname = $row[1];
                                 $email = $row[2];
                                 $Filiere = $row[3];
-                                $password = password_hash($row[4], PASSWORD_DEFAULT);
-                                $image = $row[5];
-                                $CNE = $row[6];
-                                $CIN = $row[7];
+                                $CNE = $row[4];
+                                $CIN = $row[5];
+                                $telephone = $row[6];
+                                $idclasse = $row[7];
+                                $password = password_hash($CNE, PASSWORD_DEFAULT); // Default password is CNE
+                                $image = 'default.jpg'; // Default image
 
                                 $result = $db->query(
-                                    "INSERT INTO students (id, firstname, lastname, email, Filiere, date, idClasse, password, image, CNE, CIN) VALUES (?, ?, ?, ?, ?, NOW(), 1, ?, ?, ?, ?)",
-                                    [$id, $firstname, $lastname, $email, $Filiere, $password, $image, $CNE, $CIN]
+                                    "INSERT INTO students (id, firstname, lastname, email, Filiere, date, password, image, CNE, CIN, telephone,idclasse) VALUES (?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?)",
+                                    [$id, $firstname, $lastname, $email, $Filiere, $password, $image, $CNE, $CIN, $telephone,$idclasse]
                                 );
                                 $newUsersIds[] = $id; 
                             }
                             
                             fclose($fichier);
-                            echo 'Importation des données réussie <br>';
+                            $message1 = 'Importation des données réussie <br>';
 
                         } catch (PDOException $e) {
-                            echo "Erreur d'insertion dans la base de données: " . $e->getMessage();
+                            $message2 = "Erreur d'insertion dans la base de données: " . $e->getMessage();
                         }
 
                         try {
@@ -68,7 +70,7 @@ class ImportUsers extends Controller {
                             $mail->SMTPAuth = true;
                             $mail->Username = 'anass.essafi@etu.uae.ac.ma';
                             $mail->Password = 'dkmj kcwr waqm fedr'; 
-                            $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+                            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                             $mail->Port = 587; 
 
                             // Sender
@@ -81,11 +83,10 @@ class ImportUsers extends Controller {
                                 $token = bin2hex(random_bytes(16));
                                 $tokenExpiry = date('Y-m-d H:i:s', strtotime('+1 day'));
 
-                                
                                 $db->query("UPDATE students SET reset_token = ?, token_expiry = ? WHERE id = ?", [$token, $tokenExpiry, $newUserId]);
 
                                 // Send email with token link
-                                $resetLink = "http://localhost/e-service/public/reset_password/?token=$token";
+                                $resetLink = "https://tdia-e-services.000webhostapp.com/e-service/public/reset_password/?token=$token";
                                 $email = trim($user->email);
                                 $mail->addAddress($email, $user->firstname);
                                 $mail->Subject = "Vos données pour s'identifier à votre compte";
@@ -94,21 +95,22 @@ class ImportUsers extends Controller {
                                 $mail->send();
                                 $mail->clearAddresses();
                             }
-                            } catch (Exception $e) {
-                                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-                            }
-                        } else {
-                            echo "Erreur dans l'ouverture du fichier";
+                        } catch (Exception $e) {
+                            $message2 .= "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                         }
+                    } else {
+                        $message2 = "Erreur dans l'ouverture du fichier";
                     }
-                } else {
-                    echo 'Erreur lors du téléchargement du fichier.';
                 }
+            } else {
+                $message2 = 'Erreur lors du téléchargement du fichier.';
             }
-    }   
+            $this->view("ImportUsers", ['message1' => $message1, 'message2' => $message2]);
+        }
+    }
 
     public function index() {
-       $this->view('home.admin');
+        $this->view('home.admin');
     }
 }
 ?>

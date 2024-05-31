@@ -24,7 +24,7 @@ class NotificationProf extends Controller {
                 $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                $mail->setFrom('anass.essafi@etu.uae.ac.ma', 'ANASS');
+                $mail->setFrom('youssef.elkahlaoui@etu.uae.ac.ma', 'youssef');
                 $mail->Subject = "Don't reply to this message";
 
                 foreach($students as $student) {
@@ -40,7 +40,7 @@ class NotificationProf extends Controller {
                 $message =  'Error: '. $ex->getMessage();
             }
             try{
-                $db->query("INSERT INTO notifications (Filiere,Message,DateNotification) VALUES (?,?,NOW())",array($choice,$notification));
+                $db->query("INSERT INTO notifications (idClass,Message,DateNotification) VALUES (?,?,NOW())",array($choice,$notification));
                 $message1= "Notification has been inserted succesfully in Database";
             }catch(Exception $e){
                 $message1 =  "Error inserting Notifcation in Database". $e->getMessage();

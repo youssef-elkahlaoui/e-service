@@ -1,5 +1,6 @@
 <?php require("includes/header.view.php"); ?>
-<?php require("includes/nav.admin.view.php"); ?>
+<?php require("includes/nav.admin.view.php");
+?>
 
     <style>
         .container {
@@ -98,17 +99,17 @@
                                 <th>Nom</th>
                                 <th>Prénom</th>
                                 <th>Email</th>
-                                <th>Filière</th>
+                                <th>Nom Filiere</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($students as $student): ?>
+                            <?php foreach ( $students as $student): ?>
                             <tr>
                                 <td><img src="<?= ROOT. $student->image;?>" alt="Profile Icon" class="profile-icon" onclick="zoomProfileIcon(this)"></td>
                                 <td><?= $student->firstname ?></td>
                                 <td><?= $student->lastname ?></td>
                                 <td><?= $student->email ?></td>
-                                <td><?= $student->Filiere ?></td>
+                                <td><?= $student->NomFiliere ?></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

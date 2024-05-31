@@ -16,9 +16,9 @@ if (isset($_GET['module_title'])) {
             <div class="col">
                 <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accuile</a></li>
+                        <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
                         <li class="breadcrumb-item"><a href="<?= ROOT ?>/students/modules">Modules</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Documentation de <?= $moduleTitle?></li>
+                        <li class="breadcrumb-item active" aria-current="page">Documentation de <?= $moduleTitle ?></li>
                     </ol>
                 </nav>
             </div>
@@ -29,7 +29,7 @@ if (isset($_GET['module_title'])) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">num</th>
+                            <th scope="col">Num</th>
                             <th scope="col">Titre</th>
                             <th scope="col">Description</th>
                             <th scope="col">#</th>
@@ -42,7 +42,7 @@ if (isset($_GET['module_title'])) {
                                     <th scope="row"><?php echo $index + 1; ?></th>
                                     <td><?php echo htmlspecialchars($record->Titre); ?></td>
                                     <td><?php echo nl2br(htmlspecialchars($record->Description)); ?></td>
-                                    <td><a href="<?php echo htmlspecialchars($record->FilePath); ?>" class="btn btn-primary" download>Télécharger</a></td>
+                                    <td><a href="<?= ROOT ?>/CoursExercices/download/<?php echo $record->IdCours; ?>" class="btn btn-primary">Télécharger</a></td>
                                 </tr>
                             <?php endif; ?>
                         <?php endforeach; ?>

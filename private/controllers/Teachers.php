@@ -63,15 +63,15 @@ class Teachers extends Controller
     }
 
 	function notifProfsend(){
-        $teacherId = Auth::getId();
-
-        $modules = (new Module())->query(
-            "SELECT modules.* 
-            FROM modules 
-            JOIN teacher_modules ON modules.IdCours = teacher_modules.module_id
-            WHERE teacher_modules.teacher_id = ?", [$teacherId]
+	    $teacherId = Auth::getId();
+	    $classe = new Classe();
+        $classes= $classe->query(
+            "SELECT classes.* 
+            FROM classes 
+            JOIN teacher_classes ON classes.IdClasse = teacher_classes.id_class
+            WHERE teacher_classes.id_teacher = ?", [$teacherId]
         );
-        $this->view('SendNotProf',['modules' => $modules]);
+        $this->view('SendNotProf',['classes'=>$classes]);
     }
 
     function archProf(){
@@ -116,7 +116,7 @@ class Teachers extends Controller
             WHERE teacher_modules.teacher_id = ?", [$teacherId]
         );
 
-        $this->view('importNotes',['modules' => $modules]);
+        $this->view('ImportNotes',['modules' => $modules]);
     }
 
     function profile($id = null){
@@ -138,14 +138,12 @@ class Teachers extends Controller
                 $devoir = new Devoir();
                 $teacherId = Auth::getId();
         
-                // Get the modules taught by this teacher
                 $modules = (new Module())->query(
                     "SELECT * FROM modules 
                     JOIN teacher_modules ON modules.IdCours = teacher_modules.module_id
                     WHERE teacher_modules.teacher_id = ?", [$teacherId]
                 );
         
-                // Get the devoirs for those modules
                 $moduleIds = array_map(function ($module) {
                     return $module->IdCours;
                 }, $modules);
@@ -164,4 +162,15 @@ class Teachers extends Controller
         
                 $this->view('devoire.prof', ['devoirs' => $devoirs]);
             }
+function emplois() {
+
+    $db = new Database;
+    $emplois = $db->query("SELECT * FROM emploi ORDER BY date DESC", []);
+    if ($emplois === false) {
+        $emplois = []; 
+    }
+
+    $this->view('emplois', ['emplois' => $emplois]);
+}
+
 }

@@ -9,9 +9,8 @@ class Students extends Controller
 		{
 			$this->redirect('login');
 		}
-		$user = new Student();
-
-		$data = $user->findAll();
+		$notif= new Notification();
+		$data = $notif->where('idclass',Auth::getIdclasse());
 
 		$this->view('home.etu',['rows'=>$data]);
     }
@@ -23,28 +22,35 @@ class Students extends Controller
 		$abs = new Absence();
 		$module = new Module();
 		
+		// Récupérer les absences de l'étudiant
 		$dataAbs = $abs->where('IdStudent', Auth::getId());
 		
+		// Vérifier si $dataAbs est un tableau valide
 		if (!is_array($dataAbs)) {
+			// Gérer le cas où la requête ne renvoie pas de résultats
 			$dataAbs = [];
 		}
 	
+		// Récupérer les identifiants de cours uniques des absences
 		$courseIds = array_unique(array_map(function($absence) {
 			return $absence->IdCours;
 		}, $dataAbs));
 		
+		// Récupérer les noms des modules pour ces cours
 		$dataMod = [];
 		foreach ($courseIds as $courseId) {
 			$moduleData = $module->where('IdCours', $courseId);
 			if (!empty($moduleData)) {
-				$dataMod[$courseId] = $moduleData[0]->Titre; 
+				$dataMod[$courseId] = $moduleData[0]->Titre; // Assumant que 'Titre' est le nom du module
 			}
 		}
 		
+		// Combiner les données d'absences avec les noms des modules
 		foreach ($dataAbs as $absence) {
 			$absence->ModuleName = $dataMod[$absence->IdCours] ?? 'Unknown';
 		}
 		
+		// Afficher la vue avec les données d'absences
 		$this->view('absence.etu', ['data' => $dataAbs]);
 	}
 	
@@ -71,16 +77,19 @@ class Students extends Controller
         $this->view('demande.etu');
     }
 
-	function note(){
-        if(!Auth::studentLoggedIn())
-		{
-			$this->redirect('login');
-		}
-		$note = new Note();
 
-		$data = $note->calculateAllModuleGrades(Auth::getId());
-        $this->view('notes.etu', ['data'=> $data]);
+    // ...
+    function note()
+    {
+        if (!Auth::studentLoggedIn()) {
+            $this->redirect('login');
+        }
+
+        $note = new Note();
+        $data = $note->calculateAllModuleGrades(Auth::getId());
+        $this->view('notes.etu', ['data' => $data]);
     }
+
 
 	function seulnote($id) {
 		if (!Auth::studentLoggedIn()) {
@@ -193,43 +202,49 @@ class Students extends Controller
         $this->view('devoir.etu',['module' => $modulesData]);
     }
     
-	function modules() {
-		if (!Auth::studentLoggedIn()) {
-			$this->redirect('login');
-		}
-		
-		$module = new Module();
-		$teacher = new Teacher();
-		
-		// Récupérer les données des modules pour la classe actuelle
-		$modulesData = $module->where('IdClasse', Auth::getIdclasse());
-		
-		// Créer un tableau pour stocker les données des modules avec les noms des professeurs
-		$modulesWithTeacherNames = [];
-		
-		// Pour chaque module, obtenir le nom du professeur correspondant
-		foreach ($modulesData as $moduleData) {
-			// Récupérer le nom du professeur pour ce module
-			$teacherData = $teacher->where('id', $moduleData->IdEnseignant); // Accès aux propriétés de l'objet avec ->
-			
-			// Assurez-vous que $teacherData est un tableau
-			if (!is_array($teacherData)) {
-				$teacherData = [];
-			}
-			
-			// Utiliser la méthode where pour récupérer uniquement le premier professeur correspondant
-			$teacherData = count($teacherData) > 0 ? $teacherData[0] : null;
-			
-			// Ajouter les données du module avec le nom du professeur au tableau
-			$modulesWithTeacherNames[] = [
-				'module' => $moduleData,
-				'teacher' => $teacherData
-			];
-		}
-		
-		// Passer les données des modules avec les noms des professeurs à la vue
-		$this->view("modules", ['modulesWithTeacherNames' => $modulesWithTeacherNames]);
-	}
+ function modules() {
+    if (!Auth::studentLoggedIn()) {
+        $this->redirect('login');
+    }
+    
+    $module = new Module();
+    $teacher = new Teacher();
+    
+    // Récupérer les données des modules pour la classe actuelle
+    $modulesData = $module->where('IdClasse', Auth::getIdclasse());
+    
+    // Créer un tableau pour stocker les données des modules avec les noms des professeurs
+    $modulesWithTeacherNames = [];
+    
+    // Vérifier si $modulesData est un tableau ou un objet
+    if (is_array($modulesData) || is_object($modulesData)) {
+        // Pour chaque module, obtenir le nom du professeur correspondant
+        foreach ($modulesData as $moduleData) {
+            // Récupérer le nom du professeur pour ce module
+            $teacherData = $teacher->where('id', $moduleData->IdEnseignant);
+            
+            // Vérifier si $teacherData est un tableau ou un objet
+            if (is_array($teacherData) || is_object($teacherData)) {
+                // Utiliser la méthode where pour récupérer uniquement le premier professeur correspondant
+                $teacherData = count($teacherData) > 0 ? $teacherData[0] : null;
+            } else {
+                // Si $teacherData n'est ni un tableau ni un objet, définir $teacherData sur null
+                $teacherData = null;
+            }
+            
+            // Ajouter les données du module avec le nom du professeur au tableau
+            $modulesWithTeacherNames[] = [
+                'module' => $moduleData,
+                'teacher' => $teacherData
+            ];
+        }
+    }
+    
+    // Passer les données des modules avec les noms des professeurs à la vue
+    $this->view("modules", ['modulesWithTeacherNames' => $modulesWithTeacherNames]);
+}
+
+
 	
 	
 

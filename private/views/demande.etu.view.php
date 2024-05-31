@@ -40,7 +40,7 @@
                     <select class="form-control" id="exampleFormControlSelect1" name="demande_type">
                         <option>Demande de stage</option>
                         <option>Attestation de poursuite d'étude</option>
-                        <option>Attestation d'assurance</option>
+                        <option>Attestation d assurance</option>
                         <option>Activite parascolaire</option>
                         <option>Autre</option>
                     </select>
