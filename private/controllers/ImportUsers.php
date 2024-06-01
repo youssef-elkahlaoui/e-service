@@ -46,8 +46,8 @@ class ImportUsers extends Controller {
                                 $CIN = $row[5];
                                 $telephone = $row[6];
                                 $idclasse = $row[7];
-                                $password = password_hash($CNE, PASSWORD_DEFAULT); // Default password is CNE
-                                $image = 'default.jpg'; // Default image
+                                $password = password_hash($CNE, PASSWORD_DEFAULT);
+                                $image = '/uploads/img/students/profile.png';
 
                                 $result = $db->query(
                                     "INSERT INTO students (id, firstname, lastname, email, Filiere, date, password, image, CNE, CIN, telephone,idclasse) VALUES (?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?)",

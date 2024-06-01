@@ -17,7 +17,6 @@ class Teachers extends Controller
     
     function absence(){
         $teacherId = Auth::getId();
-
         $modules = (new Module())->query(
             "SELECT modules.*, classes.NomClasse as class_name 
             FROM modules 

@@ -19,7 +19,14 @@ class Login extends Controller
                         Auth::authenticateStudent($row);
                         Auth::authNiveau();
                         if (isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'on') {
-                            setcookie('remembered', 'true', time() + (86400 * 30), '/');
+                            setcookie('remembered', 'true', [
+                                'expires' => time() + (86400 * 30),
+                                'path' => '/',
+                                'domain' => null,
+                                'secure' => true,
+                                'httponly' => true,
+                                'samesite' => 'Lax'
+                            ]);
                         }
                         $this->incrementLoginCount();
                         $this->redirect('/student');
@@ -32,8 +39,14 @@ class Login extends Controller
                     if (password_verify($_POST['password'], $row->password)) {
                         Auth::authenticateTeacher($row);
                         if (isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'on') {
-                            setcookie('remembered', 'true', time() + (86400 * 30), '/');
-                        }
+                            setcookie('remembered', 'true', [
+                                'expires' => time() + (86400 * 30),
+                                'path' => '/',
+                                'domain' => null,
+                                'secure' => true,
+                                'httponly' => true,
+                                'samesite' => 'Lax'
+                            ]);                        }
                         $this->incrementLoginCount();
                         $this->redirect('/teachers');
                     }
@@ -45,8 +58,14 @@ class Login extends Controller
                     if (password_verify($_POST['password'], $row->password)) {
                         Auth::authenticateAdmin($row);
                         if (isset($_POST['rememberMe']) && $_POST['rememberMe'] == 'on') {
-                            setcookie('remembered', 'true', time() + (86400 * 30), '/');
-                        }
+                            setcookie('remembered', 'true', [
+                                'expires' => time() + (86400 * 30),
+                                'path' => '/',
+                                'domain' => null,
+                                'secure' => true,
+                                'httponly' => true,
+                                'samesite' => 'Lax'
+                            ]);                        }
                         $this->incrementLoginCount();
                         $this->redirect('/admins');
                     }
@@ -119,5 +138,4 @@ class Login extends Controller
     }
 
 }
-
 ?>

@@ -141,9 +141,6 @@
                 </li>
                     
                 </ul>
-                <!-- Left links -->
-
-                <!-- Right elements -->
                 <div class="dropdown">
                     <a
                       data-mdb-dropdown-init
@@ -180,9 +177,5 @@
         <!-- Container wrapper -->
     </nav>
 
-    <!-- Navbar -->
-    <!-- End your project here-->
-
-    <!-- MDB -->
     <script type="text/javascript" src="<?=ROOT?>/mdb/js/mdb.umd.min.js"></script>
     <!-- Custom scripts -->

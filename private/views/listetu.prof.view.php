@@ -95,7 +95,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Avatar</th> <!-- Column for profile icons -->
+                                <th>Avatar</th>
                                 <th>Nom</th>
                                 <th>Prénom</th>
                                 <th>Email</th>

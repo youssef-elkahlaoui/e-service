@@ -61,7 +61,8 @@ class importNotes extends Controller{
                                                                     echo '<div class="card mb-4">
                                     <div class="card-body shadow rounded-3">
                                         <div class="alert alert-danger" role="alert">
-Erreur lors du téléchargement du fichier                                        </div>
+                                            Erreur lors du téléchargement du fichier                                        
+                                        </div>
                                     </div>
                                 </div>';
             }

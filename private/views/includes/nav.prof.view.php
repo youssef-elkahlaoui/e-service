@@ -85,6 +85,40 @@
                         <i class="fa-solid fa-house mt-1"></i>&nbsp;Accueil
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= ROOT ?>/teachers/notifProfsend">
+                        <i class="fa-solid fa-bell mb-1"></i>&nbsp;Envoie de Notification
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= ROOT ?>/teachers/devoire">
+                        <i class="fa-solid fa-book mb-1"></i>&nbsp;Devoirs
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= ROOT ?>/teachers/archivecours">
+                        <i class="fa-solid fa-box-archive mb-1"></i>&nbsp;Archivage
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="contactsDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-users mt-1"></i>&nbsp;Contacts
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="contactsDropdown">
+                        <li>
+                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/listeAdmin">Admins</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/listeProf">Professeurs</a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item dropdown">
                     <a
                         class="nav-link dropdown-toggle"
@@ -104,58 +138,24 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/teachers/notifProfsend">
-                        <i class="fa-solid fa-bell mb-1"></i>&nbsp;Envoie de Notification
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/teachers/devoire">
-                        <i class="fa-solid fa-book mb-1"></i>&nbsp;Devoirs
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= ROOT ?>/teachers/archivecours">
-                        <i class="fa-solid fa-box-archive mb-1"></i>&nbsp;Archivage
-                    </a>
-                </li>
                 <li class="nav-item dropdown">
                     <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="contactsDropdown"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="fa-solid fa-users mt-1"></i>&nbsp;Contacts
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="contactsDropdown">
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/listeAdmin">Admins</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/listeProf">Professeurs</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="exportsDropdown"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="fa-solid fa-file-arrow-up mt-1"></i>&nbsp;Exports
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="exportsDropdown">
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/cours">Cours, Fichiers & Videos</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="<?= ROOT ?>/teachers/td">TDs,TPs & Devoirs</a>
-                        </li>
-                    </ul>
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="exportsDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="fa-solid fa-file-arrow-up mt-1"></i>&nbsp;Exports
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="exportsDropdown">
+                    <li>
+                        <a class="dropdown-item" href="<?= ROOT ?>/teachers/cours">Cours, Fichiers & Videos</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="<?= ROOT ?>/teachers/td">TDs,TPs & Devoirs</a>
+                    </li>
+                </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= ROOT ?>/teachers/note">

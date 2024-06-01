@@ -1,140 +1,137 @@
-<?php require("includes/header.view.php"); ?>
-<?php require("includes/nav.prof.view.php"); 
-
-if (isset($data) && isset($data['modules'])) {
-    $modules = $data['modules'];
-} else {
-    $modules = [];
+<?php 
+    include "includes/header.view.php";
+    include "includes/nav.prof.view.php";
+    if (isset($data) && isset($data['modules'])) {
+        $modules = $data['modules'];
+    } else {
+        $modules = [];
+    }
+?>
+<style>
+.container {
+    padding-top: 50px;
+}
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+.form-container {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    padding: 30px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-label {
+    font-weight: bold;
+}
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+.drop-zone {
+    border: 2px dashed #ced4da;
+    border-radius: 5px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.drop-zone.dragover {
+    background-color: #e9ecef;
+}
+.drop-zone input[type="file"] {
+    display: none;
 }
 
-?>
 
-<style>
-        .container {
-            padding-top: 50px;
-        }
-        .card {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-        }
-        .crd-body {
-            border: 1px solid #ced4da;
-            border-radius: 10px;
-        }
-        .form-container {
-            background-color: #f8f9fa;
-            border: 1px solid #ced4da;
-            border-radius: 10px;
-            padding: 30px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-label {
-            font-weight: bold;
-        }
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-        .drop-zone {
-            border: 2px dashed #ced4da;
-            border-radius: 5px;
-            padding: 30px;
-            text-align: center;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .drop-zone.dragover {
-            background-color: #e9ecef;
-        }
-        .drop-zone input[type="file"] {
-            display: none;
-        }
-        .bg-body-tertiary {
-            background-color: #f8f9fa ;
-        }
-        .clr{
-            background-color: #f8f9fa;
-        }
-        .rounded-3 {
-            border-radius: 0.3rem !important;
-        }
-        .p-3 {
-            padding: 1rem !important;
-        }
-        .mb-4, .my-4 {
-            margin-bottom: 1.5rem !important;
-        }
-        .breadcrumb-item a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .profile-icon {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            border-radius: 50%;
-        }
 </style>
-</head>
 <body>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-12">
-            <div class="row bg-white">
+            <div class="row">
                 <div class="col">
                     <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Les absences</li>
+                            <li class="breadcrumb-item active" aria-current="page">Importer Absences</li>
                         </ol>
                     </nav>
                 </div>
             </div>
             <div class="card mb-4">
                 <div class="card-body shadow rounded-3">
-                    <div class="p-5 text-center clr crd-body">
-                        <h1 class="mb-3">Les Absences</h1>
+                    <div class="form-container">
+                        <form action="<?= ROOT ?>/absences/import" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="form-label" for="csv">Importer les absences :</label>
+                                <div class="drop-zone" id="drop-zone">
+                                    <p>Glissez-déposez un fichier ici ou cliquez pour sélectionner un fichier</p>
+                                    <input type="file" id="csv" name="csv" class="form-control" accept=".csv" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="module">Choisir Module :</label>
+                                <select class="form-control" id="module" name="module" required>
+                                    <option value="" disabled selected hidden>Choisir un module</option>
+                                    <?php foreach ($modules as $module): ?>
+                                        <option value="<?= htmlspecialchars($module->IdCours) ?>">
+                                            <?= htmlspecialchars($module->Titre) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <input type="hidden" name="import_absences" value="1">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-outline-primary" name="import_absences">Exporter</button>
+                            </div>
+                        </form>
                     </div>
-                    <form action="insert_absence.php" method="post">
-            <div class="mb-3">
-                <label for="studentId" class="form-label">Student ID</label>
-                <input type="number" class="form-control" id="studentId" name="studentId" required>
-            </div>
-            <div class="mb-3">
-                <label for="courseId" class="form-label">Course ID</label>
-                <input type="number" class="form-control" id="courseId" name="courseId" required>
-            </div>
-            <div class="mb-3">
-                <label for="dateAbsence" class="form-label">Date of Absence</label>
-                <input type="date" class="form-control" id="dateAbsence" name="dateAbsence" required>
-            </div>
-            <div class="mb-3">
-                <label for="justified" class="form-label">Justified</label>
-                <select class="form-control" id="justified" name="justified" required>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Insert Absence</button>
-        </form>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
-</body>
+
 <script>
-    function zoomProfileIcon(element) {
-        element.style.transform = "scale(7)";
-        element.style.transition = "transform 1s";
-        setTimeout(function(){
-            element.style.transform = "scale(1)";
-        }, 1000);
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('csv');
+
+    dropZone.addEventListener('click', () => fileInput.click());
+
+    dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('dragover');
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        
+        const files = e.dataTransfer.files;
+        if (files.length) {
+            fileInput.files = files;
+            dropZone.querySelector('p').textContent = files[0].name;
+        }
+    });
+
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files.length) {
+            dropZone.querySelector('p').textContent = fileInput.files[0].name;
+        } else {
+            dropZone.querySelector('p').textContent = 'Glissez-déposez un fichier ici ou cliquez pour sélectionner un fichier';
+        }
+    });
+});
 </script>
-</html>
 </body>
 </html>
