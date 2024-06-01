@@ -1,13 +1,12 @@
 <?php require("includes/header.view.php"); ?>
-<?php require("includes/nav.admin.view.php");
-?>
+<?php require("includes/nav.admin.view.php"); ?>
 
     <style>
         .container {
             padding-top: 50px;
         }
         .card {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .crd-body {
             border: 1px solid #ced4da;
@@ -48,7 +47,7 @@
         .bg-body-tertiary {
             background-color: #f8f9fa;
         }
-        .clr{
+        .clr {
             background-color: #f8f9fa;
         }
         .rounded-3 {
@@ -69,6 +68,35 @@
             height: 30px;
             margin-right: 10px;
             border-radius: 50%;
+            object-fit: cover;
+        }
+        @media (max-width: 767px) {
+            .table thead {
+                display: none;
+            }
+            .table tr {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 15px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            .table td {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 15px;
+                border-top: 1px solid #ced4da;
+            }
+            .table td:first-child {
+                border-top: none;
+            }
+            .table td::before {
+                content: attr(data-label);
+                flex-basis: 50%;
+                font-weight: bold;
+                padding-right: 10px;
+            }
         }
     </style>
 </head>
@@ -95,7 +123,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Avatar</th> <!-- Column for profile icons -->
+                                <th>Avatar</th>
                                 <th>Nom</th>
                                 <th>Prénom</th>
                                 <th>Email</th>
@@ -103,13 +131,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ( $students as $student): ?>
+                            <?php foreach ($students as $student): ?>
                             <tr>
-                                <td><img src="<?= ROOT. $student->image;?>" alt="Profile Icon" class="profile-icon" onclick="zoomProfileIcon(this)"></td>
-                                <td><?= $student->firstname ?></td>
-                                <td><?= $student->lastname ?></td>
-                                <td><?= $student->email ?></td>
-                                <td><?= $student->NomFiliere ?></td>
+                                <td data-label="Avatar"><img src="<?= ROOT . $student->image; ?>" alt="Profile Icon" class="profile-icon" onclick="zoomProfileIcon(this)"></td>
+                                <td data-label="Nom"><?= $student->firstname ?></td>
+                                <td data-label="Prénom"><?= $student->lastname ?></td>
+                                <td data-label="Email"><?= $student->email ?></td>
+                                <td data-label="Nom Filiere"><?= $student->NomFiliere ?></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
