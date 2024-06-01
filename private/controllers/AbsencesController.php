@@ -14,22 +14,20 @@ class AbsencesController extends Controller {
                     $fichier = fopen($csv_file, 'r');
 
                     if ($fichier !== false) {
-                        fgetcsv($fichier); // Skip the header row
+                        fgetcsv($fichier); 
                         try {
                             while (($row = fgetcsv($fichier)) !== false) {
-                                if (count($row) < 3) {
+                                if (count($row) < 2) {
                                     echo "Ligne CSV invalide: " . implode(", ", $row) . " (Number of columns: " . count($row) . ")<br/>";
                                     continue;
                                 }
                                 
                                 $idstudent = $row[0];
-                                $dateAbsence = $row[1];
-                                $justifiee = isset($row[2]) ? $row[2] : 0;
-
+                                $justifiee = isset($row[1]) ? $row[1] : 'non';
                                 $result = $db->query(
-                                    "INSERT INTO absences (IdStudent, IdCours, DateAbsence, Justifiée) VALUES (?, ?, ?, ?) 
-                                    ON DUPLICATE KEY UPDATE DateAbsence=VALUES(DateAbsence), Justifiée=VALUES(Justifiée)",
-                                    [$idstudent, $_POST['module'], $dateAbsence, $justifiee]
+                                    "INSERT INTO absences (IdStudent, IdCours, Justifiée) VALUES (?, ?, ?) 
+                                    ON DUPLICATE KEY UPDATE , Justifiée=VALUES(Justifiée)",
+                                    [$idstudent, $_POST['module'], $justifiee]
                                 );                                
                             }
                             fclose($fichier);
@@ -40,8 +38,7 @@ class AbsencesController extends Controller {
                                     </div>
                                 </div>
                             </div>';
-                            $this->view('ImportAbsences');
-
+                            $this->view('absence.prof');
                         } catch (PDOException $e) {
                             echo '<div class="card mb-4">
                                 <div class="card-body shadow rounded-3">
@@ -74,7 +71,7 @@ class AbsencesController extends Controller {
     }
 
     public function index() {
-        $this->view('ImportAbsences');
+        $this->view('absence.prof');
     }
 }
 ?>
