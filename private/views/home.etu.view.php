@@ -1,10 +1,11 @@
 <?php 
-require('../private/controllers/Login.php'); // Utilisation d'un chemin relatif
+require('../private/controllers/Login.php'); 
 include "includes/nav.view.php";
 include "includes/header.view.php";
 $loginController = new Login();
 $lastSevenDaysData = $loginController->getLastSevenDaysData();
 $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
+
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
@@ -43,14 +44,14 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <a href="#"><span class="h2 font-weight-bold mb-0 text-success">356</span></a>
+                                        <a href="#"><span class="h2 font-weight-bold mb-0 text-success">56</span></a>
                                         <h5 class="card-title text-uppercase text-dark mb-0">notifications</h5>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-warning text-white rounded-circle shadow"></div>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-sm"><span style="color:#1df070;"><?= intdiv($sumOfLoginsLastSevenDays,4) ?></span> notification administrative</p>
+                                <p class="mt-3 mb-0 text-sm"><span style="color:#1df070;">12</span> notification administrative</p>
                             </div>
                         </div>
                     </div>
@@ -59,14 +60,14 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <a href="#"><span class="h2 font-weight-bold mb-0 text-warning">924</span></a>
+                                        <a href="#"><span class="h2 font-weight-bold mb-0 text-warning">24</span></a>
                                         <h5 class="card-title text-uppercase text-dark mb-0">Documents</h5>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-yellow text-white rounded-circle shadow"></div>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-sm">plus de <span style="color:burlywood;"><?= intdiv($sumOfLoginsLastSevenDays,3) ?></span>  documents par jour</p>
+                                <p class="mt-3 mb-0 text-sm">plus de <span style="color:burlywood;">5</span>  documents par jour</p>
                             </div>
                         </div>
                     </div>
@@ -75,14 +76,14 @@ $sumOfLoginsLastSevenDays = $loginController->getSumOfLoginsLastSevenDays();
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <a href="#"><span class="h2 font-weight-bold mb-0">49,65%</span></a>
-                                        <h5 class="card-title text-uppercase text-dark mb-0">Logins</h5>
+                                        <a href="<?= ROOT ?>/students/emplois"><span class="h2 font-weight-bold mb-0">Emplois du temps</span></a>
+                                        <h5 class="card-title text-uppercase text-dark mb-0"><?=$_SESSION['NIVEAU']->NomClasse?></h5>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-info text-white rounded-circle shadow"></div>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-sm"><span style="color:cornflowerblue;"><?= intdiv($sumOfLoginsLastSevenDays,6) ?></span> est la moyenne de connexion par jour</p>
+                                <p class="mt-3 mb-0 text-sm"><span style="color:cornflowerblue;">Emplois de <?=$_SESSION['NIVEAU']->NomClasse?></span> </p>
                             </div>
                         </div>
                     </div>
