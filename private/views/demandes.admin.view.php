@@ -1,6 +1,8 @@
+<?php 
+    include "includes/header.view.php";
+    include "includes/nav.admin.view.php";
+?>
 <!DOCTYPE html>
-<?php require("includes/header.view.php"); ?>
-<?php require("includes/nav.admin.view.php"); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,17 +24,40 @@
             border-radius: 10px;
             padding: 30px;
         }
-        .form-group {
-            margin-bottom: 20px;
+        .bg-body-tertiary {
+            background-color: #f8f9fa;
         }
-        .form-label {
-            font-weight: bold;
+        .rounded-3 {
+            border-radius: 0.3rem !important;
         }
-        .form-control {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
+        .p-3 {
+            padding: 1rem !important;
+        }
+        .mb-4, .my-4 {
+            margin-bottom: 1.5rem !important;
+        }
+        @media (max-width: 767px) {
+            .table-responsive {
+                overflow-x: auto;
+            }
+            .table th, .table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.875rem;
+                white-space: nowrap;
+            }
+            .breadcrumb-item a {
+                font-size: 0.875rem;
+            }
+        }
+        @media (max-width: 575px) {
+            .breadcrumb-item a {
+                font-size: 0.875rem;
+            }
+            .table th, .table td {
+                font-size: 0.75rem;
+                padding: 0.5rem 0.25rem;
+                white-space: nowrap;
+            }
         }
     </style>
 </head>
@@ -42,8 +67,8 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col">
-                        <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4 shadow">
-                            <ol class="breadcrumb mb-0">
+                        <nav aria-label="breadcrumb" class="rounded-3 p-2 mb-4 shadow">
+                            <ol class="breadcrumb mb-0 bg-body-tertiary">
                                 <li class="breadcrumb-item"><a href="<?= ROOT ?>">Accueil</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Envoyer Notification...</li>
                             </ol>
@@ -55,21 +80,21 @@
                     <div class="card-body shadow rounded-3">
                         <div class="form-container">
                             <?php if (!empty($demandes)): ?>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Student ID</th>
-                                            <th scope="col">Type de Demande</th>
-                                            <th scope="col">Description</th>
-                                            <th scope="col">Date de Demande</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($demandes as $key => $demande): ?>
-                                            <?php if ($demande->status !== 'Approuvé'): ?>
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Student ID</th>
+                                                <th scope="col">Type de Demande</th>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">Date de Demande</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($demandes as $key => $demande): ?>
                                                 <tr>
                                                     <th scope="row"><?php echo $key + 1; ?></th>
                                                     <td><?php echo htmlspecialchars($demande->student_id); ?></td>
@@ -84,10 +109,10 @@
                                                         </form>
                                                     </td>
                                                 </tr>
-                                            <?php endif; ?>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             <?php else: ?>
                                 <p class="text-center">Aucune demande trouvée.</p>
                             <?php endif; ?>

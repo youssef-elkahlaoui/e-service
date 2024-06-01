@@ -98,6 +98,17 @@ class Admins extends Controller {
         }
         $this->view('ImportUsers');
     }
+    function emplois() {
+
+        $db = new Database;
+        $emplois = $db->query("SELECT * FROM emploi ORDER BY date DESC", []);
+        if ($emplois === false) {
+            $emplois = []; 
+        }
+    
+        $this->view('emplois.admin', ['emplois' => $emplois]);
+    }
+    
 
     
 }
