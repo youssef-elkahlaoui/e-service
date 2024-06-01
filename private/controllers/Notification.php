@@ -7,15 +7,28 @@ class Notification extends Controller {
         require './assets/PHPMailer-master/src/SMTP.php';
         require './assets/PHPMailer-master/src/Exception.php';
 
-        if(isset($_POST['notif'])){
+        if (isset($_POST['notif'])) {
             $notification = $_POST['notification'];
             $choice = $_POST['selectedoption'];
             $db = new Database();
 
             $mail = new \PHPMailer\PHPMailer\PHPMailer(true);
-            try {
-                $students = $db->query("SELECT * FROM students");
+            $message = '';
+            $message1 = '';
 
+            try {
+                // Fetch students based on the selected option
+                if ($choice === "ALL") {
+                    $students = $db->query("SELECT * FROM students");
+                } else {
+                    $students = $db->query("SELECT * FROM students WHERE IdClasse = ?", [$choice]);
+                }
+
+                if ($students === false) {
+                    throw new Exception("Error fetching students from the database.");
+                }
+
+                // Setup PHPMailer
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
@@ -27,28 +40,31 @@ class Notification extends Controller {
                 $mail->setFrom('anass.essafi@etu.uae.ac.ma', 'ANASS');
                 $mail->Subject = "Don't reply to this message";
 
-                foreach($students as $student) {
-                    if($choice === "ALL" || $student->Filiere == $choice) {
-                        $mail->clearAddresses(); 
-                        $mail->addAddress($student->email, $student->lastname);
-                        $mail->Body = $notification;
-                        $mail->send();
-                    }
+                // Send emails to students
+                foreach ($students as $student) {
+                    $mail->clearAddresses(); 
+                    $mail->addAddress($student->email);
+                    $mail->Body = $notification;
+                    $mail->send();
                 }
                 $message = 'Mail has been sent successfully<br>';
-            } catch(\PHPMailer\PHPMailer\Exception $ex) {
-                $message =  'Error: '. $ex->getMessage();
+            } catch (\PHPMailer\PHPMailer\Exception $ex) {
+                $message = 'Error: ' . $ex->getMessage();
+            } catch (Exception $e) {
+                $message = 'Error: ' . $e->getMessage();
             }
-            try{
-                $db->query("INSERT INTO notifications (Filiere,Message,DateNotification) VALUES (?,?,NOW())",array($choice,$notification));
-                $message1= "Notification has been inserted succesfully in Database";
-            }catch(Exception $e){
-                $message1 =  "Error inserting Notifcation in Database". $e->getMessage();
+
+            try {
+                // Insert notification into the database
+                $db->query("INSERT INTO notifications (idclass, Message, DateNotification) VALUES (?, ?, NOW())", [$choice, $notification]);
+                $message1 = "Notification has been inserted successfully in the Database";
+            } catch (Exception $e) {
+                $message1 = "Error inserting Notification in the Database: " . $e->getMessage();
             }
-            $this->view("SendNotification",['message'=>$message,"message1"=>$message1]);
+
+            // Load the view with messages
+            $this->view("SendNotification", ['message' => $message, 'message1' => $message1]);
         }
     }
-    
 }
-
 ?>

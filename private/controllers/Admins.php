@@ -15,50 +15,73 @@ class Admins extends Controller {
     }
 
     function getAllAdmins() {
+         if(!Auth::adminLoggedIn()) {
+            $this->redirect('login');
+        }
         $adminModel = new Admin();
         $admins = $adminModel->findAll(); 
         $this->view('listeAdmin.admin', ['admins' => $admins]);
     }
     function getAllProfs() {
+         if(!Auth::adminLoggedIn()) {
+            $this->redirect('login');
+        }
         $teacherModel = new Teacher();
         $teachers = $teacherModel->findAll(); 
         $this->view('listeProf.admin', ['teachers' => $teachers]);
     }
     function getAllstudents(){
-        $studentModel = new Student();
-        $student = $studentModel->findAll();
-        $this->view('listeStudents.admin',['students'=>$student]);
-    }
-    function notifAdminsend(){
-        $this->view('SendNotification');
-    }
-    
-    function ajouterUser(){
-        $this->view('AjouterUser');
+         if(!Auth::adminLoggedIn()) {
+            $this->redirect('login');
+        }
+        $db = new Database(); // Create an instance of the Database class
+        $query = "SELECT students.*, classes.NomClasse AS NomFiliere 
+                  FROM students 
+                  INNER JOIN classes ON students.IdClasse = classes.IdClasse";
+        $students = $db->query($query);
+        $this->view('listeStudents.admin', ['students' => $students]);
     }
 
+    function notifAdminsend(){
+    if(!Auth::adminLoggedIn()) {
+        $this->redirect('login');
+    }
+    $classe = new Classe(); 
+    $classes= $classe->findAll(); 
+    $this->view('SendNotification',['classes'=>$classes]);
+}
+
+    
+
     function getDemandes() {
-        $demandesController = new Demandes();
-        $demandes = $demandesController->demande();
+         if(!Auth::adminLoggedIn()) {
+            $this->redirect('login');
+        }
+        $demandesController = new Demand();
+        $demandes = $demandesController->findAll();
         $this->view('demandes.admin', ['demandes' => $demandes]);
     }
+
     
     function archivenotif(){
+         if(!Auth::adminLoggedIn()) {
+            $this->redirect('login');
+        }
         $arch = new Allnotification();
         $result = $arch->allnotifications();
         $this->view('seenotifications.admin',['result' => $result]);
     }
 
-    function archProf() {
-        $this->view('archprof');
-    }
-
-
-
     function profile($id = null) {
+         if(!Auth::adminLoggedIn()) {
+            $this->redirect('login');
+        }
         $this->view("profile.admin");
     }
     function importusers(){
+         if(!Auth::adminLoggedIn()) {
+            $this->redirect('login');
+        }
         $this->view('ImportUsers');
     }
 

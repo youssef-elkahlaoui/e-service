@@ -82,12 +82,9 @@
                                     <label class="form-label" for="selectOption">Select Option:</label>
                                     <select class="form-control" id="selectOption" name="selectedoption" required>
                                         <option value="" disabled selected hidden>Choose an option</option>
-                                        <option value="CP1">CP1</option>
-                                        <option value="CP2">CP2</option>
-                                        <option value="TDIA1">TDIA1</option>
-                                        <option value="GI1">GI1</option>
-                                        <option value="ID1">ID1</option>
-                                        <option value="GM1">GM1</option>
+                                        <?php foreach ($data['classes'] as $class): ?>
+                                            <option value="<?= $class->IdClasse ?>"><?= $class->NomClasse ?></option>
+                                        <?php endforeach; ?>
                                         <option value="ALL">ALL</option>
                                     </select>
                                 </div>

@@ -89,10 +89,29 @@
         </div>
     </div>
 </div>
+<?php if (isset($message1) && !empty($message1)): ?>
+    <div class="card mb-4">
+        <div class="card-body shadow rounded-3">
+            <div class="alert alert-success" role="alert">
+                <?= $message1 ?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <?php if (isset($message2) && !empty($message2)): ?>
+    <div class="card mb-4">
+        <div class="card-body shadow rounded-3">
+            <div class="alert alert-danger" role="alert">
+                <?= $message2 ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 <div class="card mb-4">
     <div class="card-body shadow rounded-3">
         <div class="form-container">
-                <form action="importUsers/import" method="post" enctype="multipart/form-data">
+                <form action="<?= ROOT ?>/importUsers/import" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="form-label" for="excel">Importer les ètudiants :</label>
                         <input type="file" id="excel" name="excel" class="form-control" required>
