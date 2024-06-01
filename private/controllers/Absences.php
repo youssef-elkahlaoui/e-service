@@ -1,5 +1,5 @@
 <?php
-class AbsencesController extends Controller {
+class Absences extends Controller {
     public function import() {
         if (!empty($_FILES) && isset($_POST['import_absences'])) {
             if ($_FILES['csv']['error'] === UPLOAD_ERR_OK) {
@@ -14,21 +14,23 @@ class AbsencesController extends Controller {
                     $fichier = fopen($csv_file, 'r');
 
                     if ($fichier !== false) {
-                        fgetcsv($fichier); 
+                        fgetcsv($fichier); // Skip the header row
                         try {
                             while (($row = fgetcsv($fichier)) !== false) {
                                 if (count($row) < 2) {
-                                    echo "Ligne CSV invalide: " . implode(", ", $row) . " (Number of columns: " . count($row) . ")<br/>";
+                                    echo "Ligne CSV invalide: " . implode(", ", $row) . " (Nombre de colonnes: " . count($row) . ")<br/>";
                                     continue;
                                 }
-                                
+
                                 $idstudent = $row[0];
-                                $justifiee = isset($row[1]) ? $row[1] : 'non';
-                                $result = $db->query(
-                                    "INSERT INTO absences (IdStudent, IdCours, Justifiée) VALUES (?, ?, ?) 
-                                    ON DUPLICATE KEY UPDATE , Justifiée=VALUES(Justifiée)",
-                                    [$idstudent, $_POST['module'], $justifiee]
-                                );                                
+                                $justifiee = isset($row[2]) ? $row[2] : 'non';
+                                $idcours = $row[1];
+
+                                    $result = $db->query(
+                                        "INSERT INTO absences (IdStudent, IdCours, Justifiée) VALUES (?, ?, ?) 
+                                        ON DUPLICATE KEY UPDATE Justifiée=VALUES(Justifiée)",
+                                        [$idstudent, $idcours, $justifiee]
+                                    );                                
                             }
                             fclose($fichier);
                             echo '<div class="card mb-4">

@@ -66,7 +66,7 @@
             <div class="card mb-4">
                 <div class="card-body shadow rounded-3">
                     <div class="form-container">
-                        <form action="<?= ROOT ?>/absences/import" method="post" enctype="multipart/form-data">
+                        <form action="<?= ROOT ?>/Absences/import" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label class="form-label" for="csv">Importer les absences :</label>
                                 <div class="drop-zone" id="drop-zone">
